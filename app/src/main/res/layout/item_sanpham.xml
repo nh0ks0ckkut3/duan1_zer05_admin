@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="7dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageView
+            android:src="@drawable/hinhcource"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/txtMaSP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên KH:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtTenSP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên NV:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtMoTa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên DV:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtGiaBan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giá:"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
