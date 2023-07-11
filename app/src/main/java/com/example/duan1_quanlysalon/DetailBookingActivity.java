@@ -10,5 +10,6 @@ public class DetailBookingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_booking);
+        //nghia
     }
 }
