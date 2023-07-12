@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_margin="20dp"
-        android:background="@drawable/info_checkout"
+        android:background="@drawable/bill_checkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
