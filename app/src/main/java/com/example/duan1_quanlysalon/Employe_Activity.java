@@ -4,27 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Switch;
 
 import com.example.duan1_quanlysalon.fragment.Booking_Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class MainActivity extends AppCompatActivity {
-
-
+public class Employe_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_employe);
         //ánh xạ
-        BottomNavigationView bottomNavigationView =findViewById(R.id.bottomNavigationView_admin) ;
+        BottomNavigationView bottomNavigationView =findViewById(R.id.bottomNavigationView_employee) ;
 
         // click item bottomNavigation
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -32,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
                 switch (item.getItemId()){
-                    case R.id.menu_admin_booking:
+                    case R.id.menu_employe_booking:
                         fragment = new Booking_Fragment();
                         break;
 
@@ -43,14 +38,11 @@ public class MainActivity extends AppCompatActivity {
                 if (fragment != null){
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.fl_admin, fragment)
+                            .replace(R.id.fl_employe, fragment)
                             .commit();
                 }
                 return false;
             }
         });
-
-
-
     }
 }
