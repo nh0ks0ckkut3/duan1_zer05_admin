@@ -7,7 +7,7 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/edtPassWord"
         android:layout_width="349dp"
         android:layout_height="62dp"
         android:ems="10"
@@ -48,7 +48,7 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/edtUserName"
         android:layout_width="349dp"
         android:layout_height="62dp"
         android:ems="10"
@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="0.448" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/chkRemember"
         android:layout_width="164dp"
         android:layout_height="49dp"
         android:text="Remember? "
@@ -70,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassWord"
         app:layout_constraintVertical_bias="0.023" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -85,6 +85,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        app:layout_constraintTop_toBottomOf="@+id/chkRemember"
         app:layout_constraintVertical_bias="0.069" />
 </androidx.constraintlayout.widget.ConstraintLayout>
