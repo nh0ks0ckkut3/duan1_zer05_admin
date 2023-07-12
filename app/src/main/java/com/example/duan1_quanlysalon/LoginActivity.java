@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 /// dm m git hub
                 // test lan 2.2
+                // test lan 3
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
