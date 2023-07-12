@@ -18,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /// dm m git hub
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
