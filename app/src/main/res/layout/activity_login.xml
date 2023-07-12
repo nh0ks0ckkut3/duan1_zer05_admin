@@ -11,8 +11,8 @@
         android:layout_width="349dp"
         android:layout_height="62dp"
         android:ems="10"
-        android:inputType="textPassword"
         android:hint="Password"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
@@ -87,4 +87,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chkRemember"
         app:layout_constraintVertical_bias="0.069" />
+
+    <ImageButton
+        android:id="@+id/icon_pass"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="140dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.676"
+        app:srcCompat="@drawable/icon_pass" />
 </androidx.constraintlayout.widget.ConstraintLayout>
