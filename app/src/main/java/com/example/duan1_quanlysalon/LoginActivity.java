@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
                 /// dm m git hub
                 // test lan 2.2
                 // test lan 3
+                // test lan n
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
