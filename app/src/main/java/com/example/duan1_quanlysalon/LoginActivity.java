@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 /// dm m git hub
+                // test lan 2.2
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
