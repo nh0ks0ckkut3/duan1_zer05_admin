@@ -10,13 +10,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Switch;
 
+import com.example.duan1_quanlysalon.database.EmployeeDAO;
 import com.example.duan1_quanlysalon.fragment.Booking_Fragment;
+import com.example.duan1_quanlysalon.model.Employee;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //ánh xạ
-        BottomNavigationView bottomNavigationView =findViewById(R.id.bottomNavigationView_admin) ;
+        bottomNavigationView =findViewById(R.id.bottomNavigationView_admin) ;
 
         // click item bottomNavigation
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                 }
+
                 // fragment booking để test code
                 // đang thiếu fragment chờ có thêm vào sau
 
