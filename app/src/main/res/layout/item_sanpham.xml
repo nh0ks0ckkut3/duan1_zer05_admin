@@ -25,28 +25,46 @@
             android:padding="12dp">
 
             <TextView
-                android:id="@+id/txtMaSP"
+                android:id="@+id/txtphoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên KH:"
+                android:text="số đt:"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/txtTenSP"
+                android:id="@+id/txtName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tên NV:"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/txtMoTa"
+                android:id="@+id/txtidService"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tên DV:"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/txtGiaBan"
+                android:id="@+id/txtidProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giá:"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giá:"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giá:"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/txtTotalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Giá:"
