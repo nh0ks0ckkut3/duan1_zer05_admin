@@ -16,7 +16,7 @@ public class BillDAO {
         helper = new Helper(context);
     }
 
-    public ArrayList<Bill> getListService(){
+    public ArrayList<Bill> getListBill(){
         ArrayList<Bill> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase =helper.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM bill",null);
