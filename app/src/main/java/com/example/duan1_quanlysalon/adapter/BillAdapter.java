@@ -63,6 +63,8 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolDer>{
             txtStatus = itemView.findViewById(R.id.txtStatus);
             txtTotalPrice = itemView.findViewById(R.id.txtTotalPrice);
 
+            //nghia
+
         }
     }
 }
