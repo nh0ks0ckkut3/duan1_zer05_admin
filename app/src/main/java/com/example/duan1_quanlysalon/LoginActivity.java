@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(user.equals(employee.getUserName()) && pass.equals(employee.getPassWord())){
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            finish();
+                            //finish();
                         }else{
                             Toast.makeText(LoginActivity.this, "Sai user hoặc pass", Toast.LENGTH_SHORT).show();
                         }

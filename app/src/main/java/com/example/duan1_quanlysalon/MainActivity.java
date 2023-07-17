@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Switch;
 
 import com.example.duan1_quanlysalon.fragment.Booking_Fragment;
+import com.example.duan1_quanlysalon.fragment.Menu_Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -32,11 +33,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
-                switch (item.getItemId()){
-                    case R.id.menu_admin_booking:
+                if (item.getItemId() == R.id.menu_admin_booking){
                         fragment = new Booking_Fragment();
-                        break;
-
+                }else if(item.getItemId() == R.id.menu_admin_menu){
+                    fragment = new Menu_Fragment();
                 }
                 // fragment booking để test code
                 // đang thiếu fragment chờ có thêm vào sau
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                             .replace(R.id.fl_admin, fragment)
                             .commit();
                 }
+
                 return false;
             }
         });

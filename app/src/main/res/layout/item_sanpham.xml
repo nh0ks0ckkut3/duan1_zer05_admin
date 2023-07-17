@@ -14,8 +14,8 @@
         android:gravity="center">
         <ImageView
             android:src="@drawable/hinhcource"
-            android:layout_width="150dp"
-            android:layout_height="150dp"/>
+            android:layout_width="130dp"
+            android:layout_height="130dp"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -29,49 +29,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="số đt:"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/txtName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tên NV:"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/txtidService"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tên DV:"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/txtidProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Giá:"
-                android:textSize="20sp" />
-            <TextView
-                android:id="@+id/txtTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Giá:"
-                android:textSize="20sp" />
-            <TextView
-                android:id="@+id/txtStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Giá:"
-                android:textSize="20sp" />
             <TextView
                 android:id="@+id/txtTotalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Giá:"
-                android:textSize="20sp" />
-
-
+                android:textSize="16sp" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/ivDel"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_delete_24"/>
 
 
     </LinearLayout>

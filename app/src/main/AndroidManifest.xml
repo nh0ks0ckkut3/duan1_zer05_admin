@@ -12,6 +12,15 @@
         android:theme="@style/Theme.Duan1_quanlysalon"
         tools:targetApi="31">
         <activity
+            android:name=".DSsanphamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DSdichvuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DSnhanvienActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false">
             <meta-data
