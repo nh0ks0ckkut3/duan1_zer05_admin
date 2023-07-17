@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     app:cardCornerRadius="16dp"
-    app:cardElevation="7dp">
+    app:cardElevation="7dp"
+    android:id="@+id/cardview_item_product">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         android:orientation="horizontal"
         android:gravity="center">
         <ImageView
+            android:id="@+id/img_item_list_sanpham"
             android:src="@drawable/hinhcource"
             android:layout_width="150dp"
             android:layout_height="150dp"/>
@@ -25,31 +27,31 @@
             android:padding="12dp">
 
             <TextView
-                android:id="@+id/txtMaSP"
+                android:id="@+id/tensp_item_list_sanpham"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên KH:"
+                android:text="Tên sp:"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/txtTenSP"
+                android:id="@+id/giasp_item_list_sanpham"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên NV:"
+                android:text="gia sp:"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/txtMoTa"
+                android:id="@+id/phanloai_item_list_sanpham"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên DV:"
+                android:text="phan loai"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/txtGiaBan"
+                android:id="@+id/thuonghieu_item_list_sanpham"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Giá:"
+                android:text="thuong hieu:"
                 android:textSize="20sp" />
 
 
