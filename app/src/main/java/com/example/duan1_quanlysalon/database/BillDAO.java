@@ -81,4 +81,18 @@ public class BillDAO {
         long check = sqLiteDatabase.delete("bill", "id= ?",new String[]{String.valueOf(idBill)});
         return (!(check == -1));
     }
+
+    public ArrayList<Bill> getTotalDay(String day){
+        SQLiteDatabase database = helper.getWritableDatabase();
+        ArrayList<Bill> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM bill WHERE time = ?", new String[]{day});
+        if (cursor.getCount() > 0){
+            cursor.moveToFirst();
+            do {
+                list.add(new Bill(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3),
+                        cursor.getInt(4), cursor.getString(5),cursor.getString(6),cursor.getInt(7)));
+            }while (cursor.moveToNext());
+        }
+        return list;
+    }
 }

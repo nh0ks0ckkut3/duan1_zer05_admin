@@ -66,4 +66,19 @@ public class CustomerDAO {
         long check = sqLiteDatabase.delete("customer", "phoneNumber= ?",new String[]{phoneNumberCustomerEdit});
         return (!(check == -1));
     }
+
+    public ArrayList<Customer> checkInforCustomer(String sdt){
+        SQLiteDatabase database = helper.getWritableDatabase();
+        ArrayList<Customer> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM customer WHERE phoneNumber = ?", new String[]{sdt});
+        if (cursor.getCount() > 0){
+            cursor.moveToFirst();
+            do {
+                list.add(new Customer(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3),
+                        cursor.getString(4), cursor.getInt(5),cursor.getString(6)));
+            }while (cursor.moveToNext());
+        }
+        return list;
+
+    }
 }

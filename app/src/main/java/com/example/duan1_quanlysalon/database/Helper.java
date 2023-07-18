@@ -41,7 +41,6 @@ public class Helper extends SQLiteOpenHelper {
                 "(2,'0345982112','hotuyen95',2,3,'03/07/2023','da thanh toan',385)," +
                 "(3,'0962498265','hotuyen95',4,3,'03/07/2023','da thanh toan',469)," +
                 "(4,'0337287365','minhthi98',1,1,'13/07/2023','booking',349)");
-
     }
 
     @Override

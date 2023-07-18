@@ -11,12 +11,13 @@ import android.view.MenuItem;
 import android.widget.Switch;
 
 import com.example.duan1_quanlysalon.fragment.Booking_Fragment;
+import com.example.duan1_quanlysalon.fragment.NewsFragment;
+import com.example.duan1_quanlysalon.fragment.SearchPhoneFragment;
+import com.example.duan1_quanlysalon.fragment.TotalDayFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,15 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menu_admin_booking:
                         fragment = new Booking_Fragment();
                         break;
-
+                    case R.id.menu_admin_news:
+                        fragment = new NewsFragment();
+                        break;
+                    case R.id.menu_admin_menu:
+                        fragment = new SearchPhoneFragment();
+                        break;
+                    case R.id.menu_admin_thongke:
+                        fragment = new TotalDayFragment();
+                        break;
                 }
                 // fragment booking để test code
                 // đang thiếu fragment chờ có thêm vào sau
@@ -47,11 +56,8 @@ public class MainActivity extends AppCompatActivity {
                             .replace(R.id.fl_admin, fragment)
                             .commit();
                 }
-                return false;
+                return true;
             }
         });
-
-
-
     }
 }

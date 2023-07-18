@@ -42,7 +42,7 @@ public class Booking_Fragment extends Fragment {
         FloatingActionButton floatAdd = view.findViewById(R.id.floatAdd);
         recyclerView = view.findViewById(R.id.recyclerView);
 
-        //billDAO = new BillDAO(getContext());
+        billDAO = new BillDAO(getContext());
         loadData();
         return view;
     }
