@@ -30,7 +30,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolDer>{
     @Override
     public ViewHolDer onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.item_sanpham, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_booking, parent, false);
         return new ViewHolDer(view);
     }
 
@@ -39,9 +39,6 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolDer>{
         holder.txtphoneNumber.setText("Số ĐT: " + list.get(position).getPhoneNumberCustomer());
         holder.txtName.setText("Tên Khách: " + list.get(position).getUserNameEmployee());
         holder.txtidService.setText("Tên DV: " + list.get(position).getIdService());
-        holder.txtidProduct.setText("Tên SP : " + list.get(position).getIdProduct());
-        holder.txtTime.setText("Time: " + list.get(position).getTime());
-        holder.txtStatus.setText("Status: " + list.get(position).getStatus());
         holder.txtTotalPrice.setText("Giá: " + list.get(position).getTotalPrice());
 
     }
@@ -52,15 +49,12 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolDer>{
     }
 
     public class ViewHolDer extends RecyclerView.ViewHolder{
-        TextView txtphoneNumber, txtName, txtidService, txtidProduct, txtTime,txtStatus,txtTotalPrice;
+        TextView txtphoneNumber, txtName, txtidService,txtTotalPrice;
         public ViewHolDer(@NonNull View itemView) {
             super(itemView);
             txtphoneNumber = itemView.findViewById(R.id.txtphoneNumber);
             txtName = itemView.findViewById(R.id.txtName);
             txtidService = itemView.findViewById(R.id.txtidService);
-            txtidProduct = itemView.findViewById(R.id.txtidProduct);
-            txtTime = itemView.findViewById(R.id.txtTime);
-            txtStatus = itemView.findViewById(R.id.txtStatus);
             txtTotalPrice = itemView.findViewById(R.id.txtTotalPrice);
 
             //nghia

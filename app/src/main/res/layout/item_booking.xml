@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     app:cardCornerRadius="16dp"
-    app:cardElevation="7dp"
-    android:id="@+id/cardview_item_product">
+    app:cardElevation="7dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,10 +13,10 @@
         android:orientation="horizontal"
         android:gravity="center">
         <ImageView
-            android:id="@+id/img_item_list_sanpham"
             android:src="@drawable/hinhcource"
-            android:layout_width="150dp"
-            android:layout_height="150dp"/>
+            android:layout_width="130dp"
+            android:layout_height="130dp"/>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -26,34 +25,40 @@
             android:padding="12dp">
 
             <TextView
-                android:id="@+id/tensp_item_list_sanpham"
+                android:id="@+id/txtphoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên sp:"
-                android:textSize="20sp" />
+                android:text="số đt:"
+                android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/giasp_item_list_sanpham"
+                android:id="@+id/txtName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="gia sp:"
-                android:textSize="20sp" />
+                android:text="Tên NV:"
+                android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/phanloai_item_list_sanpham"
+                android:id="@+id/txtidService"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="phan loai"
-                android:textSize="20sp" />
+                android:text="Tên DV:"
+                android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/thuonghieu_item_list_sanpham"
+                android:id="@+id/txtTotalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="thuong hieu:"
-                android:textSize="20sp" />
-
-
+                android:text="Giá:"
+                android:textSize="16sp" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivDel"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_delete_24"/>
+
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

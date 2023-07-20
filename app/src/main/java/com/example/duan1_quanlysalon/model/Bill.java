@@ -47,6 +47,14 @@ public class Bill implements Serializable {
         this.time = time;
         this.status = status;
     }
+//    billDAO.addBill(phone, name, idService, price);
+
+    public Bill(String phoneNumberCustomer, String userNameEmployee, int idService, int totalPrice) {
+        this.phoneNumberCustomer = phoneNumberCustomer;
+        this.userNameEmployee = userNameEmployee;
+        this.idService = idService;
+        this.totalPrice = totalPrice;
+    }
 
     public int getId() {
         return id;
