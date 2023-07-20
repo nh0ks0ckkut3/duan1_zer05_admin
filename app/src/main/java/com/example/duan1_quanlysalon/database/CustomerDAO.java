@@ -16,7 +16,7 @@ public class CustomerDAO {
         helper = new Helper(context);
     }
 
-    public ArrayList<Customer> getListService(){
+    public ArrayList<Customer> getListCustomer(){
         ArrayList<Customer> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase =helper.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM customer",null);
