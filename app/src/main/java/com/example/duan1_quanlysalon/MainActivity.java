@@ -12,42 +12,46 @@ import android.widget.Switch;
 
 import com.example.duan1_quanlysalon.fragment.Booking_Fragment;
 import com.example.duan1_quanlysalon.fragment.Menu_Fragment;
-<<<<<<< HEAD
-import com.example.duan1_quanlysalon.fragment.NewsFragment;
 import com.example.duan1_quanlysalon.fragment.SearchPhoneFragment;
 import com.example.duan1_quanlysalon.fragment.TotalDayFragment;
-=======
->>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
+import com.example.duan1_quanlysalon.fragment.NewsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
-    FragmentManager fragmentManager;
+    BottomNavigationView bottomNavigationView;
     Fragment fragment;
+    FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        //ánh xạ
-        BottomNavigationView bottomNavigationView =findViewById(R.id.bottomNavigationView_admin) ;
-        fragment = new Booking_Fragment();
+        bottomNavigationView =findViewById(R.id.bottomNavigationView_admin);
         fragmentManager = getSupportFragmentManager();
+        fragment = = new Booking_Fragment();
         fragmentManager.beginTransaction()
-                .replace(R.id.fl_admin, fragment)
-                .commit();
+                            .replace(R.id.fl_admin, fragment)
+                            .commit();
 
         // click item bottomNavigation
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-<<<<<<< HEAD
-
                 switch (item.getItemId()){
+                    default:
                     case R.id.menu_admin_booking:
                         fragment = new Booking_Fragment();
+                        break;
+                    case R.id.menu_admin_thanhtoan:
+                        fragment = new SearchPhoneFragment();
+                        break;
+
+                    case R.id.menu_admin_thongke:
+                        fragment = new TotalDayFragment();
                         break;
                     case R.id.menu_admin_news:
                         fragment = new NewsFragment();
@@ -55,38 +59,15 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menu_admin_menu:
                         fragment = new Menu_Fragment();
                         break;
-                    case R.id.menu_admin_thongke:
-                        fragment = new SearchPhoneFragment();
-                        break;
-                    case R.id.menu_admin_thanhtoan:
-                        fragment = new TotalDayFragment();
-                        break;
-=======
-                Fragment fragment = null;
-                if (item.getItemId() == R.id.menu_admin_booking){
-                        fragment = new Booking_Fragment();
-                }else if(item.getItemId() == R.id.menu_admin_menu){
-                    fragment = new Menu_Fragment();
->>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
                 }
-                fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fl_admin, fragment)
+                        .replace(R.id.fl_main, fragment)
                         .commit();
-
-<<<<<<< HEAD
                 return true;
-=======
-                if (fragment != null){
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.fl_admin, fragment)
-                            .commit();
-                }
-
-                return false;
->>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
             }
         });
+
+
+
     }
 }
