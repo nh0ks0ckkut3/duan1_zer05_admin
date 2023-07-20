@@ -1,18 +1,17 @@
 package com.example.duan1_quanlysalon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
-import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.duan1_quanlysalon.database.EmployeeDAO;
 import com.example.duan1_quanlysalon.model.Employee;
@@ -24,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
 
-    String user, pass;
+    String userName, pass;
     EmployeeDAO employeeDAO;
 
     @Override
@@ -50,42 +49,56 @@ public class LoginActivity extends AppCompatActivity {
                     edtPassWord.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     icon_pass.setBackgroundResource(R.drawable.hidepass);
                 }
-                    hidePass =! hidePass;
+                hidePass =! hidePass;
                 edtPassWord.setSelection(edtPassWord.getText().length());
             }
         });
 
         sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
         boolean check = sharedPreferences.getBoolean("isRemember", false);
-        if (check){
-            edtUserName.setText(sharedPreferences.getString("isUser", ""));
-            edtPassWord.setText(sharedPreferences.getString("isPass", ""));
+        if(check){
+//            startActivity(new Intent(MainActivity.this,HomeActivity.class));
+            String userName = sharedPreferences.getString("userName","");
+            String pass = sharedPreferences.getString("pass","");
+            chkRemember.setChecked(check);
+            edtUserName.setText(userName);
+            edtPassWord.setText(pass);
         }
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isRemember = chkRemember.isChecked();
-                sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("isRemember", isRemember);
-                editor.putString("isUser", user);
-                editor.putString("isPass", pass);
-                editor.apply();
 
-                user = edtUserName.getText().toString();
+
+                userName = edtUserName.getText().toString();
                 pass = edtPassWord.getText().toString();
 
-                if (user.length() > 0 && pass.length() > 0){
-                    for(Employee employee: employeeDAO.getListEmployee()){
-                        if(user.equals(employee.getUserName()) && pass.equals(employee.getPassWord())){
+                boolean isCorrect = false;
+                if (userName.length() > 0 && pass.length() > 0){
+                    for(Employee employee: employeeDAO.getListEmployee()) {
+                        if (userName.equals(employee.getUserName()) && pass.equals(employee.getPassWord())) {
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            //finish();
-                        }else{
-                            Toast.makeText(LoginActivity.this, "Sai user hoặc pass", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("employeeCurrent",employee);
+                            intent.putExtras(bundle);
+
+                            isCorrect = true;
+                            boolean isRemember = chkRemember.isChecked();
+                            sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("isRemember", isRemember);
+                            editor.putString("userName", userName);
+                            editor.putString("pass", pass);
+                            editor.apply();
+                            finish();
+                            startActivity(intent);
                         }
                     }
+                    if(!isCorrect){
+                        Toast.makeText(LoginActivity.this, "Sai tên đăng nhập hoặc mật khẩu", Toast.LENGTH_SHORT).show();
+                    }
+
                 }else{
                     Toast.makeText(LoginActivity.this, "Nhập user và pass", Toast.LENGTH_SHORT).show();
                 }
