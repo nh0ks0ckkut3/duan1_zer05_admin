@@ -52,7 +52,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolDer>{
         TextView txtphoneNumber, txtName, txtidService,txtTotalPrice;
         public ViewHolDer(@NonNull View itemView) {
             super(itemView);
-            txtphoneNumber = itemView.findViewById(R.id.txtphoneNumber);
+            txtphoneNumber = itemView.findViewById(R.id.txtPhoneNumber);
             txtName = itemView.findViewById(R.id.txtName);
             txtidService = itemView.findViewById(R.id.txtidService);
             txtTotalPrice = itemView.findViewById(R.id.txtTotalPrice);
