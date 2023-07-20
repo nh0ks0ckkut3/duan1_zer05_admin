@@ -39,7 +39,7 @@ public class Helper extends SQLiteOpenHelper {
                 "('0962498265','12345','Ha Trong Vy',27,'nam',469,'thu duc')");
         db.execSQL("INSERT INTO bill VALUES(1,'0337295209','minhthi98',1,1,'03/07/2023','da thanh toan',329)," +
                 "(2,'0345982112','hotuyen95',2,3,'03/07/2023','da thanh toan',385)," +
-                "(3,'0962498265','hotuyen95',4,3,'03/07/2023','da thanh toan',469)," +
+                "(3,'0962498265','hotuyen95',4,3,'03/07/2023','booking',469)," +
                 "(4,'0337287365','minhthi98',1,1,'13/07/2023','booking',349)");
 
     }

@@ -79,8 +79,16 @@ public class LoginActivity extends AppCompatActivity {
                     String ten ="", mk="";
                     for(Employee employee: employeeDAO.getListEmployee()){
                         if(user.equals(employee.getUserName()) && pass.equals(employee.getPassWord())){
+<<<<<<< HEAD
                             ten = employee.getUserName();
                             mk = employee.getPassWord();
+=======
+                            Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            //finish();
+                        }else{
+                            Toast.makeText(LoginActivity.this, "Sai user hoặc pass", Toast.LENGTH_SHORT).show();
+>>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
                         }
                     }
                     if (user.equals(ten) && pass.equals(mk)){

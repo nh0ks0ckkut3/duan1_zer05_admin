@@ -82,8 +82,13 @@ public class Booking_Fragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 String phone = edtPhone.getText().toString();
                 String name = edtName.getText().toString();
+<<<<<<< HEAD
                 int idService = Integer.parseInt(edtService.getText().toString());
                 int price = Integer.parseInt(edtPrice.getText().toString());
+=======
+                String idService = edtService.getText().toString();
+                String price = edtPrice.getText().toString();
+>>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
 
                 boolean check = billDAO.addBill(phone, name, idService, price);
                 if(check){

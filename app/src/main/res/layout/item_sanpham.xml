@@ -16,8 +16,14 @@
         <ImageView
             android:id="@+id/img_item_list_sanpham"
             android:src="@drawable/hinhcource"
+<<<<<<< HEAD
             android:layout_width="150dp"
             android:layout_height="150dp"/>
+=======
+            android:layout_width="130dp"
+            android:layout_height="130dp"/>
+
+>>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -29,20 +35,31 @@
                 android:id="@+id/tensp_item_list_sanpham"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:text="Tên sp:"
                 android:textSize="20sp" />
+=======
+                android:text="số đt:"
+                android:textSize="16sp" />
+>>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
 
             <TextView
                 android:id="@+id/giasp_item_list_sanpham"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:text="gia sp:"
                 android:textSize="20sp" />
+=======
+                android:text="Tên NV:"
+                android:textSize="16sp" />
+>>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
 
             <TextView
                 android:id="@+id/phanloai_item_list_sanpham"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:text="phan loai"
                 android:textSize="20sp" />
 
@@ -55,5 +72,25 @@
 
 
         </LinearLayout>
+=======
+                android:text="Tên DV:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giá:"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/ivDel"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_delete_24"/>
+
+
+>>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -33,7 +33,7 @@ public class BillDAO {
     public ArrayList<Bill> getListBooking(){
         ArrayList<Bill> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase =helper.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM bill WHERE status like 'booking'",null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM bill",null); //WHERE status like 'booking'
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{
@@ -44,6 +44,7 @@ public class BillDAO {
 
         return list;
     }
+<<<<<<< HEAD
 //billDAO.addBill(phone, name, idService, price);
     public boolean addBill(String phone, String name, int idService, int price){
         SQLiteDatabase sqLiteDatabase = helper.getWritableDatabase();
@@ -53,9 +54,26 @@ public class BillDAO {
         contentValues.put("userNameEmployee",name);
         contentValues.put("idService",idService);
         contentValues.put("totalPrice",price);
+=======
+
+    public boolean addBill(String phone, String name, String idService, String price){
+        SQLiteDatabase sqLiteDatabase = helper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("phoneNumberCustomer", phone);
+        contentValues.put("userNameEmployee", name);
+        contentValues.put("idService", idService);
+      //  contentValues.put("idProduct",bill.getIdProduct());
+       // contentValues.put("time",bill.getTime());
+       // contentValues.put("status",bill.getStatus());
+        contentValues.put("totalPrice", price);
+>>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
 
         long check =sqLiteDatabase.insert("bill", null, contentValues);
-        return (!(check == -1));
+        if(check == -1){
+            return false;
+        }
+        return true;
     }
 
     public boolean editBill(int idBillEdit, Bill bill){

@@ -12,9 +12,12 @@ import android.widget.Switch;
 
 import com.example.duan1_quanlysalon.fragment.Booking_Fragment;
 import com.example.duan1_quanlysalon.fragment.Menu_Fragment;
+<<<<<<< HEAD
 import com.example.duan1_quanlysalon.fragment.NewsFragment;
 import com.example.duan1_quanlysalon.fragment.SearchPhoneFragment;
 import com.example.duan1_quanlysalon.fragment.TotalDayFragment;
+=======
+>>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+<<<<<<< HEAD
 
                 switch (item.getItemId()){
                     case R.id.menu_admin_booking:
@@ -57,13 +61,31 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menu_admin_thanhtoan:
                         fragment = new TotalDayFragment();
                         break;
+=======
+                Fragment fragment = null;
+                if (item.getItemId() == R.id.menu_admin_booking){
+                        fragment = new Booking_Fragment();
+                }else if(item.getItemId() == R.id.menu_admin_menu){
+                    fragment = new Menu_Fragment();
+>>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
                 }
                 fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.fl_admin, fragment)
                         .commit();
 
+<<<<<<< HEAD
                 return true;
+=======
+                if (fragment != null){
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fl_admin, fragment)
+                            .commit();
+                }
+
+                return false;
+>>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
             }
         });
     }
