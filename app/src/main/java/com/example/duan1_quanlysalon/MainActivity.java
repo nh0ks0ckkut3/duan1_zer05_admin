@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView =findViewById(R.id.bottomNavigationView_admin);
         fragmentManager = getSupportFragmentManager();
-        fragment = = new Booking_Fragment();
+        fragment = new Booking_Fragment();
         fragmentManager.beginTransaction()
                             .replace(R.id.fl_admin, fragment)
                             .commit();
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fl_main, fragment)
+                        .replace(R.id.fl_admin, fragment)
                         .commit();
                 return true;
             }
