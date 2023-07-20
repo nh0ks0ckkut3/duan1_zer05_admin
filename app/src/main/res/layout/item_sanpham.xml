@@ -25,7 +25,7 @@
             android:padding="12dp">
 
             <TextView
-                android:id="@+id/txtphoneNumber"
+                android:id="@+id/txtId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="số đt:"
@@ -39,17 +39,10 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/txtidService"
+                android:id="@+id/txtPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tên DV:"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/txtTotalPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Giá:"
                 android:textSize="16sp" />
         </LinearLayout>
 
