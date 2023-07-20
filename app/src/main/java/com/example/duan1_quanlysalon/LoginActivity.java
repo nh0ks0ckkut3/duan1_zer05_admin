@@ -22,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox chkRemember;
     ImageButton icon_pass;
     SharedPreferences sharedPreferences;
+
+
     String user, pass;
     EmployeeDAO employeeDAO;
 
@@ -36,15 +38,6 @@ public class LoginActivity extends AppCompatActivity {
         chkRemember = findViewById(R.id.chkRemember);
         employeeDAO = new EmployeeDAO(this);
 
-
-        sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
-        boolean check = sharedPreferences.getBoolean("isRemember", false);
-        if (check){
-            edtUserName.setText(sharedPreferences.getString("isUser", ""));
-            edtPassWord.setText(sharedPreferences.getString("isPass", ""));
-            chkRemember.setChecked(true);
-        }
-
         icon_pass.setBackgroundResource(R.drawable.hidepass);
         icon_pass.setOnClickListener(new View.OnClickListener() {
             boolean hidePass = false;
@@ -57,46 +50,41 @@ public class LoginActivity extends AppCompatActivity {
                     edtPassWord.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     icon_pass.setBackgroundResource(R.drawable.hidepass);
                 }
-                hidePass =! hidePass;
+                    hidePass =! hidePass;
                 edtPassWord.setSelection(edtPassWord.getText().length());
             }
         });
 
+        sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
+        boolean check = sharedPreferences.getBoolean("isRemember", false);
+        if (check){
+            edtUserName.setText(sharedPreferences.getString("isUser", ""));
+            edtPassWord.setText(sharedPreferences.getString("isPass", ""));
+        }
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user = edtUserName.getText().toString();
-                pass = edtPassWord.getText().toString();
                 boolean isRemember = chkRemember.isChecked();
-
                 sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("isRemember", isRemember);
                 editor.putString("isUser", user);
                 editor.putString("isPass", pass);
                 editor.apply();
+
+                user = edtUserName.getText().toString();
+                pass = edtPassWord.getText().toString();
+
                 if (user.length() > 0 && pass.length() > 0){
-                    String ten ="", mk="";
                     for(Employee employee: employeeDAO.getListEmployee()){
                         if(user.equals(employee.getUserName()) && pass.equals(employee.getPassWord())){
-<<<<<<< HEAD
-                            ten = employee.getUserName();
-                            mk = employee.getPassWord();
-=======
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             //finish();
                         }else{
                             Toast.makeText(LoginActivity.this, "Sai user hoặc pass", Toast.LENGTH_SHORT).show();
->>>>>>> 569aeb37634b280c4e9a111ee82332a2c6f59cdc
                         }
-                    }
-                    if (user.equals(ten) && pass.equals(mk)){
-                        Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
-                    }else{
-                        Toast.makeText(LoginActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                     }
                 }else{
                     Toast.makeText(LoginActivity.this, "Nhập user và pass", Toast.LENGTH_SHORT).show();
