@@ -35,16 +35,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_booking, parent, false);
+        View view = inflater.inflate(R.layout.item_sanpham, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtTensp.setText(list.get(position).getName());
-        holder.txtGiasp.setText(String.valueOf(list.get(position).getPrice()));
-        holder.txtPhanloai.setText(list.get(position).getClassify());
-        holder.txtThuonghieu.setText(list.get(position).getBrand());
+        holder.txtId.setText(list.get(position).getId()+"");
+        holder.txtName.setText(String.valueOf(list.get(position).getName()));
+        holder.txtPrice.setText(list.get(position).getPrice());
     }
 
     @Override
@@ -53,15 +52,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtTensp, txtGiasp, txtPhanloai, txtThuonghieu;
-        ImageView imgSanpham;
+        TextView txtId, txtName, txtPrice;
+        ImageView ivDel;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtTensp = itemView.findViewById(R.id.tensp_item_list_sanpham);
-            txtGiasp = itemView.findViewById(R.id.giasp_item_list_sanpham);
-            txtPhanloai = itemView.findViewById(R.id.phanloai_item_list_sanpham);
-            txtThuonghieu = itemView.findViewById(R.id.thuonghieu_item_list_sanpham);
-            imgSanpham = itemView.findViewById(R.id.img_item_list_sanpham);
+            txtId = itemView.findViewById(R.id.txtId);
+            txtName = itemView.findViewById(R.id.txtName);
+            txtPrice = itemView.findViewById(R.id.txtPrice);
+            ivDel = itemView.findViewById(R.id.ivDel);
         }
     }
 }
