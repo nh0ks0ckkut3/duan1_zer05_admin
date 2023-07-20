@@ -54,21 +54,21 @@ public class TotalDayFragment extends Fragment {
             public void onClick(View v) {
                 String day = edtDay.getText().toString();
                if (day.length() > 0){
-                   String status = "", time = "";
-                   int total = 0;
-                   list = billDAO.getTotalDay(day);
-                   for(Bill bill: list){
-                       total += bill.getTotalPrice();
-                       status = bill.getStatus();
-                       time = bill.getTime();
-                   }
+//                   String status = "", time = "";
+//                   int total = 0;
+//                   list = billDAO.getTotayDay(day);
+//                   for(Bill bill: list){
+//                       total += bill.getTotalPrice();
+//                       status = bill.getStatus();
+//                       time = bill.getTime();
+//                   }
 
-                   if (day.equals(time)){
-                       tvTotal.setText(total+" Đồng");
-                       tvStatus.setText(status);
-                   }else{
+//                   if (day.equals(time)){
+//                       tvTotal.setText(total+" Đồng");
+//                       tvStatus.setText(status);
+//                   }else{
                        Toast.makeText(getContext(), "Điều sai ngày!", Toast.LENGTH_SHORT).show();
-                   }
+//                   }
                }else{
                    Toast.makeText(getContext(), "Điền ngày cần thống kê", Toast.LENGTH_SHORT).show();
                }
