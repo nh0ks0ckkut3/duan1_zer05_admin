@@ -41,8 +41,9 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtTendv.setText(list.get(position).getName());
-        holder.txtGia.setText(String.valueOf(list.get(position).getPrice()));
+        holder.tvmadv.setText(list.get(position).getId()+"");
+        holder.tvname.setText(String.valueOf(list.get(position).getName()));
+        holder.tvgia.setText(String.valueOf(list.get(position).getPrice()));
 
     }
 
@@ -52,13 +53,15 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtTendv, txtGia;
+        TextView tvmadv, tvname, tvgia;
+        ImageView ivhinh;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtTendv = itemView.findViewById(R.id.tendv_item_list_service);
-            txtGia = itemView.findViewById(R.id.gia_item_list_service);
-
+            tvmadv = itemView.findViewById(R.id.tvmadv);
+            tvname = itemView.findViewById(R.id.tvname);
+            tvgia = itemView.findViewById(R.id.tvgia);
+            ivhinh = itemView.findViewById(R.id.ivhinh);
         }
     }
 }

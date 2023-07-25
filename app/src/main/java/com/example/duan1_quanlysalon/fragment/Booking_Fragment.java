@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan1_quanlysalon.R;
@@ -74,8 +75,12 @@ public class Booking_Fragment extends Fragment {
         EditText edtName  = view.findViewById(R.id.edtName);
         EditText edtService  = view.findViewById(R.id.edtidService);
         EditText edtPrice  = view.findViewById(R.id.edtPrice);
-        builder.setView(view);
+//        TextView tvName = view.findViewById(R.id.edtName);
+//        TextView tvPhone = view.findViewById(R.id.tvPhone);
+//        TextView tvToast = view.findViewById(R.id.tvToast);
+//        TextView tvTime = view.findViewById(R.id.tvTime);
 
+        builder.setView(view);
 
         builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
             @Override

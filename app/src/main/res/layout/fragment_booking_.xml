@@ -21,19 +21,11 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="230dp"
+            android:layout_marginStart="270dp"
             android:src="@mipmap/s1_more"/>
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/s1_search"/>
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/s1_cart"/>
-
 
     </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

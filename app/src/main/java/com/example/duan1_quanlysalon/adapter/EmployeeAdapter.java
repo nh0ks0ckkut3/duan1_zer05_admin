@@ -46,18 +46,18 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Employee employee =list.get(position);
-        holder.txtHoten.setText(list.get(position).getName());
-        holder.txtTuoi.setText(String.valueOf(list.get(position).getAge()));
-        holder.txtGioitinh.setText(list.get(position).getGender());
+      //  Employee employee =list.get(position);
+        holder.tvName.setText(list.get(position).getName());
+        holder.tvmanv.setText(String.valueOf(list.get(position).getUserName()));
 
-        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                showDialog();
-                return true;
-            }
-        });
+
+//        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View view) {
+//                showDialog();
+//                return true;
+//            }
+//        });
     }
 
     @Override
@@ -66,16 +66,13 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtHoten, txtTuoi, txtGioitinh;
-        ImageView imgEmployee;
+        TextView tvName, tvmanv;
+      //  ImageView imgEmployee;
         CardView cardView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.cardview_item_employee);
-            txtHoten = itemView.findViewById(R.id.hoten_item_list_employee);
-            txtTuoi = itemView.findViewById(R.id.tuoi_item_list_employee);
-            txtGioitinh = itemView.findViewById(R.id.gioitinh_item_list_employee);
-            imgEmployee = itemView.findViewById(R.id.img_item_list_employee);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvmanv = itemView.findViewById(R.id.tvmanv);
         }
     }
     public void showDialog(){

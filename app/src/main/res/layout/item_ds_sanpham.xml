@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="90sp"
+    >
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="162dp"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="35sp"
+        android:gravity="start"
+        android:text="Dầu gội clear"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/tvmasp"
+        android:layout_width="100dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="280sp"
+        android:layout_marginTop="10sp"
+        android:text="SP0011"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="35sp"
+        android:layout_marginTop="40dp"
+        android:text="Giá: 130.000VND"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:id="@+id/tvSL"
+        android:layout_width="110dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="280sp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="SL:1000 chai"
+        android:textSize="18sp"
+        />
+
+</androidx.cardview.widget.CardView>

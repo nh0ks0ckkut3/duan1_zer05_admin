@@ -1,48 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="130dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="@drawable/border_cardview_item_employee"
-    android:id="@+id/cardview_item_service"
-    >
+    app:cardCornerRadius="20dp"
+    app:cardElevation="7dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="MissingConstraints"
-        android:layout_margin="8dp"
-        >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#BCBABA"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/ivhinh"
+            android:src="@mipmap/ic_boking"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="25sp"/>
 
-        <TextView
-            android:id="@+id/tendv_item_list_service"
-            android:layout_width="200dp"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="ten dich vu"
-            android:textColor="@color/black"
-            android:textSize="25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.039"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_weight="9"
+            android:orientation="vertical"
+            android:padding="12dp">
 
-        <TextView
-            android:id="@+id/gia_item_list_service"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="gia"
-            android:textColor="@color/black"
-            android:textSize="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/tendv_item_list_service"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tendv_item_list_service"
-            app:layout_constraintTop_toBottomOf="@+id/tendv_item_list_service" />
+            <TextView
+                android:id="@+id/tvname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cắt gội massage"
+                android:textSize="20sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tvmadv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã dịch vụ: 12345"
+                android:textSize="20sp" />
 
+            <TextView
+                android:id="@+id/tvgia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giá: 120.000VND"
+                android:textSize="20sp" />
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

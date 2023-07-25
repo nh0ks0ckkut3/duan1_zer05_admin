@@ -17,10 +17,13 @@ import com.example.duan1_quanlysalon.model.Product;
 
 import java.util.ArrayList;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
+public class ProductAdapter extends  RecyclerView.Adapter<ProductAdapter.ViewHolder>{
+
+
     ArrayList<Product> list;
     Context context;
     ProductDAO productDAO;
+
 
 
     public ProductAdapter(ArrayList<Product> list, Context context, ProductDAO productDAO){
@@ -35,15 +38,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_sanpham, parent, false);
+        View view = inflater.inflate(R.layout.item_ds_sanpham, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtId.setText(list.get(position).getId()+"");
-        holder.txtName.setText(String.valueOf(list.get(position).getName()));
-        holder.txtPrice.setText(list.get(position).getPrice());
+        holder.tvName.setText(String.valueOf(list.get(position).getName()));
+        holder.tvmasp.setText(String.valueOf(list.get(position).getId()));
+        holder.tvPrice.setText(list.get(position).getPrice());
+        holder.tvSL.setText(list.get(position).getUnit());
     }
 
     @Override
@@ -52,14 +56,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtId, txtName, txtPrice;
+        TextView  tvName, tvmasp, tvPrice, tvSL;
         ImageView ivDel;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtId = itemView.findViewById(R.id.txtId);
-            txtName = itemView.findViewById(R.id.txtName);
-            txtPrice = itemView.findViewById(R.id.txtPrice);
-            ivDel = itemView.findViewById(R.id.ivDel);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvmasp = itemView.findViewById(R.id.tvmasp);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
+            tvSL = itemView.findViewById(R.id.tvSL);
         }
     }
 }

@@ -1,68 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
-    android:layout_margin="10dp"
-    android:background="@drawable/border_cardview_item_employee"
-    android:id="@+id/cardview_item_employee"
+    android:layout_height="60sp"
     >
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="162dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="19dp"
+        android:layout_marginStart="25sp"
+        android:gravity="start"
+        android:text="Đoàn Thanh Hòa"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="MissingConstraints"
-        android:layout_margin="8dp"
-        >
-
-        <ImageView
-            android:id="@+id/img_item_list_employee"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/avatar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/hoten_item_list_employee"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="Ho ten"
-            android:textColor="@color/black"
-            android:textSize="25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.278"
-            app:layout_constraintStart_toEndOf="@+id/img_item_list_employee"
-            tools:layout_editor_absoluteY="0dp" />
-
-        <TextView
-            android:id="@+id/tuoi_item_list_employee"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Tuoi"
-            android:textColor="@color/black"
-            android:textSize="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/hoten_item_list_employee"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/hoten_item_list_employee"
-            app:layout_constraintTop_toBottomOf="@+id/hoten_item_list_employee" />
-
-        <TextView
-            android:id="@+id/gioitinh_item_list_employee"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="Gioi tinh"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/black"
-            android:textSize="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/tuoi_item_list_employee"
-            app:layout_constraintStart_toStartOf="@+id/tuoi_item_list_employee"
-            app:layout_constraintTop_toBottomOf="@+id/tuoi_item_list_employee" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tvmanv"
+        android:layout_width="100dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="250sp"
+        android:layout_marginTop="19sp"
+        android:text="NV0011"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#c0c0c0"
+        android:layout_marginTop="8dp" />
 
 </androidx.cardview.widget.CardView>

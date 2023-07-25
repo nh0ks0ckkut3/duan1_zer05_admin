@@ -70,4 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void replayFragment(Fragment f){
+        fragmentManager.beginTransaction()
+                .replace(R.id.fl_admin, f)
+                .commit();
+    }
 }

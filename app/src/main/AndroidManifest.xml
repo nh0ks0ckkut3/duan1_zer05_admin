@@ -12,6 +12,18 @@
         android:theme="@style/Theme.Duan1_quanlysalon"
         tools:targetApi="31">
         <activity
+            android:name=".ChitietnhanvienActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.List_Surcharge"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.List_Regulations"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.List_Hairmodel_Fragment"
+            android:exported="false" />
+        <activity
             android:name=".DSsanphamActivity"
             android:exported="false" />
         <activity
