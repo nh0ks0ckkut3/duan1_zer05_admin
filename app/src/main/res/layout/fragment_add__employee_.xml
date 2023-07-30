@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.Add_Employee_Fragment"
+    tools:ignore="MissingConstraints">
+
+    <ImageView
+        android:id="@+id/img_add_employee"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/avatar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add_img_employee"
+        android:layout_width="93dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:text="thêm ảnh"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:textAllCaps="false"
+        android:background="@drawable/btn_dialog_cancel"
+        app:layout_constraintEnd_toEndOf="@+id/img_add_employee"
+        app:layout_constraintStart_toStartOf="@+id/img_add_employee"
+        app:layout_constraintTop_toBottomOf="@+id/img_add_employee" />
+    <EditText
+        android:id="@+id/id_add_employee"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Nhập mã nhân viên"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintStart_toEndOf="@+id/img_add_employee"
+        app:layout_constraintTop_toTopOf="@+id/img_add_employee" />
+
+    <EditText
+        android:id="@+id/name_add_employee"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Nhập tên nhân viên"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/id_add_employee"
+        app:layout_constraintStart_toStartOf="@+id/id_add_employee"
+        app:layout_constraintTop_toBottomOf="@+id/id_add_employee" />
+
+    <EditText
+        android:id="@+id/id_add_birth"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Ngày sinh"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_img_employee" />
+    <EditText
+        android:id="@+id/id_add_gender"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Giới tính"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@id/id_add_birth"
+        app:layout_constraintTop_toBottomOf="@+id/id_add_birth" />
+    <EditText
+        android:id="@+id/id_add_phonenum"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Số điện thoại"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@id/id_add_gender"
+        app:layout_constraintTop_toBottomOf="@+id/id_add_gender" />
+    <EditText
+        android:id="@+id/id_add_email"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@id/id_add_phonenum"
+        app:layout_constraintTop_toBottomOf="@+id/id_add_phonenum" />
+    <EditText
+        android:id="@+id/id_add_address"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Địa chỉ"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@id/id_add_email"
+        app:layout_constraintTop_toBottomOf="@+id/id_add_email" />
+
+    <EditText
+        android:id="@+id/id_add_usname"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Tài khoản"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintStart_toEndOf="@+id/id_add_birth"
+        app:layout_constraintTop_toTopOf="@+id/id_add_birth" />
+
+    <EditText
+        android:id="@+id/id_add_password"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Mật khẩu"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@id/id_add_usname"
+        app:layout_constraintTop_toBottomOf="@+id/id_add_usname" />
+    <EditText
+        android:id="@+id/id_add_classify"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Vai trò"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@id/id_add_password"
+        app:layout_constraintTop_toBottomOf="@+id/id_add_password" />
+    <EditText
+        android:id="@+id/id_add_salary"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Lương cứng"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@id/id_add_classify"
+        app:layout_constraintTop_toBottomOf="@+id/id_add_classify" />
+    <EditText
+        android:id="@+id/id_add_daywork"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ground_add_booking"
+        android:ems="10"
+        android:hint="Ngày vào làm"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@id/id_add_salary"
+        app:layout_constraintTop_toBottomOf="@+id/id_add_salary" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_complete_add_employee"
+        android:layout_width="198dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_thanhtoan_itembill"
+        android:text="Hoàn Thành"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_add_address" />
+</androidx.constraintlayout.widget.ConstraintLayout>

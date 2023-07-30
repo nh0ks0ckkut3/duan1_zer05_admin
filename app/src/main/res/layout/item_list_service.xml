@@ -2,11 +2,10 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="160dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
     android:layout_margin="10dp"
-    android:background="@drawable/border_cardview_item_employee"
     android:id="@+id/cardview_item_service"
     >
 
@@ -14,21 +13,45 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="MissingConstraints"
-        android:layout_margin="8dp"
+        android:background="@drawable/border_cardview_item_employee"
         >
+
+        <ImageView
+            android:id="@+id/img_item_list_service"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tendv_item_list_service"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="12dp"
             android:text="ten dich vu"
             android:textColor="@color/black"
             android:textSize="25dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.039"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.636"
+            app:layout_constraintStart_toEndOf="@+id/img_item_list_service"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/madv_item_list_service"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="ma dv"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/tendv_item_list_service"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tendv_item_list_service"
+            app:layout_constraintTop_toBottomOf="@+id/tendv_item_list_service"/>
 
         <TextView
             android:id="@+id/gia_item_list_service"
@@ -38,10 +61,10 @@
             android:text="gia"
             android:textColor="@color/black"
             android:textSize="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/tendv_item_list_service"
+            app:layout_constraintEnd_toEndOf="@+id/madv_item_list_service"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tendv_item_list_service"
-            app:layout_constraintTop_toBottomOf="@+id/tendv_item_list_service" />
+            app:layout_constraintStart_toStartOf="@+id/madv_item_list_service"
+            app:layout_constraintTop_toBottomOf="@+id/madv_item_list_service" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

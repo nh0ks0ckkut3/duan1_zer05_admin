@@ -4,20 +4,21 @@
 
     <item
         android:id="@+id/menu_admin_booking"
-        android:title="Booking"
-        android:icon="@mipmap/ic_boking"/>
-    <item
-        android:id="@+id/menu_admin_thanhtoan"
-        android:title="Thanh toán"
-        android:icon="@mipmap/ic_checkout"/>
+        android:title="Lịch đặt"
+        android:icon="@mipmap/ic_booking"/>
     <item
         android:id="@+id/menu_admin_thongke"
         android:title="Thống kê"
         android:icon="@mipmap/ic_thongke"/>
     <item
+        android:id="@+id/menu_admin_thanhtoan"
+        android:title="Thanh toán"
+        android:icon="@drawable/ic_checkout"/>
+
+    <item
         android:id="@+id/menu_admin_news"
-        android:title="News"
-        android:icon="@mipmap/ic_news"/>
+        android:title="Tin tức"
+        android:icon="@drawable/ic_news"/>
 
     <item
         android:id="@+id/menu_admin_menu"

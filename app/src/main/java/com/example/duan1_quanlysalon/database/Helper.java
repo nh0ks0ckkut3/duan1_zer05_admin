@@ -26,6 +26,7 @@ public class Helper extends SQLiteOpenHelper {
 
         db.execSQL("INSERT INTO employee VALUES('admin','12345','Nguyen Quang Liem',20,'nam',0,'03/07/2023',1,'admin')," +
                 "('minhthi98','12345','Truong Minh Thi',25,'nam',0,'03/07/2023',1,'stylist')," +
+                "('phide','12345','phide',25,'nam',0,'03/07/2023',1,'stylist')," +
                 "('hotuyen95','12345','Thach Ho Tuyen',28,'nu',0,'03/07/2023',1,'skinner')");
         db.execSQL("INSERT INTO service VALUES(1,'cat toc',80,'stylist')," +
                 "(2,'goi dau',45,'skinner')," +

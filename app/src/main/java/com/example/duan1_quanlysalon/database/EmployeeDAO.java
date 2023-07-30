@@ -31,6 +31,21 @@ public class EmployeeDAO {
 
         return list;
     }
+    public ArrayList<Employee> getListEmployeeStylist(){
+        ArrayList<Employee> list = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase =helper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM employee WHERE classify = 'stylist'",null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+                list.add(new Employee(cursor.getString(0),cursor.getString(1),cursor.getString(2),
+                        cursor.getInt(3),cursor.getString(4),cursor.getInt(5),
+                        cursor.getString(6),cursor.getInt(7), cursor.getString(8)));
+            }while (cursor.moveToNext());
+        }
+
+        return list;
+    }
 
     public boolean addEmployee(Employee employee){
         SQLiteDatabase sqLiteDatabase = helper.getWritableDatabase();

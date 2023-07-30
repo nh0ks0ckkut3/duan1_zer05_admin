@@ -2,6 +2,7 @@ package com.example.duan1_quanlysalon;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -9,10 +10,18 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Switch;
+import android.widget.TextView;
 
+import com.example.duan1_quanlysalon.fragment.Add_Booking_Fragment;
 import com.example.duan1_quanlysalon.fragment.Booking_Fragment;
+import com.example.duan1_quanlysalon.fragment.Confirm_Payment_Fragment;
+import com.example.duan1_quanlysalon.fragment.List_Bill_Fragment;
+import com.example.duan1_quanlysalon.fragment.List_Service_Fragment;
 import com.example.duan1_quanlysalon.fragment.Menu_Fragment;
+import com.example.duan1_quanlysalon.fragment.Nhan_Khach_Fragment;
 import com.example.duan1_quanlysalon.fragment.SearchPhoneFragment;
+import com.example.duan1_quanlysalon.fragment.Select_Product_Fragment;
+import com.example.duan1_quanlysalon.fragment.Thong_Ke_Fragment;
 import com.example.duan1_quanlysalon.fragment.TotalDayFragment;
 import com.example.duan1_quanlysalon.fragment.NewsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //title cho toolbar
+        TextView titleToolbar = findViewById(R.id.tv_title_toolbar);
 
         bottomNavigationView =findViewById(R.id.bottomNavigationView_admin);
         fragmentManager = getSupportFragmentManager();
@@ -45,19 +59,25 @@ public class MainActivity extends AppCompatActivity {
                     default:
                     case R.id.menu_admin_booking:
                         fragment = new Booking_Fragment();
+                        titleToolbar.setText("Lịch đặt");
                         break;
                     case R.id.menu_admin_thanhtoan:
-                        fragment = new SearchPhoneFragment();
+                        fragment = new List_Bill_Fragment();
+                        titleToolbar.setText("Thanh toán");
                         break;
 
                     case R.id.menu_admin_thongke:
-                        fragment = new TotalDayFragment();
+                        // thống kê chưa làm được
+                        fragment = new Thong_Ke_Fragment();
+                        titleToolbar.setText("Thống kê");
                         break;
                     case R.id.menu_admin_news:
                         fragment = new NewsFragment();
+                        titleToolbar.setText("Tin tức");
                         break;
                     case R.id.menu_admin_menu:
                         fragment = new Menu_Fragment();
+                        titleToolbar.setText("Chức năng");
                         break;
                 }
                 fragmentManager.beginTransaction()

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.List_Employee_Fragment"
+    tools:context=".fragment.List_Bill_Fragment"
     tools:ignore="MissingConstraints">
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/srch_list_service"
+        android:id="@+id/srch_bill"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="20dp"
@@ -20,24 +20,14 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcl_list_service"
+        android:id="@+id/rcl_list_bill"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
-
-        android:layout_marginTop="8dp"
+        android:layout_height="663dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/srch_list_service" />
+        app:layout_constraintTop_toBottomOf="@+id/srch_bill"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/flbtn_list_service"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/flbtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

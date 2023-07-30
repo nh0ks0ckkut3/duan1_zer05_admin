@@ -6,27 +6,5 @@
     android:layout_height="match_parent"
     tools:context=".Employe_Activity">
 
-    <FrameLayout
-        android:id="@+id/fl_employe"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView_employee"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView_employee"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        app:itemTextColor="@color/black"
-        app:itemRippleColor="@color/yellow"
-        app:itemIconTint="@color/black"
-        app:itemIconSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu_employe"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
