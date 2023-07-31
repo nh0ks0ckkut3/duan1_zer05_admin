@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="7dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/tvNameCustomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đoàn Thanh Hòa"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/darkText"
+            android:layout_marginStart="34.75dp"/>
+        <TextView
+            android:id="@+id/tvPhoneCustomer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0987654321"
+            android:textColor="@color/blandText"
+            android:layout_marginEnd="4dp"
+            android:textSize="16sp"
+            android:textAlignment="textEnd"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tvCountTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Khách đã đến salon được 3 phút"
+            android:textSize="13sp"
+            android:textColor="@color/yellow"
+            android:layout_marginStart="22dp"/>
+        <TextView
+            android:id="@+id/tvBookTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Giờ book: 16:00"
+            android:layout_marginEnd="18dp"
+            android:textAlignment="textEnd"
+            android:textColor="@color/blandText"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvNhanKhach"
+        android:text="Nhận Khách"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/darkText"
+        android:textAlignment="center"
+        android:paddingTop="7dp"
+        android:layout_width="130dp"
+        android:layout_height="37dp"
+        android:background="@drawable/header_list_booking"
+        android:layout_gravity="center"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="12dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line_between_item"/>
+</LinearLayout>

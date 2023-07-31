@@ -5,26 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.duan1_quanlysalon.fragment.Add_Booking_Fragment;
 import com.example.duan1_quanlysalon.fragment.Booking_Fragment;
-import com.example.duan1_quanlysalon.fragment.Confirm_Payment_Fragment;
-import com.example.duan1_quanlysalon.fragment.List_Bill_Fragment;
-import com.example.duan1_quanlysalon.fragment.List_Service_Fragment;
+import com.example.duan1_quanlysalon.fragment.Checkout_Fragment;
 import com.example.duan1_quanlysalon.fragment.Menu_Fragment;
-import com.example.duan1_quanlysalon.fragment.Nhan_Khach_Fragment;
-import com.example.duan1_quanlysalon.fragment.SearchPhoneFragment;
-import com.example.duan1_quanlysalon.fragment.Select_Product_Fragment;
+import com.example.duan1_quanlysalon.fragment.TaiKhoanFragment;
 import com.example.duan1_quanlysalon.fragment.Thong_Ke_Fragment;
 import com.example.duan1_quanlysalon.fragment.ThuNhapFragment;
-import com.example.duan1_quanlysalon.fragment.TotalDayFragment;
 import com.example.duan1_quanlysalon.fragment.NewsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -76,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                         titleToolbar.setText("Lịch đặt");
                         break;
                     case R.id.menu_admin_thanhtoan:
-                        fragment = new List_Bill_Fragment();
+                        fragment = new Checkout_Fragment();
                         titleToolbar.setText("Thanh toán");
                         break;
 
@@ -96,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.menu_employe_thunhap:
                         fragment = new ThuNhapFragment();
+                    case R.id.menu_employe_taikhoan:
+                        fragment = new TaiKhoanFragment();
                 }
                 fragmentManager.beginTransaction()
                         .replace(R.id.fl_admin, fragment)
@@ -106,5 +100,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+    public void replayFragment(Fragment f){
+        fragmentManager.beginTransaction()
+                .replace(R.id.fl_admin, f)
+                .commit();
     }
 }

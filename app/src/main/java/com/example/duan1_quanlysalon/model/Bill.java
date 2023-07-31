@@ -5,55 +5,34 @@ import java.io.Serializable;
 public class Bill implements Serializable {
     private int id;
     private String phoneNumberCustomer;
+    private String nameCustomer;
     private String userNameEmployee;
-    private int idService;
-    private int idProduct;
+    private String bookTime;
+    private int sumService;
+    private int sumProduct;
     private String time;
     private String status;
     private int totalPrice;
 
-    public Bill(int id, String phoneNumberCustomer, String userNameEmployee, int idService, int idProduct, String time, String status, int totalPrice) {
+    public Bill(int id, String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String bookTime, int sumService, int sumProduct, String time, String status, int totalPrice) {
         this.id = id;
         this.phoneNumberCustomer = phoneNumberCustomer;
+        this.nameCustomer = nameCustomer;
         this.userNameEmployee = userNameEmployee;
-        this.idService = idService;
-        this.idProduct = idProduct;
+        this.bookTime = bookTime;
+        this.sumService = sumService;
+        this.sumProduct = sumProduct;
         this.time = time;
         this.status = status;
         this.totalPrice = totalPrice;
     }
 
-    public Bill(String phoneNumberCustomer, String userNameEmployee, int idService, int idProduct, String time, String status, int totalPrice) {
+    public Bill(String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String bookTime, String status) {
         this.phoneNumberCustomer = phoneNumberCustomer;
+        this.nameCustomer = nameCustomer;
         this.userNameEmployee = userNameEmployee;
-        this.idService = idService;
-        this.idProduct = idProduct;
-        this.time = time;
+        this.bookTime = bookTime;
         this.status = status;
-        this.totalPrice = totalPrice;
-    }
-
-    public Bill(String phoneNumberCustomer, String userNameEmployee, int idService, String time, String status) {
-        this.phoneNumberCustomer = phoneNumberCustomer;
-        this.userNameEmployee = userNameEmployee;
-        this.idService = idService;
-        this.time = time;
-        this.status = status;
-    }
-
-    public Bill(String phoneNumberCustomer, int idService, String time, String status) {
-        this.phoneNumberCustomer = phoneNumberCustomer;
-        this.idService = idService;
-        this.time = time;
-        this.status = status;
-    }
-//    billDAO.addBill(phone, name, idService, price);
-
-    public Bill(String phoneNumberCustomer, String userNameEmployee, int idService, int totalPrice) {
-        this.phoneNumberCustomer = phoneNumberCustomer;
-        this.userNameEmployee = userNameEmployee;
-        this.idService = idService;
-        this.totalPrice = totalPrice;
     }
 
     public int getId() {
@@ -72,6 +51,14 @@ public class Bill implements Serializable {
         this.phoneNumberCustomer = phoneNumberCustomer;
     }
 
+    public String getNameCustomer() {
+        return nameCustomer;
+    }
+
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
+    }
+
     public String getUserNameEmployee() {
         return userNameEmployee;
     }
@@ -80,20 +67,28 @@ public class Bill implements Serializable {
         this.userNameEmployee = userNameEmployee;
     }
 
-    public int getIdService() {
-        return idService;
+    public String getBookTime() {
+        return bookTime;
     }
 
-    public void setIdService(int idService) {
-        this.idService = idService;
+    public void setBookTime(String bookTime) {
+        this.bookTime = bookTime;
     }
 
-    public int getIdProduct() {
-        return idProduct;
+    public int getSumService() {
+        return sumService;
     }
 
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
+    public void setSumService(int sumService) {
+        this.sumService = sumService;
+    }
+
+    public int getSumProduct() {
+        return sumProduct;
+    }
+
+    public void setSumProduct(int sumProduct) {
+        this.sumProduct = sumProduct;
     }
 
     public String getTime() {
@@ -119,7 +114,4 @@ public class Bill implements Serializable {
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
-
-
-
 }

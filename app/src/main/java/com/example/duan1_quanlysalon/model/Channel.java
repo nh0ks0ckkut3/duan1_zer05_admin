@@ -1,7 +1,5 @@
 package com.example.duan1_quanlysalon.model;
 
-import android.media.Image;
-
 import java.util.ArrayList;
 
 public class Channel {

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.List_Bill_Fragment"
+    tools:context=".fragment.Checkout_Fragment"
     tools:ignore="MissingConstraints">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/srch_bill"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="37dp"
         android:layout_margin="20dp"
         android:background="@drawable/brg_searchview"
         app:layout_constraintBottom_toBottomOf="parent"
