@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Switch;
@@ -22,6 +23,7 @@ import com.example.duan1_quanlysalon.fragment.Nhan_Khach_Fragment;
 import com.example.duan1_quanlysalon.fragment.SearchPhoneFragment;
 import com.example.duan1_quanlysalon.fragment.Select_Product_Fragment;
 import com.example.duan1_quanlysalon.fragment.Thong_Ke_Fragment;
+import com.example.duan1_quanlysalon.fragment.ThuNhapFragment;
 import com.example.duan1_quanlysalon.fragment.TotalDayFragment;
 import com.example.duan1_quanlysalon.fragment.NewsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,11 +34,22 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     Fragment fragment;
     FragmentManager fragmentManager;
+    String classify,userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        userName = bundle.getString("userName","");
+        classify = bundle.getString("classify","");
+        bottomNavigationView =findViewById(R.id.bottomNavigationView_admin);
+        if(!classify.equals("admin")){
+            bottomNavigationView.getMenu().clear();
+            bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu_employe);
+        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     default:
+                    case R.id.menu_employe_booking:
                     case R.id.menu_admin_booking:
                         fragment = new Booking_Fragment();
                         titleToolbar.setText("Lịch đặt");
@@ -72,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         titleToolbar.setText("Thống kê");
                         break;
                     case R.id.menu_admin_news:
+                    case R.id.menu_employe_news:
                         fragment = new NewsFragment();
                         titleToolbar.setText("Tin tức");
                         break;
@@ -79,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new Menu_Fragment();
                         titleToolbar.setText("Chức năng");
                         break;
+                    case R.id.menu_employe_thunhap:
+                        fragment = new ThuNhapFragment();
                 }
                 fragmentManager.beginTransaction()
                         .replace(R.id.fl_admin, fragment)

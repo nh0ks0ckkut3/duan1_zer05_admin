@@ -5,15 +5,15 @@
     <item
         android:id="@+id/menu_admin_booking"
         android:title="Lịch đặt"
-        android:icon="@mipmap/ic_booking"/>
+        android:icon="@drawable/ic_booking"/>
     <item
         android:id="@+id/menu_admin_thongke"
         android:title="Thống kê"
-        android:icon="@mipmap/ic_thongke"/>
+        android:icon="@drawable/ic_tk"/>
     <item
         android:id="@+id/menu_admin_thanhtoan"
         android:title="Thanh toán"
-        android:icon="@drawable/ic_checkout"/>
+        android:icon="@drawable/ic_cash"/>
 
     <item
         android:id="@+id/menu_admin_news"
@@ -23,5 +23,5 @@
     <item
         android:id="@+id/menu_admin_menu"
         android:title="Menu"
-        android:icon="@mipmap/ic_menu"/>
+        android:icon="@drawable/ic_menu"/>
 </menu>

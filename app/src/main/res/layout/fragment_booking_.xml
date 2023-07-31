@@ -4,50 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
     tools:context=".MainActivity">
 
-
-    <LinearLayout
-        android:id="@+id/txtTitle"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/s1_arrow_left"/>
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="40dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="230dp"
-            android:src="@mipmap/s1_more"/>
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/s1_search"/>
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/s1_cart"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:layout_marginEnd="15dp"
+                android:text="Khách đang chờ"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingTop="9dp"
+                android:paddingStart="32dp"
+                android:textColor="#FF4A4949"
+                android:background="@drawable/header_list_booking"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvKhachDangCho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:layout_marginEnd="15dp"
+                android:text="Khách chưa tới"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingTop="9dp"
+                android:paddingStart="32dp"
+                android:textColor="#FF4A4949"
+                android:background="@drawable/header_list_booking"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvKhachChuaToi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:layout_marginEnd="15dp"
+                android:text="Khách đang phục vụ"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingTop="9dp"
+                android:paddingStart="32dp"
+                android:textColor="#FF4A4949"
+                android:background="@drawable/header_list_booking"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvKhachDangPhucVu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/txtTitle"
-        />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatAdd"
+        android:backgroundTint="#FFB9F0B8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="6dp"
         android:src="@drawable/baseline_add_24" />
 
 </RelativeLayout>

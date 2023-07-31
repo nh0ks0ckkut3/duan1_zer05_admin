@@ -32,7 +32,7 @@ import java.util.HashMap;
 
 
 public class Booking_Fragment extends Fragment {
-    RecyclerView recyclerView;
+    RecyclerView rcvKhachDangCho,rcvKhachChuaToi,rcvKhachDangPhucVu;
     BillDAO billDAO;
     Bundle bundle;
     Intent intent;
@@ -48,9 +48,9 @@ public class Booking_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_booking_, container, false);
-        recyclerView = view.findViewById(R.id.recyclerView);
+        rcvKhachDangCho = view.findViewById(R.id.rcvKhachDangCho);
         FloatingActionButton floatAdd = view.findViewById(R.id.floatAdd);
-        recyclerView = view.findViewById(R.id.recyclerView);
+        rcvKhachDangCho = view.findViewById(R.id.rcvKhachDangCho);
 
         billDAO = new BillDAO(getContext());
 
@@ -108,9 +108,9 @@ public class Booking_Fragment extends Fragment {
     public void loadData() {
         ArrayList<Bill> list = billDAO.getListBooking();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
+        rcvKhachDangCho.setLayoutManager(linearLayoutManager);
         BillAdapter adapter = new BillAdapter(getContext(), list);
-        recyclerView.setAdapter(adapter);
+        rcvKhachDangCho.setAdapter(adapter);
     }
 
 }

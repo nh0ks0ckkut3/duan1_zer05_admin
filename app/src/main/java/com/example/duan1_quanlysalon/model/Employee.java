@@ -1,8 +1,11 @@
 package com.example.duan1_quanlysalon.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Employee implements Serializable {
+    @SerializedName("userNameEmployee")
     private String userName;
     private String passWord;
     private String name;
@@ -12,6 +15,7 @@ public class Employee implements Serializable {
     private String dayStartWork;
     private int countDayOfMonth;
     private String classify;
+    private int code;
 
     public Employee(String userName, String passWord, String name, int age, String gender, int salary, String dayStartWork, int countDayOfMonth, String classify) {
         this.userName = userName;
@@ -35,6 +39,25 @@ public class Employee implements Serializable {
         this.classify = classify;
         this.countDayOfMonth = 0;
         this.salary = 0;
+    }
+
+    public Employee(String userName, String passWord) {
+        this.userName = userName;
+        this.passWord = passWord;
+    }
+
+    public Employee(String userName, String classify, int code) {
+        this.userName = userName;
+        this.classify = classify;
+        this.code = code;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public String getUserName() {
