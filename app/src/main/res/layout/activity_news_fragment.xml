@@ -5,48 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".fragment.NewsFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="3dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:background="#DDDDDD"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/ivLogo"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="44dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="3dp"
-                android:src="@drawable/logo"/>
-            <TextView
-                android:id="@+id/tvTitle"
-                android:text="LOOK BOOK ZERO5"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:paddingTop="8dp"
-                android:layout_width="0dp"
-                android:layout_weight="4"
-                android:layout_height="50dp"/>
-
-        </LinearLayout>
-
-
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listViewNews"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp" />
-
-    </LinearLayout>
-
+            android:layout_marginTop="7dp" />
 </FrameLayout>

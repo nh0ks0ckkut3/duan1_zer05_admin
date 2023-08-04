@@ -1,34 +1,36 @@
 package com.example.duan1_quanlysalon.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1_quanlysalon.R;
-import com.example.duan1_quanlysalon.database.EmployeeDAO;
 import com.example.duan1_quanlysalon.model.Employee;
+import com.example.duan1_quanlysalon.model.ItemStylistClick;
 
 import java.util.ArrayList;
 
 public class ListStylistAdapter extends RecyclerView.Adapter<ListStylistAdapter.ViewHolder> {
     ArrayList<Employee> list;
     Context context;
-    EmployeeDAO employeeDAO;
+    private ItemStylistClick itemClick;
+    private String userNameEmployeeClick;
 
 
-    public ListStylistAdapter(ArrayList<Employee> list, Context context, EmployeeDAO employeeDAO){
+    public ListStylistAdapter(ArrayList<Employee> list, Context context,String userNameEmployeeClick, ItemStylistClick itemClick){
         this.list = list;
         this.context = context;
-        this.employeeDAO = employeeDAO;
-
+        this.itemClick = itemClick;
+        this.userNameEmployeeClick = userNameEmployeeClick;
     }
 
 
@@ -41,9 +43,23 @@ public class ListStylistAdapter extends RecyclerView.Adapter<ListStylistAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtHoten.setText(list.get(position).getName());
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        holder.tvName.setText(list.get(position).getName());
+        holder.tvClassify.setText(list.get(position).getClassify());
 
+        if(userNameEmployeeClick.equals(list.get(position).getUserName())){
+            holder.itemStylist.setBackgroundResource(R.color.green);
+        }else{
+            holder.itemStylist.setBackgroundResource(R.color.white);
+        }
+        holder.itemStylist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClick.onClickBook(list.get(position));
+                userNameEmployeeClick = list.get(position).getUserName();
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
@@ -52,12 +68,15 @@ public class ListStylistAdapter extends RecyclerView.Adapter<ListStylistAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtHoten;
-        ImageView imgEmployee;
+        TextView tvName,tvClassify;
+        ImageView ivAvatar;
+        LinearLayout itemStylist;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtHoten = itemView.findViewById(R.id.hoten_item_stylist_add_booking);
-            imgEmployee = itemView.findViewById(R.id.img_item_stylist_add_booking);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvClassify = itemView.findViewById(R.id.tvClassify);
+            ivAvatar = itemView.findViewById(R.id.ivAvatar);
+            itemStylist = itemView.findViewById(R.id.itemStylist);
         }
     }
 }

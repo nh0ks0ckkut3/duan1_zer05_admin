@@ -23,15 +23,16 @@
             android:textStyle="bold"
             android:textColor="@color/darkText"
             android:layout_marginStart="34.75dp"/>
+
         <TextView
             android:id="@+id/tvPhoneCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="0987654321"
-            android:textColor="@color/blandText"
             android:layout_marginEnd="4dp"
-            android:textSize="16sp"
-            android:textAlignment="textEnd"/>
+            android:text="0987654321"
+            android:textAlignment="textEnd"
+            android:textColor="@color/blandText"
+            android:textSize="16sp" />
 
 
     </LinearLayout>

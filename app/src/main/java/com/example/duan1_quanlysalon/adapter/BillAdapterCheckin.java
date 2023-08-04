@@ -36,9 +36,9 @@ public class BillAdapterCheckin extends RecyclerView.Adapter<BillAdapterCheckin.
     public void onBindViewHolder(@NonNull ViewHolDer holder, int position) {
         holder.tvPhoneCustomer.setText(list.get(position).getPhoneNumberCustomer());
         holder.tvNameCustomer.setText(list.get(position).getNameCustomer());
-        int countTime = 0;
-        run(countTime);
-        holder.tvCountTime.setText(String.valueOf(countTime));
+//        int countTime = 0;
+//        run(countTime);
+//        holder.tvCountTime.setText(String.valueOf(countTime));
         holder.tvBookTime.setText(list.get(position).getBookTime());
         holder.tvNhanKhach.setOnClickListener(new View.OnClickListener() {
             @Override

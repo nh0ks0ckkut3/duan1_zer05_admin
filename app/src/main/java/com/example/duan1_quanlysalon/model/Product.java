@@ -3,7 +3,7 @@ package com.example.duan1_quanlysalon.model;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    private int id;
+    private int idProduct;
     private String name;
     private int price;
     private String unit;
@@ -11,8 +11,9 @@ public class Product implements Serializable {
     private String brand;
     private String classify;
 
+
     public Product(int id, String name, int price, String unit, int amount, String brand, String classify) {
-        this.id = id;
+        this.idProduct = id;
         this.name = name;
         this.price = price;
         this.unit = unit;
@@ -31,11 +32,11 @@ public class Product implements Serializable {
     }
 
     public int getId() {
-        return id;
+        return idProduct;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idProduct = id;
     }
 
     public String getName() {

@@ -31,14 +31,15 @@ public interface ServiceAPI {
     @POST("UpdateListServiceChose.php")
     Observable<Boolean> updateListServiceChose(@Body ArrayList<Integer> listIdService);
 
-    @POST("CreateNewService.php")
-    Observable<Boolean> createNewService(@Body Service service);
+    @POST("AddService.php")
+    Observable<Boolean> addService(@Body Service service);
 
     @POST("UpdateService.php")
     Observable<Boolean> updateService(@Body Service service);
 
     @GET("DeleteService.php" + "/{idService}")
     Observable<Boolean> deleteService(@Query("idService") int idService);
+
 
     // product
 
@@ -62,7 +63,7 @@ public interface ServiceAPI {
 
     // bill
 
-    @GET("GetListBill.php" + "/{status}")
+    @GET("GetListBill.php")
     Observable<ArrayList<Bill>> getListBill(@Query("status") String status);
 
     @GET("SetStatusBill.php" + "/{idBill}" + "/{status}")
@@ -76,6 +77,20 @@ public interface ServiceAPI {
 
     @GET("DeleteBill.php" + "/{idBill}")
     Observable<Boolean> deleteBill(@Query("idBill") String idBill);
+
+    @GET("GetBookingAPI.php"+"/{phoneNumberCustomer}")
+    Observable<Integer> getBookingAPI(@Query("phoneNumberCustomer") String phoneNumberCustomer);
+
+    //detail
+
+    @POST("AddServiceDetail.php")
+    Observable<Boolean> addServiceDetail(@Body ServiceDetail serviceDetail);
+
+    @POST("AddProductDetail.php")
+    Observable<Boolean> addProductDetail(@Body ProductDetail productDetail);
+
+    @GET("DeleteDetailBooking.php")
+    Observable<Boolean> deleteDetailBookingAPI(@Query("idBill") int idBill);
 
     // employee
 

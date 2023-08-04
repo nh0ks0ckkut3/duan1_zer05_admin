@@ -4,7 +4,6 @@ import static com.example.duan1_quanlysalon.model.ServiceAPI.BASE_API_ZERO5;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.duan1_quanlysalon.database.EmployeeDAO;
 import com.example.duan1_quanlysalon.model.Employee;
 import com.example.duan1_quanlysalon.model.ServiceAPI;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -36,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     String userName, pass;
-    EmployeeDAO employeeDAO;
     boolean isVerify = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
         edtPassWord = findViewById(R.id.edtPassWord);
         icon_pass = findViewById(R.id.icon_pass);
         chkRemember = findViewById(R.id.chkRemember);
-        employeeDAO = new EmployeeDAO(this);
         TextView tv = findViewById(R.id.textView3);
 
         icon_pass.setBackgroundResource(R.drawable.hidepass);
@@ -109,12 +105,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void handleResponse(Employee employee) {
-        if(employee.getCode()==1){
+        if(!employee.getUserName().equals("incorrect")){
             Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putString("userName",employee.getUserName());
-            bundle.putString("classify",employee.getClassify());
+            bundle.putSerializable("currentUser",employee);
             intent.putExtras(bundle);
             boolean isRemember = chkRemember.isChecked();
             sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
@@ -131,6 +126,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void handleError(Throwable error) {
-        Toast.makeText(LoginActivity.this, "lỗi load trang, thử lại sau!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(LoginActivity.this, "lỗi mạng", Toast.LENGTH_SHORT).show();
     }
 }

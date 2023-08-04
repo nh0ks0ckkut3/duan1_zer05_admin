@@ -32,13 +32,13 @@
         app:layout_constraintTop_toBottomOf="@+id/img_add_product" />
 
     <EditText
-        android:id="@+id/id_add_product"
+        android:id="@+id/classify_add_product"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:background="@drawable/ground_add_booking"
         android:ems="10"
-        android:hint="Nhập mã sản phẩm"
+        android:hint="Nhập loại sản phẩm"
         android:inputType="textPersonName"
         android:padding="8dp"
         app:layout_constraintStart_toEndOf="@+id/img_add_product"
@@ -54,12 +54,12 @@
         android:hint="Nhập tên sản phẩm"
         android:inputType="textPersonName"
         android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/id_add_product"
-        app:layout_constraintStart_toStartOf="@+id/id_add_product"
-        app:layout_constraintTop_toBottomOf="@+id/id_add_product" />
+        app:layout_constraintEnd_toEndOf="@+id/classify_add_product"
+        app:layout_constraintStart_toStartOf="@+id/classify_add_product"
+        app:layout_constraintTop_toBottomOf="@+id/classify_add_product" />
 
     <EditText
-        android:id="@+id/point_add_product"
+        android:id="@+id/unit_add_product"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
@@ -78,20 +78,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
-        android:text="Mô tả"
+        android:text="Số lượng"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_add_img_product" />
 
     <EditText
-        android:id="@+id/discription_add_product"
+        android:id="@+id/amount_add_product"
         android:layout_width="350dp"
         android:layout_height="59dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/ground_add_booking"
         android:ems="10"
-        android:hint="Clear chuyên trị gàu ngứa"
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,10 +105,10 @@
         android:text="Thương Hiệu"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/discription_add_product" />
+        app:layout_constraintTop_toBottomOf="@+id/amount_add_product" />
 
     <EditText
-        android:id="@+id/brain_add_product"
+        android:id="@+id/brand_add_product"
         android:layout_width="350dp"
         android:layout_height="59dp"
         android:layout_marginStart="16dp"
@@ -130,7 +129,7 @@
         android:text="Giá bán"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brain_add_product" />
+        app:layout_constraintTop_toBottomOf="@+id/brand_add_product" />
 
     <EditText
         android:id="@+id/price_add_product"

@@ -41,8 +41,6 @@ public class NewsFragment extends Fragment {
     private NewsAPIAdapter adapter;
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
-    ImageView ivLogo;
-    TextView tvTitle;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -89,8 +87,6 @@ public class NewsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_news_fragment, container, false);
         recyclerView = view.findViewById(R.id.listViewNews);
-        ivLogo = view.findViewById(R.id.ivLogo);
-        tvTitle = view.findViewById(R.id.tvTitle);
 
         items = new ArrayList<>();
 

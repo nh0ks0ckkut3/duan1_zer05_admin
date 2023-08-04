@@ -1,75 +1,103 @@
 package com.example.duan1_quanlysalon.adapter;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
-import com.example.duan1_quanlysalon.database.ProductDAO;
-import com.example.duan1_quanlysalon.database.ServiceDAO;
-import com.example.duan1_quanlysalon.model.Product;
+import com.example.duan1_quanlysalon.model.Employee;
 import com.example.duan1_quanlysalon.model.Service;
 
 import java.util.ArrayList;
 
-public class ListSelectServiceAdapter extends BaseAdapter {
+public class ListSelectServiceAdapter extends RecyclerView.Adapter<ListSelectServiceAdapter.ViewHolder> {
     ArrayList<Service> list;
-    int layout;
     Context context;
-    ServiceDAO serviceDAO;
+    ArrayList<Integer> listIDSevice;
 
-
-    public ListSelectServiceAdapter(ArrayList<Service> list, int layout, Context context, ServiceDAO serviceDAO) {
+    public ListSelectServiceAdapter(ArrayList<Service> list, Context context){
         this.list = list;
-        this.layout = layout;
         this.context = context;
-        this.serviceDAO = serviceDAO;
+        this.listIDSevice = ((MainActivity)context).getListIDServiceSelected();
+    }
+
+
+    @NonNull
+    @Override
+    public ListSelectServiceAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        View view = inflater.inflate(R.layout.item_select_service, parent, false);
+        return new ListSelectServiceAdapter.ViewHolder(view);
     }
 
     @Override
-    public int getCount() {
+    public void onBindViewHolder(@NonNull ListSelectServiceAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
+        holder.tvNameService.setText(list.get(position).getName());
+        holder.tvPrice.setText(String.valueOf(list.get(position).getPrice()));
+        for(int i = 0; i < listIDSevice.size(); i++){
+            if((int)listIDSevice.get(i) == list.get(position).getId()){
+                holder.btnCancel.setVisibility(View.VISIBLE);
+                holder.btnOk.setVisibility(View.GONE);
+            }
+        }
+        holder.btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listIDSevice.add(list.get(position).getId());
+                ((MainActivity)context).setListIDServiceSelected(listIDSevice);
+                holder.btnCancel.setVisibility(View.VISIBLE);
+                holder.btnOk.setVisibility(View.GONE);
+            }
+        });
+        holder.btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(Integer x : listIDSevice){
+                    if((int)x == list.get(position).getId()){
+                        listIDSevice.remove(x);
+                        ((MainActivity)context).setListIDServiceSelected(listIDSevice);
+                        break;
+                    }
+                }
+
+                holder.btnCancel.setVisibility(View.GONE);
+                holder.btnOk.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
         return list.size();
     }
 
-    @Override
-    public Object getItem(int i) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return 0;
-    }
-
-    public class ViewHolder{
-        TextView txtTendv, txtGiadv;
-        ImageView imgsp;
-    }
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        ListSelectServiceAdapter.ViewHolder viewHolder;
-
-        if(view == null){
-            LayoutInflater inflater =(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(layout, null);
-            viewHolder = new ListSelectServiceAdapter.ViewHolder();
-
-            //anh xa
-            viewHolder.txtTendv = view.findViewById(R.id.tendv_select_service);
-            viewHolder.txtGiadv = view.findViewById(R.id.giadv_select_service);
-            viewHolder.imgsp =  view.findViewById(R.id.img_select_service);
-
-            view.setTag(viewHolder);
-        }else {
-            viewHolder =(ListSelectServiceAdapter.ViewHolder)view.getTag();
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView tvNameService, tvPrice, btnOk;
+        LinearLayout btnCancel;
+        ImageView ivAvatar;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvNameService = itemView.findViewById(R.id.tvNameService);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
+            btnOk = itemView.findViewById(R.id.btnOke);
+            btnCancel = itemView.findViewById(R.id.btnCancel);
+            ivAvatar = itemView.findViewById(R.id.ivAvatar);
         }
-
-        viewHolder.txtTendv.setText(list.get(i).getName());
-        viewHolder.txtGiadv.setText(list.get(i).getPrice()+"");
-        return view;
     }
+
 }

@@ -2,9 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="#DDDDDD"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginBottom="14dp">
+    android:backgroundTint="@color/white"
+    android:layout_marginBottom="3dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:id="@+id/layoutItem"
@@ -15,29 +15,30 @@
         <ImageView
             android:id="@+id/ivTest"
             android:layout_width="match_parent"
-            android:layout_height="260dp"/>
-
-
+            android:layout_height="176dp"
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:paddingStart="14dp"
-            android:text="Quản lý trường mầm non bị tố bỏ đói, bạo hành trẻ"
-            android:textSize="25sp"
+            android:paddingStart="6dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="13dp"
+            android:text="Diện mạo khỏe khoắn đầy nam tính cùng 4 kiểu tóc “Bứt phá” của Zero5"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvPubDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="14dp"
+            android:paddingStart="6dp"
+            android:layout_marginEnd="39dp"
             android:text="06/08/2023"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:textStyle="italic" />
+            android:textSize="12sp"
+            android:textColor="#585454"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

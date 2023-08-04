@@ -1,59 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:ignore="MissingConstraints">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView8"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="Thêm dịch vụ mới"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="3">
 
+            <ImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:src="@drawable/skinner"
+                android:layout_marginTop="9dp"/>
+            <TextView
+                android:id="@+id/tvAddImg"
+                android:layout_width="90dp"
+                android:layout_height="32dp"
+                android:text="thêm ảnh"
+                android:textColor="@color/darkText"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_dialog_cancel"
+                android:layout_marginTop="4dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginHorizontal="17dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edID"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/edittext_border_radius"
+                android:hint="Nhập mã dịch vụ"
+                android:textColor="#7B7979"
+                android:textSize="14sp"
+                android:paddingStart="9dp"/>
+            <EditText
+                android:id="@+id/edName"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/edittext_border_radius"
+                android:hint="Nhập tên dịch vụ"
+                android:textColor="#7B7979"
+                android:textSize="14sp"
+                android:paddingStart="9dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giá"
+        android:textColor="@color/darkText"
+        android:textSize="20sp"
+        android:layout_marginTop="19dp"
+        android:layout_marginStart="23dp"/>
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edPrice"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="50dp"
-        android:paddingLeft="10dp"
-        android:hint="Nhập tên dịch vụ"
-        android:background="@drawable/add_new_service_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        android:layout_height="60dp"
+        android:background="@drawable/edittext_border_radius"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="11dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loại nhân viên phục vụ"
+        android:textColor="@color/darkText"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="23dp"/>
     <EditText
-        android:id="@+id/textInputEditText"
+        android:id="@+id/edClassify"
         android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/edittext_border_radius"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="11dp"/>
+    <TextView
+        android:id="@+id/tvAddService"
+        android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_margin="20dp"
-        android:background="@drawable/add_new_service_edittext"
-        android:hint="Nhập giá"
-        android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="20dp"
-        android:text="Thêm"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:background="@drawable/add_new_service_btn"
-        app:layout_constraintEnd_toEndOf="@+id/textInputEditText"
-        app:layout_constraintStart_toStartOf="@+id/textInputEditText"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textSize="16sp"
+        android:textColor="@color/darkText"
+        android:text="Hoàn thành"
+        android:layout_gravity="center"
+        android:layout_marginTop="42dp"
+        android:gravity="center"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/btn_confirm_changepassword"/>
+</LinearLayout>

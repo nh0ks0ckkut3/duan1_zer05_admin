@@ -1,8 +1,11 @@
 package com.example.duan1_quanlysalon.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Bill implements Serializable {
+    @SerializedName("idBill")
     private int id;
     private String phoneNumberCustomer;
     private String nameCustomer;
@@ -34,6 +37,26 @@ public class Bill implements Serializable {
         this.bookTime = bookTime;
         this.status = status;
     }
+    public Bill(int id, String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String bookTime, String status) {
+        this.id = id;
+        this.phoneNumberCustomer = phoneNumberCustomer;
+        this.nameCustomer = nameCustomer;
+        this.userNameEmployee = userNameEmployee;
+        this.bookTime = bookTime;
+        this.status = status;
+    }
+    public Bill(int id, String phoneNumberCustomer, String userNameEmployee, String time, String status, int totalPrice, int sumService, int sumProduct){
+        this.id = id;
+        this.phoneNumberCustomer = phoneNumberCustomer;
+        this.userNameEmployee = userNameEmployee;
+        this.time = time;
+        this.status = status;
+        this.totalPrice = totalPrice;
+        this.sumService = sumService;
+        this.sumProduct = sumProduct;
+    }
+
+
 
     public int getId() {
         return id;

@@ -1,5 +1,6 @@
 package com.example.duan1_quanlysalon.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,10 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.database.ServiceDAO;
+import com.example.duan1_quanlysalon.fragment.ServiceDetailFragment;
+import com.example.duan1_quanlysalon.model.ItemClickGetDetailService;
 import com.example.duan1_quanlysalon.model.Service;
 
 import java.util.ArrayList;
@@ -20,14 +25,13 @@ import java.util.ArrayList;
 public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHolder> {
     ArrayList<Service> list;
     Context context;
-    ServiceDAO serviceDAO;
+    private ItemClickGetDetailService itemClick;
 
 
-    public ServiceAdapter(ArrayList<Service> list, Context context, ServiceDAO serviceDAO){
+    public ServiceAdapter(ArrayList<Service> list, Context context,ItemClickGetDetailService itemClick){
         this.list = list;
         this.context = context;
-        this.serviceDAO = serviceDAO;
-
+        this.itemClick = itemClick;
     }
 
 
@@ -40,10 +44,17 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtTendv.setText(list.get(position).getName());
-        holder.txtGia.setText(String.valueOf(list.get(position).getPrice()));
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        holder.tvName.setText(list.get(position).getName());
+        holder.tvPrice.setText("Giá: "+list.get(position).getPrice()+",000 VNĐ");
+        holder.tvID.setText("Mã dịch vụ: "+list.get(position).getId());
+        holder.item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClick.onClick(list.get(position));
+                ((MainActivity)context).replayFragment(new ServiceDetailFragment(list.get(position)));
+            }
+        });
     }
 
     @Override
@@ -52,12 +63,17 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtTendv, txtGia;
+        TextView tvName, tvID, tvPrice;
+        ImageView ivAvatar;
+        CardView item;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtTendv = itemView.findViewById(R.id.tendv_item_list_service);
-            txtGia = itemView.findViewById(R.id.gia_item_list_service);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvID = itemView.findViewById(R.id.tvID);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
+            ivAvatar = itemView.findViewById(R.id.ivAvatar);
+            item = itemView.findViewById(R.id.item);
 
         }
     }

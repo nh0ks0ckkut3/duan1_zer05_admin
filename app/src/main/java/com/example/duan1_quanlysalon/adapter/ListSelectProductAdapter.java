@@ -1,81 +1,104 @@
 package com.example.duan1_quanlysalon.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
-import com.example.duan1_quanlysalon.database.EmployeeDAO;
-import com.example.duan1_quanlysalon.database.ProductDAO;
 import com.example.duan1_quanlysalon.model.Employee;
 import com.example.duan1_quanlysalon.model.Product;
+import com.example.duan1_quanlysalon.model.Service;
 
 import java.util.ArrayList;
 
-public class ListSelectProductAdapter extends BaseAdapter {
+public class ListSelectProductAdapter extends RecyclerView.Adapter<ListSelectProductAdapter.ViewHolder> {
     ArrayList<Product> list;
-    int layout;
     Context context;
-    ProductDAO productDAO;
+    ArrayList<Integer> listIDProduct;
 
-
-    public ListSelectProductAdapter(ArrayList<Product> list, int layout, Context context, ProductDAO productDAO) {
+    public ListSelectProductAdapter(ArrayList<Product> list, Context context){
         this.list = list;
-        this.layout = layout;
         this.context = context;
-        this.productDAO = productDAO;
+        this.listIDProduct = ((MainActivity)context).getListIDProductSelected();
+    }
+
+
+    @NonNull
+    @Override
+    public ListSelectProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        View view = inflater.inflate(R.layout.item_select_service, parent, false);
+        return new ListSelectProductAdapter.ViewHolder(view);
     }
 
     @Override
-    public int getCount() {
+    public void onBindViewHolder(@NonNull ListSelectProductAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
+        holder.tvNameService.setText(list.get(position).getName());
+        holder.tvPrice.setText(String.valueOf(list.get(position).getPrice()));
+        for(int i = 0; i < listIDProduct.size(); i++){
+            if((int)listIDProduct.get(i) == list.get(position).getId()){
+                holder.btnCancel.setVisibility(View.VISIBLE);
+                holder.btnOk.setVisibility(View.GONE);
+            }
+        }
+        holder.btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listIDProduct.add(list.get(position).getId());
+                ((MainActivity)context).setListIDProductSelected(listIDProduct);
+                holder.btnCancel.setVisibility(View.VISIBLE);
+                holder.btnOk.setVisibility(View.GONE);
+            }
+        });
+        holder.btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(Integer x : listIDProduct){
+                    if((int)x == list.get(position).getId()){
+                        listIDProduct.remove(x);
+                        ((MainActivity)context).setListIDProductSelected(listIDProduct);
+                        break;
+                    }
+                }
+
+                holder.btnCancel.setVisibility(View.GONE);
+                holder.btnOk.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
         return list.size();
     }
 
-    @Override
-    public Object getItem(int i) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return 0;
-    }
-    public class ViewHolder{
-        TextView txtTensp, txtGiasp;
-        ImageView imgsp;
-    }
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder;
-
-        if(view == null){
-            LayoutInflater inflater =(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(layout, null);
-            viewHolder = new ViewHolder();
-
-            //anh xa
-            viewHolder.txtTensp = view.findViewById(R.id.tensp_select_product);
-            viewHolder.txtGiasp = view.findViewById(R.id.giasp_select_product);
-            viewHolder.imgsp =  view.findViewById(R.id.img_select_product);
-
-            view.setTag(viewHolder);
-        }else {
-            viewHolder =(ViewHolder)view.getTag();
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView tvNameService, tvPrice, btnOk;
+        LinearLayout btnCancel;
+        ImageView ivAvatar;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvNameService = itemView.findViewById(R.id.tvNameService);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
+            btnOk = itemView.findViewById(R.id.btnOke);
+            btnCancel = itemView.findViewById(R.id.btnCancel);
+            ivAvatar = itemView.findViewById(R.id.ivAvatar);
         }
-
-        viewHolder.txtTensp.setText(list.get(i).getName());
-        viewHolder.txtGiasp.setText(list.get(i).getPrice()+"");
-        return view;
     }
-
 
 }

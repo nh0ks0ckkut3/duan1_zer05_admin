@@ -1,61 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="250dp"
-    android:layout_height="440dp"
-    tools:ignore="MissingConstraints"
-    >
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="MissingConstraints"
-        android:padding="10dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_bottom"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="146dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_select_service"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:src="@drawable/avatar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
+            android:id="@+id/ivAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:src="@drawable/avatar"/>
         <TextView
-            android:id="@+id/tendv_select_service"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvNameService"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="tên dịch vụ"
-            android:textColor="@color/black"
-            android:textSize="17dp"
-            app:layout_constraintEnd_toEndOf="@+id/img_select_service"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/img_select_service"
-            app:layout_constraintTop_toBottomOf="@+id/img_select_service" />
-
+            android:text="Combo 18 bước gội đầu massage toàn thân"
+            android:textSize="12sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"/>
         <TextView
-            android:id="@+id/giadv_select_service"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/tvPrice"
+            android:text="96.000 đ"
             android:layout_marginTop="10dp"
-            android:text="giá dịch vụ"
-            android:textColor="#ED2929"
-            android:textSize="17dp"
-            app:layout_constraintStart_toStartOf="@+id/tendv_select_service"
-            app:layout_constraintTop_toBottomOf="@+id/tendv_select_service" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:background="@drawable/btn_select_product"
+            android:textColor="#FFED2929"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_marginTop="6dp"
+            android:layout_width="91dp"
+            android:layout_height="23dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="visible"
+            android:id="@+id/btnOke"
             android:text="Chọn"
-            android:textAllCaps="false"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/img_select_service"
-            app:layout_constraintStart_toStartOf="@+id/giadv_select_service"
-            app:layout_constraintTop_toBottomOf="@+id/giadv_select_service" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:background="@drawable/btn0k_select_sv_pro"/>
+        <LinearLayout
+            android:id="@+id/btnCancel"
+            android:layout_marginTop="6dp"
+            android:layout_width="91dp"
+            android:layout_height="23dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/btncancel_select_sv_pro">
 
-</androidx.cardview.widget.CardView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tick"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đã chọn"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/darkText"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

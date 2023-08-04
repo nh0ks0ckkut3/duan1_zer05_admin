@@ -46,7 +46,6 @@ public class Booking_Fragment extends Fragment {
     FloatingActionButton floatAdd;
     LinearLayoutManager linearLayoutManagerKhachChuaToi,linearLayoutManagerDangCho,linearLayoutManagerKhachDangPhucVu;
     BillAdapterCheckin adapterKhachDangCho, adapterKhachChuaToi, adapterKhachDangPhucVu;
-    boolean flag = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,21 +71,8 @@ public class Booking_Fragment extends Fragment {
 
     public void loadData() {
         getListBookingAPI("booking");
-        getListBookingAPI("khach dang cho");
-        getListBookingAPI("khach dang phuc vu");
-
-
-        adapterKhachDangCho = new BillAdapterCheckin(getContext(), listKhachDangCho);
-        rcvKhachDangCho.setAdapter(adapterKhachDangCho);
-
-
-        adapterKhachChuaToi = new BillAdapterCheckin(getContext(), listKhachChuaToi);
-        rcvKhachChuaToi.setAdapter(adapterKhachChuaToi);
-
-
-        adapterKhachDangPhucVu = new BillAdapterCheckin(getContext(), listKhachDangPhucVu);
-        rcvKhachDangPhucVu.setAdapter(adapterKhachChuaToi);
-
+//        getListBookingAPI("khach dang cho");
+//        getListBookingAPI("khach dang phuc vu");
     }
     private void getListBookingAPI(String status) {
 
@@ -99,23 +85,27 @@ public class Booking_Fragment extends Fragment {
         new CompositeDisposable().add(requestInterface.getListBill(status)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(this::handleResponse, this::handleError)
+                .subscribe(this::handleResponseGetListBill, this::handleError)
         );
     }
 
-    private void handleResponse(ArrayList<Bill> listBill) {
+    private void handleResponseGetListBill(ArrayList<Bill> listBill) {
         if(listBill.size()>0){
-            switch (listBill.get(0).getStatus()){
-                case "booking":
+            if (listBill.get(0).getStatus().equals("booking")){
                     listKhachChuaToi = listBill;
-                    break;
-                case "khach dang cho":
-                    listKhachDangCho = listBill;
-                    break;
-                case "khach dang phuc vu":
-                    listKhachDangPhucVu = listBill;
-                    break;
+                    adapterKhachChuaToi = new BillAdapterCheckin(getContext(), listKhachChuaToi);
+                    rcvKhachChuaToi.setAdapter(adapterKhachChuaToi);
             }
+//            else if(listBill.get(0).getStatus().equals("khach dang cho")) {
+//
+//                listKhachDangCho = listBill;
+//                adapterKhachDangCho = new BillAdapterCheckin(getContext(), listKhachDangCho);
+//                rcvKhachDangCho.setAdapter(adapterKhachDangCho);
+//            }else if(listBill.get(0).getStatus().equals("khach dang phuc vu")){
+//                    listKhachDangPhucVu = listBill;
+//                    adapterKhachDangPhucVu = new BillAdapterCheckin(getContext(), listKhachDangPhucVu);
+//                    rcvKhachDangPhucVu.setAdapter(adapterKhachChuaToi);
+//            }
         }
     }
 
