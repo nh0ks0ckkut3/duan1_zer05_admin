@@ -35,9 +35,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class List_Employee_Fragment extends Fragment {
-    RecyclerView rcViewStylist,rcViewSkinner;
+    RecyclerView rcViewStylist,rcViewSkinner,rcViewListAdmin;
 
-    ArrayList<Employee> listStylist,listSkinner;
+    ArrayList<Employee> listStylist,listSkinner,listAdmin;
     FloatingActionButton fltAdd;
 
     @Nullable
@@ -47,12 +47,14 @@ public class List_Employee_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list__employee_, container, false);
         rcViewStylist = view.findViewById(R.id.rcViewListStylist);
         rcViewSkinner = view.findViewById(R.id.rcViewListSkinner);
+        rcViewListAdmin = view.findViewById(R.id.rcViewListAdmin);
+        ((MainActivity)getContext()).toolbar.setVisibility(View.VISIBLE);
+        ((MainActivity)getContext()).titleToolbar.setText("DS nhân viên");
         listStylist = new ArrayList<>();
         listSkinner = new ArrayList<>();
+        listAdmin = new ArrayList<>();
         fltAdd = view.findViewById(R.id.floatAdd);
 
-        ((MainActivity)getContext()).toolbar.setVisibility(View.VISIBLE);
-        ((MainActivity)getContext()).titleToolbar.setText("DS dịch vụ");
 
         LoadData();
 
@@ -81,21 +83,29 @@ public class List_Employee_Fragment extends Fragment {
         private void handleResponse(ArrayList<Employee> result) {
             if(result.size()>0){
                 for(Employee employee : result){
-                    if(employee.getClassify().equals("Stylist")){
+                    if(employee.getClassify().equals("stylist")){
                         listStylist.add(employee);
-                    }else listSkinner.add(employee);
+                    }else if(employee.getClassify().equals("skinner")){
+                        listSkinner.add(employee);
+                    }else if(employee.getClassify().equals("admin")){
+                        listAdmin.add(employee);
+                    }
                 }
                 EmployeeAdapter adapterStylist = new EmployeeAdapter(listStylist, getContext());
                 EmployeeAdapter adapterSkinner = new EmployeeAdapter(listSkinner, getContext());
+                EmployeeAdapter adapterAdmin = new EmployeeAdapter(listAdmin, getContext());
 
                 LinearLayoutManager linearLayoutManagerStylist = new LinearLayoutManager(getContext());
                 LinearLayoutManager linearLayoutManagerSkinner = new LinearLayoutManager(getContext());
+                LinearLayoutManager linearLayoutManagerAdmin = new LinearLayoutManager(getContext());
 
                 rcViewStylist.setLayoutManager(linearLayoutManagerStylist);
                 rcViewSkinner.setLayoutManager(linearLayoutManagerSkinner);
+                rcViewListAdmin.setLayoutManager(linearLayoutManagerAdmin);
 
                 rcViewStylist.setAdapter(adapterStylist);
                 rcViewSkinner.setAdapter(adapterSkinner);
+                rcViewListAdmin.setAdapter(adapterAdmin);
             }else{
                 Toast.makeText(getContext(), "errol", Toast.LENGTH_SHORT).show();
             }

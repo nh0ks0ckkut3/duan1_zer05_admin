@@ -45,13 +45,14 @@ public class Bill implements Serializable {
         this.bookTime = bookTime;
         this.status = status;
     }
-    public Bill(int id, String phoneNumberCustomer, String userNameEmployee, String time, String status, int totalPrice, int sumService, int sumProduct){
+    public Bill(int id, String phoneNumberCustomer, String userNameEmployee, String time, String status, int totalPrice, String nameCustomer, int sumService, int sumProduct){
         this.id = id;
         this.phoneNumberCustomer = phoneNumberCustomer;
         this.userNameEmployee = userNameEmployee;
         this.time = time;
         this.status = status;
         this.totalPrice = totalPrice;
+        this.nameCustomer = nameCustomer;
         this.sumService = sumService;
         this.sumProduct = sumProduct;
     }

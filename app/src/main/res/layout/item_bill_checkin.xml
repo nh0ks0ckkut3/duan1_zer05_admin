@@ -60,20 +60,21 @@
             android:textColor="@color/blandText"/>
 
     </LinearLayout>
+
     <TextView
         android:id="@+id/tvNhanKhach"
-        android:text="Nhận Khách"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@color/darkText"
-        android:textAlignment="center"
-        android:paddingTop="7dp"
         android:layout_width="130dp"
-        android:layout_height="37dp"
-        android:background="@drawable/header_list_booking"
+        android:layout_height="36dp"
         android:layout_gravity="center"
         android:layout_marginTop="36dp"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/btn_confirm_changepassword"
+        android:paddingTop="7dp"
+        android:text="Nhận Khách"
+        android:textAlignment="center"
+        android:textColor="@color/darkText"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="match_parent"

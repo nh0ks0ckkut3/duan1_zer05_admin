@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.adapter.ListSelectServiceAdapter;
+import com.example.duan1_quanlysalon.model.Bill;
 import com.example.duan1_quanlysalon.model.Service;
 import com.example.duan1_quanlysalon.model.ServiceAPI;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -73,6 +74,7 @@ public class ListSelectServiceFragment extends Fragment {
         gridLayoutManager = new GridLayoutManager(getContext(),2);
         rcViewListService.setLayoutManager(gridLayoutManager);
         btnOk = view.findViewById(R.id.btnOke);
+        btnOk.setText("Chọn dịch vụ");
         ivBack = view.findViewById(R.id.ivBack);
 
         loadData();
@@ -123,6 +125,9 @@ public class ListSelectServiceFragment extends Fragment {
         Toast.makeText(getContext(), "lỗi, thử lại sau!", Toast.LENGTH_SHORT).show();
     }
     private void backAndSave(){
+        if(((MainActivity)getContext()).isHaveReservationBefore){
+            ((MainActivity)getContext()).replayFragment(new Nhan_Khach_Fragment());
+        }else
         ((MainActivity)getContext()).replayFragment(new Add_Booking_Fragment());
     }
 }

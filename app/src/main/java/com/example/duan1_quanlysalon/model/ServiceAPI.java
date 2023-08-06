@@ -66,7 +66,7 @@ public interface ServiceAPI {
     @GET("GetListBill.php")
     Observable<ArrayList<Bill>> getListBill(@Query("status") String status);
 
-    @GET("SetStatusBill.php" + "/{idBill}" + "/{status}")
+    @GET("SetStatusBill.php")
     Observable<Boolean> setStatusBill(@Query("idBill") int idBill, @Query("status") String status);
 
     @POST("CreateNewBooking.php")
@@ -92,6 +92,14 @@ public interface ServiceAPI {
     @GET("DeleteDetailBooking.php")
     Observable<Boolean> deleteDetailBookingAPI(@Query("idBill") int idBill);
 
+    @GET("GetDetailService.php")
+    Observable<ArrayList<ServiceDetail>> getDetailService(@Query("idBill") int idBill);
+
+    @GET("GetDetailProduct.php")
+    Observable<ArrayList<ProductDetail>> getDetailProduct(@Query("idBill") int idBill);
+
+
+
     // employee
 
     @GET("GetListEmployee.php")
@@ -103,8 +111,8 @@ public interface ServiceAPI {
     @POST("UpdateEmployee.php")
     Observable<Boolean> updateEmployee(@Body Employee employee);
 
-    @GET("DeleteEmployee.php" + "/{userName}")
-    Observable<Boolean> deleteEmployee(@Query("userName") String userName);
+    @GET("DeleteEmployee.php")
+    Observable<Boolean> deleteEmployee(@Query("userNameEmployee") String userName);
 
     @POST("AddEmployee.php")
     Observable<Boolean> addEmployee(@Body Employee employee);

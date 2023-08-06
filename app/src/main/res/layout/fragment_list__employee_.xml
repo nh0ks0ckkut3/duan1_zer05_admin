@@ -7,48 +7,70 @@
     tools:context=".fragment.List_Employee_Fragment"
 
     >
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:textSize="16dp"
-            android:textColor="@color/darkText"
-            android:textStyle="bold"
-            android:paddingStart="19dp"
-            android:paddingTop="8dp"
-            android:layout_marginTop="12dp"
-            android:text="Stylist"
-            android:background="@color/green"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:textSize="16dp"
+                android:textColor="@color/darkText"
+                android:textStyle="bold"
+                android:paddingStart="19dp"
+                android:paddingTop="8dp"
+                android:layout_marginTop="12dp"
+                android:text="admin"
+                android:background="@color/green"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcViewListStylist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:textSize="16dp"
-            android:textColor="@color/darkText"
-            android:textStyle="bold"
-            android:paddingStart="19dp"
-            android:paddingTop="8dp"
-            android:layout_marginTop="12dp"
-            android:text="Skinner"
-            android:background="@color/green"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcViewListAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:textSize="16dp"
+                android:textColor="@color/darkText"
+                android:textStyle="bold"
+                android:paddingStart="19dp"
+                android:paddingTop="8dp"
+                android:layout_marginTop="12dp"
+                android:text="Stylist"
+                android:background="@color/green"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcViewListSkinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcViewListStylist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:textSize="16dp"
+                android:textColor="@color/darkText"
+                android:textStyle="bold"
+                android:paddingStart="19dp"
+                android:paddingTop="8dp"
+                android:layout_marginTop="12dp"
+                android:text="Skinner"
+                android:background="@color/green"/>
 
-    </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcViewListSkinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatAdd"

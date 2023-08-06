@@ -63,6 +63,7 @@ public class Booking_Fragment extends Fragment {
         floatAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity)getContext()).billTarget = null;
                 ((MainActivity)getContext()).replayFragment(new Add_Booking_Fragment());
             }
         });
@@ -71,8 +72,8 @@ public class Booking_Fragment extends Fragment {
 
     public void loadData() {
         getListBookingAPI("booking");
-//        getListBookingAPI("khach dang cho");
-//        getListBookingAPI("khach dang phuc vu");
+        getListBookingAPI("khach dang cho");
+        getListBookingAPI("khach dang phuc vu");
     }
     private void getListBookingAPI(String status) {
 
@@ -96,16 +97,16 @@ public class Booking_Fragment extends Fragment {
                     adapterKhachChuaToi = new BillAdapterCheckin(getContext(), listKhachChuaToi);
                     rcvKhachChuaToi.setAdapter(adapterKhachChuaToi);
             }
-//            else if(listBill.get(0).getStatus().equals("khach dang cho")) {
-//
-//                listKhachDangCho = listBill;
-//                adapterKhachDangCho = new BillAdapterCheckin(getContext(), listKhachDangCho);
-//                rcvKhachDangCho.setAdapter(adapterKhachDangCho);
-//            }else if(listBill.get(0).getStatus().equals("khach dang phuc vu")){
-//                    listKhachDangPhucVu = listBill;
-//                    adapterKhachDangPhucVu = new BillAdapterCheckin(getContext(), listKhachDangPhucVu);
-//                    rcvKhachDangPhucVu.setAdapter(adapterKhachChuaToi);
-//            }
+            else if(listBill.get(0).getStatus().equals("khach dang cho")) {
+
+                listKhachDangCho = listBill;
+                adapterKhachDangCho = new BillAdapterCheckin(getContext(), listKhachDangCho);
+                rcvKhachDangCho.setAdapter(adapterKhachDangCho);
+            }else if(listBill.get(0).getStatus().equals("khach dang phuc vu")){
+                    listKhachDangPhucVu = listBill;
+                    adapterKhachDangPhucVu = new BillAdapterCheckin(getContext(), listKhachDangPhucVu);
+                    rcvKhachDangPhucVu.setAdapter(adapterKhachChuaToi);
+            }
         }
     }
 

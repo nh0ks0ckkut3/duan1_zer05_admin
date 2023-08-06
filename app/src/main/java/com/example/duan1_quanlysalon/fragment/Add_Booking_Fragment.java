@@ -23,6 +23,7 @@ import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.adapter.ListStylistAdapter;
 import com.example.duan1_quanlysalon.adapter.SlotAdapter;
 import com.example.duan1_quanlysalon.model.Bill;
+import com.example.duan1_quanlysalon.model.Customer;
 import com.example.duan1_quanlysalon.model.Employee;
 import com.example.duan1_quanlysalon.model.ItemSlotClick;
 import com.example.duan1_quanlysalon.model.ItemStylistClick;
@@ -53,14 +54,16 @@ public class Add_Booking_Fragment extends Fragment {
     ArrayList<Employee> listEmployee;
     int idBill;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add__booking_, container, false);
         recyclerView = view.findViewById(R.id.rcl_stylist_add_booking);
+        ((MainActivity)getContext()).isHaveReservationBefore = false;
         mapping(view);
-        phoneNumberCustomer = sdt_add_booking.getText().toString();
-        nameCustomer = tenkh_add_booking.getText().toString();
+        ((MainActivity)getContext()).setListIDServiceSelected(listIDService);
+        ((MainActivity)getContext()).setListIDProductSelected(listIDProduct);
         userNameEmployee="";
         bookTime="";
         slotBook();
@@ -68,29 +71,27 @@ public class Add_Booking_Fragment extends Fragment {
         btn_complete_add_booking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                phoneNumberCustomer = sdt_add_booking.getText().toString();
+                nameCustomer = tenkh_add_booking.getText().toString();
                 if(!(phoneNumberCustomer.length()==0 || nameCustomer.length() == 0 || userNameEmployee.length() == 0 || bookTime.length()==0)){
                     getBookingAPI(phoneNumberCustomer);
-                    if(idBill<0){
-                        addBookingAPI(new Bill(phoneNumberCustomer,nameCustomer,userNameEmployee,bookTime,"booking"));
-                        getBookingAPI(phoneNumberCustomer);
 
-                    }else{
-                        updateBookingAPI(new Bill(idBill,phoneNumberCustomer,nameCustomer,userNameEmployee,bookTime,"booking"));
-                        deleteDetailBookingAPI(idBill);
-                    }
                     for(Integer x : listIDService){
                         addServiceDetailAPI(new ServiceDetail(x,idBill));
                     }
                     for(Integer x : listIDService){
-                        addProductDetailAPI(new ProductDetail(x,idBill));
+                        addServiceDetailAPI(new ServiceDetail(x,idBill));
                     }
 
+                }else{
+                    Toast.makeText(getContext(), "không bỏ trống", Toast.LENGTH_SHORT).show();
                 }
             }
         });
         select_service_add_booking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 ((MainActivity)getContext()).replayFragment(new ListSelectServiceFragment());
             }
         });
@@ -118,7 +119,7 @@ public class Add_Booking_Fragment extends Fragment {
         listIDProduct = new ArrayList<>();
         listEmployee = new ArrayList<>();
         select_service_add_booking.setText("Đã chọn "+((MainActivity)getContext()).getListIDServiceSelected().size()+" dịch vụ");
-        select_product_add_booking.setText("Đã chọn "+((MainActivity)getContext()).getListIDProductSelected().size()+" dịch vụ");
+        select_product_add_booking.setText("Đã chọn "+((MainActivity)getContext()).getListIDProductSelected().size()+" sản phẩm");
     }
     private void getListEmployeeAPI(){
         ServiceAPI requestInterface = new Retrofit.Builder()
@@ -242,7 +243,19 @@ public class Add_Booking_Fragment extends Fragment {
         Toast.makeText(getContext(), "lỗi, thử lại sau!", Toast.LENGTH_SHORT).show();
     }
     private void handleResponseGetIDBill(Integer result) {
-        idBill = (int)result;
+        if(result<0){
+            Toast.makeText(getContext(), ""+idBill, Toast.LENGTH_SHORT).show();
+            addCustomerAPI(new Customer(phoneNumberCustomer,"",nameCustomer));
+            addBookingAPI(new Bill(phoneNumberCustomer,nameCustomer,userNameEmployee,bookTime,"booking"));
+            getBookingAPI(phoneNumberCustomer);
+
+        }else{
+            updateBookingAPI(new Bill(idBill,phoneNumberCustomer,nameCustomer,userNameEmployee,bookTime,"booking"));
+            deleteDetailBookingAPI(idBill);
+        }
+    }
+    private void addCustomerAPI(Customer customer){
+        
     }
 
     private void handleResponseAddSVPRO(Boolean result) {

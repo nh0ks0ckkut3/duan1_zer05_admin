@@ -77,6 +77,7 @@ public class ListSelectProductFragment extends Fragment {
         gridLayoutManager = new GridLayoutManager(getContext(),2);
         rcViewListProduct.setLayoutManager(gridLayoutManager);
         btnOk = view.findViewById(R.id.btnOke);
+        btnOk.setText("Chọn sản phẩm");
         ivBack = view.findViewById(R.id.ivBack);
 
         loadData();
@@ -127,6 +128,9 @@ public class ListSelectProductFragment extends Fragment {
         Toast.makeText(getContext(), "lỗi, thử lại sau!", Toast.LENGTH_SHORT).show();
     }
     private void backAndSave(){
-        ((MainActivity)getContext()).replayFragment(new Add_Booking_Fragment());
+        if(((MainActivity)getContext()).isHaveReservationBefore){
+            ((MainActivity)getContext()).replayFragment(new Nhan_Khach_Fragment());
+        }else
+            ((MainActivity)getContext()).replayFragment(new Add_Booking_Fragment());
     }
 }

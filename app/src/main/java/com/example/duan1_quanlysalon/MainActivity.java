@@ -43,12 +43,15 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Fragment fragment;
-    FragmentManager fragmentManager;
+    public FragmentManager fragmentManager;
     public Employee currentUser;
     public Toolbar toolbar;
     public TextView titleToolbar;
+    public Bill billTarget;
     private ArrayList<Integer> listIDServiceSelected,listIDProductSelected;
     public ImageView home;
+    public boolean isHaveReservationBefore = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,4 +190,5 @@ public class MainActivity extends AppCompatActivity {
     private void handleError(Throwable error) {
         Toast.makeText(this, "lỗi, thử lại sau!", Toast.LENGTH_SHORT).show();
     }
+
 }

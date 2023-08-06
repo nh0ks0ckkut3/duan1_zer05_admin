@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.fragment.EmployeeDetailFragment;
@@ -47,7 +48,6 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tvName.setText(list.get(position).getName());
         holder.tvID.setText(String.valueOf(list.get(position).getUserName()));
-
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,11 +65,13 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvName, tvID;
         LinearLayout item;
+        ImageView imageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvID = itemView.findViewById(R.id.tvID);
             item = itemView.findViewById(R.id.item);
+            imageView = itemView.findViewById(R.id.imageView);
         }
     }
 

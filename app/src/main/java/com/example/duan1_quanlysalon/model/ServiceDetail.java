@@ -2,18 +2,18 @@ package com.example.duan1_quanlysalon.model;
 
 public class ServiceDetail {
     private int id;
-    private int idService;
-    private int idBill;
+    private int id_service;
+    private int id_bill;
 
-    public ServiceDetail(int id, int idService, int idBill) {
+    public ServiceDetail(int id, int id_service, int id_bill) {
         this.id = id;
-        this.idService = idService;
-        this.idBill = idBill;
+        this.id_service = id_service;
+        this.id_bill = id_bill;
     }
 
-    public ServiceDetail(int idService, int idBill) {
-        this.idService = idService;
-        this.idBill = idBill;
+    public ServiceDetail(int id_service, int id_bill) {
+        this.id_service = id_service;
+        this.id_bill = id_bill;
     }
 
     public int getId() {
@@ -24,19 +24,19 @@ public class ServiceDetail {
         this.id = id;
     }
 
-    public int getIdService() {
-        return idService;
+    public int getId_service() {
+        return id_service;
     }
 
-    public void setIdService(int idService) {
-        this.idService = idService;
+    public void setId_service(int id_service) {
+        this.id_service = id_service;
     }
 
-    public int getIdBill() {
-        return idBill;
+    public int getId_bill() {
+        return id_bill;
     }
 
-    public void setIdBill(int idBill) {
-        this.idBill = idBill;
+    public void setId_bill(int id_bill) {
+        this.id_bill = id_bill;
     }
 }

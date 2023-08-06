@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,10 +29,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Add_Employee_Fragment extends Fragment {
 
-    TextView img_add_employee, id_add_employee, name_add_employee,id_add_birth,
+    TextView id_add_employee, name_add_employee,id_add_birth,
             id_add_gender, id_add_phonenum, id_add_email, id_add_address, id_add_usname,
             id_add_password, id_add_classify, id_add_salary, id_add_daywork;
     AppCompatButton btn_complete_add_employee;
+    ImageView img_add_employee;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,24 +44,32 @@ public class Add_Employee_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add__employee_, container, false);
         mapping(view);
-
+        id_add_employee.setFocusable(false);
         btn_complete_add_employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = name_add_employee.getText().toString();
                 String userName = id_add_usname.getText().toString();
+                String birthDay = id_add_birth.getText().toString();
                 String passWord = id_add_password.getText().toString();
+                String gender = id_add_gender.getText().toString();
+                String phoneNumber = id_add_phonenum.getText().toString();
+                String email = id_add_email.getText().toString();
+                String img = "";
+                int salary=0;
+                try {
+                    salary = Integer.parseInt(id_add_salary.getText().toString());
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "nhập lương cơ bản", Toast.LENGTH_SHORT).show();
+                }
+                String address = id_add_address.getText().toString();
                 String classify = id_add_classify.getText().toString();
-                /*
-                * String userName, String passWord, String name, int age, String gender, int salary, String dayStartWork, int countDayOfMonth, String classify
-                * */
+                String dayStartWork = id_add_daywork.getText().toString();
+
                 if(!(name.length() < 1 || userName.length() < 1 ||
                         passWord.length() < 1 || classify.length() < 1)){
-                    int age = Integer.parseInt(id_add_birth.getText().toString());
-                    String gender = id_add_gender.getText().toString();
-                    int salary = Integer.parseInt(id_add_salary.getText().toString());
-                    String dayStartWork = id_add_daywork.getText().toString();
-                    addEmployee(new Employee(userName,passWord,name,age,gender,salary,dayStartWork,0,classify));
+                    Employee employeeAdd = new Employee(userName, passWord, name, birthDay, phoneNumber, email, address, gender, salary, dayStartWork, classify, img);
+                    addEmployee(employeeAdd);
                 }
             }
         });

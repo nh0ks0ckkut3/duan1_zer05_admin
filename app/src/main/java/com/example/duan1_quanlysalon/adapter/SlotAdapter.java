@@ -64,8 +64,9 @@ public class SlotAdapter extends RecyclerView.Adapter<SlotAdapter.ViewHolder>{
             @Override
             public void onClick(View v) {
                 if(list.get(position).isReady()) {
-                    Toast.makeText(context, ""+date.getTime(), Toast.LENGTH_SHORT).show();
-                    slotPick = holder.tvTime.getText().toString()+date.getTime();
+
+                    slotPick = holder.tvTime.getText().toString();
+                    holder.tvTime.setBackgroundResource(R.color.green);
                     slotClick.onClickSlot(list.get(position));
                     loadData();
                 }
