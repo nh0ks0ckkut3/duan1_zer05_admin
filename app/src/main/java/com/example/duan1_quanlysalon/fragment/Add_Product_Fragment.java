@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
-import com.example.duan1_quanlysalon.model.Service;
+import com.example.duan1_quanlysalon.model.Product;
 import com.example.duan1_quanlysalon.model.ServiceAPI;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -65,25 +65,26 @@ public class Add_Product_Fragment extends Fragment {
                 String amount = amount_add_product.getText().toString();
                 String brand = brand_add_product.getText().toString();
                 String classify = classify_add_product.getText().toString();
+                String img = "";
                 if(name.length()<1 || price.length() < 1 || classify.length() < 1 ||
                     unit.length() < 1 || amount.length() < 1 || brand.length() < 1){
                     Toast.makeText(getContext(), "Không bỏ trống", Toast.LENGTH_SHORT).show();
                 }else {
-                    addServiceAPI(new Service(name,Integer.parseInt(price),classify));
+                    addProductAPI(new Product(name,Integer.parseInt(price),unit,Integer.parseInt(amount),brand,classify,img));
                 }
             }
         });
 
         return view;
     }
-    private void addServiceAPI(Service service){
+    private void addProductAPI(Product product){
         ServiceAPI requestInterface = new Retrofit.Builder()
                 .baseUrl(BASE_API_ZERO5)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(ServiceAPI.class);
 
-        new CompositeDisposable().add(requestInterface.addService(service)
+        new CompositeDisposable().add(requestInterface.addProduct(product)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleResponse, this::handleError)

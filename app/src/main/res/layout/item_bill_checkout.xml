@@ -7,7 +7,7 @@
     tools:ignore="MissingConstraints">
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/tvID"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -28,9 +28,9 @@
         android:textColor="@color/black"
         android:textSize="17dp"
         android:textAlignment="textEnd"
-        app:layout_constraintBottom_toBottomOf="@+id/textView24"
-        app:layout_constraintStart_toEndOf="@+id/textView24"
-        app:layout_constraintTop_toTopOf="@+id/textView24"
+        app:layout_constraintBottom_toBottomOf="@+id/tvID"
+        app:layout_constraintStart_toEndOf="@+id/tvID"
+        app:layout_constraintTop_toTopOf="@+id/tvID"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -43,8 +43,8 @@
         android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView24"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+        app:layout_constraintStart_toStartOf="@+id/tvID"
+        app:layout_constraintTop_toBottomOf="@+id/tvID" />
 
     <TextView
         android:id="@+id/item_bill_useService"
@@ -65,7 +65,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
-        android:text="Tổng tiền: "
+        android:text="Khách Hàng: "
         android:textColor="@color/black"
         android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"

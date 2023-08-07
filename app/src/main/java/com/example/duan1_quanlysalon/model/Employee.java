@@ -66,14 +66,6 @@ public class Employee implements Serializable {
         this.passWord = passWord;
     }
 
-//    employee.setName(edName.getText().toString());
-//                employee.setBirthDay(edBirthDay.getText().toString());
-//                employee.setGender(edGender.getText().toString());
-//                employee.setPhoneNumber(edPhoneNumber.getText().toString());
-//                employee.setAddress(edAddress.getText().toString());
-//                employee.setClassify(edClassify.getText().toString());
-//                employee.setDayStartWork(edDateStart.getText().toString());
-//                employee.setSalary(Integer.parseInt(edSalary.getText().toString()));
     public Employee (String userName, String name, String birthDay, String gender, String phoneNumber, String address, String classify, String dayStartWork, int salary){
         this.userName = userName;
         this.name = name;
@@ -84,6 +76,23 @@ public class Employee implements Serializable {
         this.classify = classify;
         this.dayStartWork = dayStartWork;
         this.salary = salary;
+    }
+
+    public Employee (String userName, String passWord, String name, int age, String gender, int salary, String dayStartWork, int countDayOfMonth, String classify, String birthDay, String email, String address, String img, String phoneNumber){
+        this.userName = userName;
+        this.passWord = passWord;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.salary = salary;
+        this.dayStartWork = dayStartWork;
+        this.countDayOfMonth = countDayOfMonth;
+        this.classify = classify;
+        this.birthDay = birthDay;
+        this.email = email;
+        this.address = address;
+        this.img = img;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getUserName() {

@@ -46,15 +46,8 @@ public class Checkout_Fragment extends Fragment {
 
         mapping(view);
 
-        loadData();
+        getListBookingAPI("khach dang cho");
         return view;
-    }
-    public void loadData() {
-        getListBookingAPI("cho thanh toan");
-
-        adapterKhachChoThanhToan = new BillAdapterCheckout(listKhachChoThanhToan, getContext());
-        recyclerView.setAdapter(adapterKhachChoThanhToan);
-
     }
     private void getListBookingAPI(String status) {
 
@@ -74,6 +67,9 @@ public class Checkout_Fragment extends Fragment {
     private void handleResponse(ArrayList<Bill> listBill) {
         if(listBill.size()>0){
             listKhachChoThanhToan = listBill;
+            adapterKhachChoThanhToan = new BillAdapterCheckout(listKhachChoThanhToan, getContext());
+            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.setAdapter(adapterKhachChoThanhToan);
         }
     }
 

@@ -25,8 +25,8 @@ public interface ServiceAPI {
     @GET("GetListService.php")
     Observable<ArrayList<Service>> getListService();
 
-    @GET("GetListServiceChose.php" + "/{idBill}")
-    Observable<ArrayList<Service>> getListServiceChose(@Query("idBill") String idBill);
+    @GET("GetListServiceChose.php")
+    Observable<ArrayList<Service>> getListServiceChose(@Query("idBill") int idBill);
 
     @POST("UpdateListServiceChose.php")
     Observable<Boolean> updateListServiceChose(@Body ArrayList<Integer> listIdService);
@@ -46,17 +46,17 @@ public interface ServiceAPI {
     @GET("GetListProduct.php")
     Observable<ArrayList<Product>> getListProduct();
 
-    @GET("GetListProductChose.php" + "/{idBill}")
-    Observable<ArrayList<Product>> getListProductChose(@Query("idBill") String idBill);
+    @GET("GetListProductChose.php")
+    Observable<ArrayList<Product>> getListProductChose(@Query("idBill") int idBill);
 
     @POST("UpdateListProductChose.php")
     Observable<Boolean> updateListProductChose(@Body ArrayList<Integer> listIdProduct);
 
-    @POST("CreateNewProduct.php")
-    Observable<Boolean> createNewProduct(@Body Product product);
+    @POST("AddProduct.php")
+    Observable<Boolean> addProduct(@Body Product product);
 
     @POST("UpdateProduct.php")
-    Observable<Boolean> updateProduct(@Body Product service);
+    Observable<Boolean> updateProduct(@Body Product product);
 
     @GET("DeleteProduct.php" + "/{idProduct}")
     Observable<Boolean> deleteProduct(@Query("idProduct") int idProduct);
@@ -105,8 +105,8 @@ public interface ServiceAPI {
     @GET("GetListEmployee.php")
     Observable<ArrayList<Employee>> getListEmployee();
 
-    @GET("GetDetailEmployee.php" + "/{userName}")
-    Observable<Employee> getDetailEmployee(@Query("userName") String userName);
+    @GET("GetDetailEmployee.php")
+    Observable<String> getDetailEmployee(@Query("userNameEmployee") String userName);
 
     @POST("UpdateEmployee.php")
     Observable<Boolean> updateEmployee(@Body Employee employee);

@@ -60,7 +60,7 @@ public class List_Product_Fragment extends Fragment {
         fltAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ((MainActivity)getContext()).replayFragment(new Add_Product_Fragment());
             }
         });
         return view;

@@ -10,6 +10,7 @@ public class Product implements Serializable {
     private int amount;
     private String brand;
     private String classify;
+    private String image;
 
 
     public Product(int id, String name, int price, String unit, int amount, String brand, String classify) {
@@ -29,6 +30,27 @@ public class Product implements Serializable {
         this.amount = amount;
         this.brand = brand;
         this.classify = classify;
+    }
+
+    public Product(int idProduct, String name, int price, String unit, int amount, String brand, String classify, String image) {
+        this.idProduct = idProduct;
+        this.name = name;
+        this.price = price;
+        this.unit = unit;
+        this.amount = amount;
+        this.brand = brand;
+        this.classify = classify;
+        this.image = image;
+    }
+
+    public Product(String name, int price, String unit, int amount, String brand, String classify, String image) {
+        this.name = name;
+        this.price = price;
+        this.unit = unit;
+        this.amount = amount;
+        this.brand = brand;
+        this.classify = classify;
+        this.image = image;
     }
 
     public int getId() {
@@ -85,5 +107,13 @@ public class Product implements Serializable {
 
     public void setClassify(String classify) {
         this.classify = classify;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

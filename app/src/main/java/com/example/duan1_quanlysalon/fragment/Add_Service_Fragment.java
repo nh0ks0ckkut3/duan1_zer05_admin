@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class Add_Service_Fragment extends Fragment {
 
     TextView tvAddImg, tvAddService;
     EditText edID,edName,edPrice,edClassify;
+    ImageView ivBack;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,21 +40,36 @@ public class Add_Service_Fragment extends Fragment {
         tvAddImg = view.findViewById(R.id.tvAddImg);
         tvAddService = view.findViewById(R.id.tvAddService);
         edID = view.findViewById(R.id.edID);
+        edID.setFocusable(false);
         edName = view.findViewById(R.id.edName);
         edPrice = view.findViewById(R.id.edPrice);
         edClassify = view.findViewById(R.id.edClassify);
+        ivBack = view.findViewById(R.id.ivBack);
 
         tvAddService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = edName.getText().toString();
-                String price = edPrice.getText().toString();
+                int price = 0;
+                try {
+                    price = Integer.parseInt(edPrice.getText().toString());
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "vui lòng nhập giá", Toast.LENGTH_SHORT).show();
+                }
+
                 String classify = edClassify.getText().toString();
-                if(name.length()<1 || price.length() < 1 || classify.length() < 1){
+                String img = "";
+                if(name.length()<1 || price < 1 || classify.length() < 1){
                     Toast.makeText(getContext(), "chỉ có thể bỏ trống mã dịch vụ", Toast.LENGTH_SHORT).show();
                 }else {
-                    addServiceAPI(new Service(name,Integer.parseInt(price),classify));
+                    addServiceAPI(new Service(name,price,classify,img));
                 }
+            }
+        });
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getContext()).replayFragment(new List_Service_Fragment());
             }
         });
 

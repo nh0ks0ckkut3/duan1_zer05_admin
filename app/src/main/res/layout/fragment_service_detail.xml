@@ -7,6 +7,13 @@
     tools:context=".fragment.ServiceDetailFragment">
 
     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/ivBack"/>
+    <ImageView
         android:id="@+id/ivAvatar"
         android:layout_width="match_parent"
         android:layout_height="138dp"
@@ -60,14 +67,16 @@
         android:layout_marginBottom="32dp">
 
         <TextView
-            android:id="@+id/tvPrice"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Giá Dịch vụ"
             android:layout_marginStart="9dp"
             android:textColor="#585454"
             android:textSize="15sp"/>
-        <TextView
+        <EditText
+            android:id="@+id/edPrice"
+            android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="100,000 VND"
@@ -95,8 +104,9 @@
             android:layout_marginStart="9dp"
             android:textColor="#585454"
             android:textSize="15sp"/>
-        <TextView
-            android:id="@+id/tvClassify"
+        <EditText
+            android:background="@android:color/transparent"
+            android:id="@+id/edClassify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="thợ chính"

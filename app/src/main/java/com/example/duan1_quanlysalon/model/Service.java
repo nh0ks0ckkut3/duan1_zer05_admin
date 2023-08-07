@@ -7,6 +7,7 @@ public class Service implements Serializable {
     private String name;
     private int price;
     private String classifyEmployee;
+    private String imageService;
 
     public Service(int id, String name, int price, String classifyEmployee) {
         this.idService = id;
@@ -19,6 +20,37 @@ public class Service implements Serializable {
         this.name = name;
         this.price = price;
         this.classifyEmployee = classifyEmployee;
+    }
+
+    public Service(int idService, String name, int price, String classifyEmployee, String imageService) {
+        this.idService = idService;
+        this.name = name;
+        this.price = price;
+        this.classifyEmployee = classifyEmployee;
+        this.imageService = imageService;
+    }
+
+    public Service(String name, int price, String classifyEmployee, String imageService) {
+        this.name = name;
+        this.price = price;
+        this.classifyEmployee = classifyEmployee;
+        this.imageService = imageService;
+    }
+
+    public int getIdService() {
+        return idService;
+    }
+
+    public void setIdService(int idService) {
+        this.idService = idService;
+    }
+
+    public String getImageService() {
+        return imageService;
+    }
+
+    public void setImageService(String imageService) {
+        this.imageService = imageService;
     }
 
     public int getId() {

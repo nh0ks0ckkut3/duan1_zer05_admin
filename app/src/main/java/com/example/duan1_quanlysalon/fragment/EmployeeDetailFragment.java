@@ -94,14 +94,6 @@ public class EmployeeDetailFragment extends Fragment {
         tvEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                employee.setName(edName.getText().toString());
-//                employee.setBirthDay(edBirthDay.getText().toString());
-//                employee.setGender(edGender.getText().toString());
-//                employee.setPhoneNumber(edPhoneNumber.getText().toString());
-//                employee.setAddress(edAddress.getText().toString());
-//                employee.setClassify(edClassify.getText().toString());
-//                employee.setDayStartWork(edDateStart.getText().toString());
-//                employee.setSalary(Integer.parseInt(edSalary.getText().toString()));
                 int salary = 0;
                 try {
                     salary = Integer.parseInt(edSalary.getText().toString());

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.database.ServiceDAO;
@@ -48,6 +49,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
         holder.tvName.setText(list.get(position).getName());
         holder.tvPrice.setText("Giá: "+list.get(position).getPrice()+",000 VNĐ");
         holder.tvID.setText("Mã dịch vụ: "+list.get(position).getId());
+        Glide.with(context).load(list.get(position).getImageService()).into(holder.ivAvatar);
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
