@@ -16,6 +16,10 @@ public class Bill implements Serializable {
     private String time;
     private String status;
     private int totalPrice;
+    
+    public Bill(){
+
+    }
 
     public Bill(int id, String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String bookTime, int sumService, int sumProduct, String time, String status, int totalPrice) {
         this.id = id;
@@ -30,11 +34,11 @@ public class Bill implements Serializable {
         this.totalPrice = totalPrice;
     }
 
-    public Bill(String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String bookTime, String status) {
+    public Bill(String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String time, String status) {
         this.phoneNumberCustomer = phoneNumberCustomer;
         this.nameCustomer = nameCustomer;
         this.userNameEmployee = userNameEmployee;
-        this.bookTime = bookTime;
+        this.time = time;
         this.status = status;
     }
     public Bill(int id, String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String bookTime, String status) {

@@ -3,10 +3,13 @@ package com.example.duan1_quanlysalon.adapter;
 import static com.example.duan1_quanlysalon.model.ServiceAPI.BASE_API_ZERO5;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,9 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
+import com.example.duan1_quanlysalon.fragment.Add_Booking_Fragment;
+import com.example.duan1_quanlysalon.fragment.Bill_Detail_Fragment;
 import com.example.duan1_quanlysalon.fragment.Booking_Fragment;
+import com.example.duan1_quanlysalon.fragment.Booking_Fragment_Employee;
 import com.example.duan1_quanlysalon.fragment.Nhan_Khach_Fragment;
 import com.example.duan1_quanlysalon.model.Bill;
+import com.example.duan1_quanlysalon.model.Employee;
+import com.example.duan1_quanlysalon.model.Product;
+import com.example.duan1_quanlysalon.model.Service;
 import com.example.duan1_quanlysalon.model.ServiceAPI;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -52,12 +61,19 @@ public class BillAdapterCheckin extends RecyclerView.Adapter<BillAdapterCheckin.
 
         holder.tvPhoneCustomer.setText(list.get(position).getPhoneNumberCustomer());
         holder.tvNameCustomer.setText(list.get(position).getNameCustomer());
-//        int countTime = 0;
-//        run(countTime);
         if(list.get(position).getStatus().equals("booking")){
             holder.tvCountTime.setVisibility(View.GONE);
         }else if(list.get(position).getStatus().equals("khach dang cho")){
             holder.tvNhanKhach.setText("Tư vấn");
+        }else if(list.get(position).getStatus().equals("khach dang phuc vu")){
+            holder.tvNhanKhach.setText("Hoàn tất");
+            holder.tvDetail.setVisibility(View.VISIBLE);
+            holder.tvDetail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((MainActivity)context).replayFragment(new Bill_Detail_Fragment(list.get(position), false));
+                }
+            });
         }
         holder.tvBookTime.setText(list.get(position).getBookTime());
         holder.tvNhanKhach.setOnClickListener(new View.OnClickListener() {
@@ -67,8 +83,14 @@ public class BillAdapterCheckin extends RecyclerView.Adapter<BillAdapterCheckin.
                     setStatusBooking(list.get(position).getId(), "khach dang cho");
                     ((MainActivity)context).replayFragment(new Booking_Fragment());
                 }else if(list.get(position).getStatus().equals("khach dang cho")){
-                    ((MainActivity)context).billTarget = list.get(position);
-                    ((MainActivity)context).replayFragment(new Nhan_Khach_Fragment());
+                    ((MainActivity)context).setBillUpdate(list.get(position));
+                    getListServiceSelected(list.get(position).getId());
+                }else if(list.get(position).getStatus().equals("khach cho phuc vu")){
+                    setStatusBooking(list.get(position).getId(),"khach dang phuc vu");
+                    ((MainActivity)context).replayFragment(new Booking_Fragment_Employee());
+                }else if(list.get(position).getStatus().equals("khach dang phuc vu")){
+                    setStatusBooking(list.get(position).getId(), "khach cho thanh toan");
+                    ((MainActivity)context).replayFragment(new Booking_Fragment_Employee());
                 }
 
             }
@@ -82,7 +104,7 @@ public class BillAdapterCheckin extends RecyclerView.Adapter<BillAdapterCheckin.
     }
 
     public class ViewHolDer extends RecyclerView.ViewHolder{
-        TextView tvNameCustomer, tvPhoneCustomer, tvCountTime,tvBookTime, tvNhanKhach;
+        TextView tvNameCustomer, tvPhoneCustomer, tvCountTime,tvBookTime, tvNhanKhach, tvDetail;
         public ViewHolDer(@NonNull View itemView) {
             super(itemView);
             tvNameCustomer = itemView.findViewById(R.id.tvNameCustomer);
@@ -90,18 +112,10 @@ public class BillAdapterCheckin extends RecyclerView.Adapter<BillAdapterCheckin.
             tvCountTime = itemView.findViewById(R.id.tvCountTime);
             tvBookTime = itemView.findViewById(R.id.tvBookTime);
             tvNhanKhach = itemView.findViewById(R.id.tvNhanKhach);
+            tvDetail = itemView.findViewById(R.id.tvDetail);
         }
     }
-    public void run(int countTime) {
-        try {
-            while (true) {
-                Thread.sleep(5000); // ??
-                countTime+=1;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
     private void setStatusBooking(int idBill, String status){
         ServiceAPI requestInterface = new Retrofit.Builder()
                 .baseUrl(BASE_API_ZERO5)
@@ -125,4 +139,39 @@ public class BillAdapterCheckin extends RecyclerView.Adapter<BillAdapterCheckin.
     private void handleError(Throwable error) {
         Toast.makeText(context, "lỗi load trang, thử lại sau!", Toast.LENGTH_SHORT).show();
     }
+    private void getListServiceSelected(int idBill){
+        ServiceAPI requestInterface = new Retrofit.Builder()
+                .baseUrl(BASE_API_ZERO5)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(ServiceAPI.class);
+
+        new CompositeDisposable().add(requestInterface.getListServiceChose(idBill)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleResponseListSV, this::handleError)
+        );
+    }
+    private void handleResponseListSV(ArrayList<Service> result) {
+        ((MainActivity)context).setListServiceSelectedUpdate(result);
+        getListProductSelected(((MainActivity)context).getBillUpdate().getId());
+    }
+    private void getListProductSelected(int idBill){
+        ServiceAPI requestInterface = new Retrofit.Builder()
+                .baseUrl(BASE_API_ZERO5)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(ServiceAPI.class);
+
+        new CompositeDisposable().add(requestInterface.getListProductChose(idBill)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleResponseListPRO, this::handleError)
+        );
+    }
+    private void handleResponseListPRO(ArrayList<Product> result) {
+        ((MainActivity)context).setListProductSelectedUpdate(result);
+        ((MainActivity)context).replayFragment(new Nhan_Khach_Fragment());
+    }
+
 }

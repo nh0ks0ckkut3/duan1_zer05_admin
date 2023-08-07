@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan1_quanlysalon.fragment.Booking_Fragment;
+import com.example.duan1_quanlysalon.fragment.Booking_Fragment_Employee;
 import com.example.duan1_quanlysalon.fragment.Checkout_Fragment;
 import com.example.duan1_quanlysalon.fragment.Menu_Fragment;
 import com.example.duan1_quanlysalon.fragment.TaiKhoanFragment;
@@ -25,6 +26,8 @@ import com.example.duan1_quanlysalon.fragment.ThuNhapFragment;
 import com.example.duan1_quanlysalon.fragment.NewsFragment;
 import com.example.duan1_quanlysalon.model.Bill;
 import com.example.duan1_quanlysalon.model.Employee;
+import com.example.duan1_quanlysalon.model.Product;
+import com.example.duan1_quanlysalon.model.Service;
 import com.example.duan1_quanlysalon.model.ServiceAPI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -47,19 +50,23 @@ public class MainActivity extends AppCompatActivity {
     public Employee currentUser;
     public Toolbar toolbar;
     public TextView titleToolbar;
-    public Bill billTarget;
-    private ArrayList<Integer> listIDServiceSelected,listIDProductSelected;
     public ImageView home;
-    public boolean isHaveReservationBefore = false;
 
+    private Bill billAdd;
+    private ArrayList<Service> listServiceSelectedUpdate;
+    private ArrayList<Product> listProductSelectedUpdate;
+
+    private Bill billUpdate;
+    private ArrayList<Service> listServiceSelectedAdd;
+    private ArrayList<Product> listProductSelectedAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listIDServiceSelected = new ArrayList<>();
-        listIDProductSelected = new ArrayList<>();
+        listServiceSelectedUpdate = new ArrayList<>();
+        listProductSelectedUpdate = new ArrayList<>();
         home = findViewById(R.id.home);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -78,10 +85,16 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView =findViewById(R.id.bottomNavigationView_admin);
         fragmentManager = getSupportFragmentManager();
-        fragment = new Booking_Fragment();
+
+
+        if(!currentUser.getClassify().equals("admin")){
+            fragment = new Booking_Fragment_Employee();
+        }else{
+            fragment = new Booking_Fragment();
+        }
         fragmentManager.beginTransaction()
-                            .replace(R.id.fl_admin, fragment)
-                            .commit();
+                .replace(R.id.fl_admin, fragment)
+                .commit();
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     default:
                     case R.id.menu_employe_booking:
+                        fragment = new Booking_Fragment_Employee();
+                        titleToolbar.setText("Lịch đặt");
+                        break;
                     case R.id.menu_admin_booking:
                         fragment = new Booking_Fragment();
                         titleToolbar.setText("Lịch đặt");
@@ -125,8 +141,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.menu_employe_thunhap:
                         fragment = new ThuNhapFragment();
+                        titleToolbar.setText("Thu Nhập");
+                        break;
                     case R.id.menu_employe_taikhoan:
                         fragment = new TaiKhoanFragment();
+                        titleToolbar.setText("Chức năng");
+                        break;
                 }
                 fragmentManager.beginTransaction()
                         .replace(R.id.fl_admin, fragment)
@@ -143,18 +163,55 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.fl_admin, f)
                 .commit();
     }
-    public void setListIDProductSelected(ArrayList<Integer> listIDProductSelected){
-        this.listIDProductSelected = listIDProductSelected;
+
+    public Bill getBillAdd() {
+        return billAdd;
     }
-    public void setListIDServiceSelected(ArrayList<Integer> listIDServiceSelected){
-        this.listIDServiceSelected = listIDServiceSelected;
+
+    public void setBillAdd(Bill billAdd) {
+        this.billAdd = billAdd;
     }
-    public ArrayList<Integer> getListIDProductSelected(){
-        return listIDProductSelected;
+
+    public ArrayList<Service> getListServiceSelectedUpdate() {
+        return listServiceSelectedUpdate;
     }
-    public ArrayList<Integer> getListIDServiceSelected(){
-        return listIDServiceSelected;
+
+    public void setListServiceSelectedUpdate(ArrayList<Service> listServiceSelectedUpdate) {
+        this.listServiceSelectedUpdate = listServiceSelectedUpdate;
     }
+
+    public ArrayList<Product> getListProductSelectedUpdate() {
+        return listProductSelectedUpdate;
+    }
+
+    public void setListProductSelectedUpdate(ArrayList<Product> listProductSelectedUpdate) {
+        this.listProductSelectedUpdate = listProductSelectedUpdate;
+    }
+
+    public Bill getBillUpdate() {
+        return billUpdate;
+    }
+
+    public void setBillUpdate(Bill billUpdate) {
+        this.billUpdate = billUpdate;
+    }
+
+    public ArrayList<Service> getListServiceSelectedAdd() {
+        return listServiceSelectedAdd;
+    }
+
+    public void setListServiceSelectedAdd(ArrayList<Service> listServiceSelectedAdd) {
+        this.listServiceSelectedAdd = listServiceSelectedAdd;
+    }
+
+    public ArrayList<Product> getListProductSelectedAdd() {
+        return listProductSelectedAdd;
+    }
+
+    public void setListProductSelectedAdd(ArrayList<Product> listProductSelectedAdd) {
+        this.listProductSelectedAdd = listProductSelectedAdd;
+    }
+
     public void dummyDataBooking(){
         addBookingAPI(new Bill("0337295209","Hòa","minhthi98","8:00","booking"));
         addBookingAPI(new Bill("0964.060.068","Thanh","minhthi98","9:00","booking"));

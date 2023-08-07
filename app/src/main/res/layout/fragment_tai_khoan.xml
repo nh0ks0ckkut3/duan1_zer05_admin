@@ -1,14 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.TaiKhoanFragment">
+    android:orientation="vertical"
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:paddingStart="14dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="17dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/avatar"
+            android:background="@drawable/radius_avatar"
+            android:scaleType="centerCrop"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đoàn Thanh Hòa"
+                    android:textSize="20sp"
+                    android:textColor="@color/darkText"
+                    android:textStyle="bold"
+                    android:layout_marginStart="6dp"
+                    android:id="@+id/tvName"/>
+                <TextView
+                    android:id="@+id/tvBirthDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ngày sinh:10/12/2011"
+                    android:textColor="@color/darkText"
+                    android:textSize="10sp"
+                    android:textAlignment="textEnd"
+                    android:layout_marginEnd="9dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvClassify"
+                    android:layout_marginStart="9dp"
+                    android:text="Manager: lv6"
+                    android:textSize="12sp"
+                    android:textColor="@color/darkText"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkText"
+                    android:text="Tài khoản: thitmps26637"
+                    android:id="@+id/tvUserName"
+                    android:layout_marginEnd="25dp"
+                    android:textSize="12sp"
+                    android:textAlignment="textEnd"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="40dp"
+        android:text="Chức Năng Chung"
+        android:paddingTop="7dp"
+        android:paddingStart="13dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:background="@color/green"/>
+    <TextView
+        android:id="@+id/tvHairModel"
+        android:layout_width="match_parent"
+        android:background="@drawable/border_bottom"
+        android:layout_height="40dp"
+        android:text="Mẫu tóc"
+        android:paddingTop="7dp"
+        android:paddingStart="13dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvRoles"
+        android:layout_width="match_parent"
+        android:background="@drawable/border_bottom"
+        android:layout_height="40dp"
+        android:text="Quy định chung"
+        android:paddingTop="7dp"
+        android:paddingStart="13dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvMinorFee"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Các chi phí phụ"
+        android:paddingTop="7dp"
+        android:paddingStart="13dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvOption"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Chức Năng Khác"
+        android:paddingTop="7dp"
+        android:paddingStart="13dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:background="@color/green"/>
+    <TextView
+        android:elevation="-2dp"
+        android:layout_marginTop="-2dp"
+        android:id="@+id/tvChangePassWord"
+        android:layout_width="match_parent"
+        android:background="@drawable/border_bottom"
+        android:layout_height="42dp"
+        android:text="Đổi mật khẩu"
+        android:paddingTop="7dp"
+        android:paddingStart="13dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvGetOTPVerify"
+        android:layout_width="match_parent"
+        android:background="@drawable/border_bottom"
+        android:layout_height="40dp"
+        android:text="Lấy OTP xác thực"
+        android:paddingTop="7dp"
+        android:paddingStart="13dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvLogOut"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Đăng Xuất"
+        android:paddingTop="7dp"
+        android:paddingStart="13dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
 
-</FrameLayout>
+
+</LinearLayout>

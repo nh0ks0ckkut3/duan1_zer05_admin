@@ -78,6 +78,25 @@ public class Bill_Detail_Fragment extends Fragment {
         btnPayment = view.findViewById(R.id.btnPayment);
         listService = new ArrayList<>();
         listProduct = new ArrayList<>();
+        if(!((MainActivity)getContext()).currentUser.getClassify().equals("admin")){
+            btnPrint.setVisibility(View.GONE);
+            btnPayment.setText("OK");
+            btnPayment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((MainActivity)getContext()).replayFragment(new Booking_Fragment_Employee());
+                }
+            });
+        }else{
+            btnPrint.setVisibility(View.VISIBLE);
+            btnPayment.setText("Thanh Toán");
+            btnPayment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((MainActivity)getContext()).replayFragment(new Confirm_Payment_Fragment(billCheckout, toTalBill));
+                }
+            });
+        }
 
 
         getNameEmployee(billCheckout.getUserNameEmployee());
@@ -164,12 +183,7 @@ public class Bill_Detail_Fragment extends Fragment {
             rcViewProduct.setLayoutManager(linearLayoutManagerProduct);
             rcViewProduct.setAdapter(productAdapter);
             tvTotalPrice.setText(toTalBill+ ",000 VNĐ");
-            btnPayment.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ((MainActivity)getContext()).replayFragment(new Confirm_Payment_Fragment(billCheckout, toTalBill));
-                }
-            });
+
         }
 
     }

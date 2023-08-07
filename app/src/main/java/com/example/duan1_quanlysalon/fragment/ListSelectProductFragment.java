@@ -33,11 +33,7 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ListSelectServiceFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ListSelectProductFragment extends Fragment {
 
     private ArrayList<Product> listAllProduct;
@@ -46,17 +42,12 @@ public class ListSelectProductFragment extends Fragment {
     private GridLayoutManager gridLayoutManager;
     private TextView btnOk;
     private ImageView ivBack;
+    private boolean addOrUpdate; //true: add, false: update
 
-    public ListSelectProductFragment() {
-        // Required empty public constructor
+    public ListSelectProductFragment(boolean addOrUpdate) {
+        this.addOrUpdate = addOrUpdate;
     }
 
-    public static ListSelectServiceFragment newInstance(String param1, String param2) {
-        ListSelectServiceFragment fragment = new ListSelectServiceFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -116,7 +107,7 @@ public class ListSelectProductFragment extends Fragment {
     private void handleResponseGetListProduct(ArrayList<Product> result) {
         if(result.size()>0){
             listAllProduct = result;
-            ListSelectProductAdapter adapter = new ListSelectProductAdapter(listAllProduct, getContext());
+            ListSelectProductAdapter adapter = new ListSelectProductAdapter(listAllProduct, getContext(), addOrUpdate);
             rcViewListProduct.setAdapter(adapter);
         }else{
             Toast.makeText(getContext(), "errol", Toast.LENGTH_SHORT).show();
@@ -128,9 +119,7 @@ public class ListSelectProductFragment extends Fragment {
         Toast.makeText(getContext(), "lỗi, thử lại sau!", Toast.LENGTH_SHORT).show();
     }
     private void backAndSave(){
-        if(((MainActivity)getContext()).isHaveReservationBefore){
-            ((MainActivity)getContext()).replayFragment(new Nhan_Khach_Fragment());
-        }else
-            ((MainActivity)getContext()).replayFragment(new Add_Booking_Fragment());
+        if (addOrUpdate) ((MainActivity)getContext()).replayFragment(new Add_Booking_Fragment());
+        else ((MainActivity)getContext()).replayFragment(new Nhan_Khach_Fragment());
     }
 }

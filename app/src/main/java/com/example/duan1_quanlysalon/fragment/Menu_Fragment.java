@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.DSdichvuActivity;
 import com.example.duan1_quanlysalon.DSnhanvienActivity;
 import com.example.duan1_quanlysalon.DSsanphamActivity;
@@ -51,6 +53,7 @@ public class Menu_Fragment extends Fragment {
             tvRoles, tvMinorFee, tvOption, tvChangePassWord,
             tvGetOTPVerify, tvLogOut;
     Employee currentUser;
+    ImageView ivAvatar;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,6 +70,7 @@ public class Menu_Fragment extends Fragment {
         tvClassify.setText(currentUser.getClassify());
         tvBirthDay.setText("Tuổi: " + currentUser.getAge());
         tvUserName.setText("Tài khoản: "+currentUser.getUserName());
+        Glide.with(this).load(currentUser.getImg()).into(ivAvatar);
 
         ((MainActivity)getContext()).toolbar.setVisibility(View.GONE);
 
@@ -82,12 +86,7 @@ public class Menu_Fragment extends Fragment {
                 ((MainActivity)getContext()).replayFragment(new List_Service_Fragment());
             }
         });
-        tvListProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity)getContext()).replayFragment(new List_Product_Fragment());
-            }
-        });
+
         tvListProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,6 +149,7 @@ public class Menu_Fragment extends Fragment {
         tvChangePassWord = view.findViewById(R.id.tvChangePassWord);
         tvLogOut = view.findViewById(R.id.tvLogOut);
         currentUser = ((MainActivity)getContext()).currentUser;
+        ivAvatar = view.findViewById(R.id.ivAvatar);
     }
     private void showDialogChangePassword(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -226,6 +226,8 @@ public class Menu_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.dialog_confirm_delete,null);
         TextView btnCancel = view.findViewById(R.id.btnCancel);
         TextView btnOke = view.findViewById(R.id.btnOke);
+        TextView title = view.findViewById(R.id.tvContent);
+        title.setText("Bạn muốn đăng xuất?");
 
         builder.setView(view);
 

@@ -27,12 +27,15 @@ import java.util.ArrayList;
 public class ListSelectServiceAdapter extends RecyclerView.Adapter<ListSelectServiceAdapter.ViewHolder> {
     ArrayList<Service> list;
     Context context;
-    ArrayList<Integer> listIDSevice;
+    ArrayList<Service> listServiceSelectedTarget;
+    boolean addOrUpdate;
 
-    public ListSelectServiceAdapter(ArrayList<Service> list, Context context){
+    public ListSelectServiceAdapter(ArrayList<Service> list, Context context, boolean addOrUpdate){
         this.list = list;
         this.context = context;
-        this.listIDSevice = ((MainActivity)context).getListIDServiceSelected();
+        this.addOrUpdate = addOrUpdate;
+        if(addOrUpdate) this.listServiceSelectedTarget = ((MainActivity)context).getListServiceSelectedAdd();
+        else this.listServiceSelectedTarget = ((MainActivity)context).getListServiceSelectedUpdate();
     }
 
 
@@ -49,8 +52,8 @@ public class ListSelectServiceAdapter extends RecyclerView.Adapter<ListSelectSer
 
         holder.tvNameService.setText(list.get(position).getName());
         holder.tvPrice.setText(String.valueOf(list.get(position).getPrice()));
-        for(int i = 0; i < listIDSevice.size(); i++){
-            if((int)listIDSevice.get(i) == list.get(position).getId()){
+        for(Service service : listServiceSelectedTarget){
+            if(service.getIdService() == list.get(position).getIdService()){
                 holder.btnCancel.setVisibility(View.VISIBLE);
                 holder.btnOk.setVisibility(View.GONE);
             }
@@ -58,8 +61,9 @@ public class ListSelectServiceAdapter extends RecyclerView.Adapter<ListSelectSer
         holder.btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listIDSevice.add(list.get(position).getId());
-                ((MainActivity)context).setListIDServiceSelected(listIDSevice);
+                listServiceSelectedTarget.add(list.get(position));
+                if (addOrUpdate) ((MainActivity)context).setListServiceSelectedAdd(listServiceSelectedTarget);
+                else ((MainActivity)context).setListServiceSelectedUpdate(listServiceSelectedTarget);
                 holder.btnCancel.setVisibility(View.VISIBLE);
                 holder.btnOk.setVisibility(View.GONE);
             }
@@ -67,14 +71,9 @@ public class ListSelectServiceAdapter extends RecyclerView.Adapter<ListSelectSer
         holder.btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(Integer x : listIDSevice){
-                    if((int)x == list.get(position).getId()){
-                        listIDSevice.remove(x);
-                        ((MainActivity)context).setListIDServiceSelected(listIDSevice);
-                        break;
-                    }
-                }
-
+                listServiceSelectedTarget.remove(list.get(position));
+                if (addOrUpdate) ((MainActivity)context).setListServiceSelectedAdd(listServiceSelectedTarget);
+                else ((MainActivity)context).setListServiceSelectedUpdate(listServiceSelectedTarget);
                 holder.btnCancel.setVisibility(View.GONE);
                 holder.btnOk.setVisibility(View.VISIBLE);
             }

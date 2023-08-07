@@ -46,7 +46,7 @@ public class Checkout_Fragment extends Fragment {
 
         mapping(view);
 
-        getListBookingAPI("khach dang cho");
+        getListBookingAPI("khach cho thanh toan");
         return view;
     }
     private void getListBookingAPI(String status) {

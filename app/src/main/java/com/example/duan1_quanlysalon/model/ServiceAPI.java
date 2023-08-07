@@ -81,6 +81,12 @@ public interface ServiceAPI {
     @GET("GetBookingAPI.php"+"/{phoneNumberCustomer}")
     Observable<Integer> getBookingAPI(@Query("phoneNumberCustomer") String phoneNumberCustomer);
 
+    @GET("GetList2.php")
+    Observable<ArrayList<Bill>> getListBill2(@Query("status") String status, @Query("userNameEmployee") String userNameEmployee);
+
+    @GET("LayIDBillVuaDuocThem.php")
+    Observable<Integer> layIDBillVuaDuocThem(@Query("phoneNumberCustomer") String phoneNumberCustomer);
+
     //detail
 
     @POST("AddServiceDetail.php")
@@ -97,6 +103,7 @@ public interface ServiceAPI {
 
     @GET("GetDetailProduct.php")
     Observable<ArrayList<ProductDetail>> getDetailProduct(@Query("idBill") int idBill);
+
 
 
 
@@ -117,7 +124,7 @@ public interface ServiceAPI {
     @POST("AddEmployee.php")
     Observable<Boolean> addEmployee(@Body Employee employee);
 
-    @POST("ChangePassWord.php")
+    @POST("changePassWord.php")
     Observable<Boolean> changePassWord(@Body Employee employee);
 
     @POST("GetSalary.php" + "/{userName}")
@@ -130,5 +137,11 @@ public interface ServiceAPI {
 
     @GET("CheckExistBooking.php" + "/{phoneNumber}")
     Observable<Bill> checkExistBooking(@Query("phoneNumber") String phoneNumber);
+
+    @GET("CheckExistCustomer.php")
+    Observable<Boolean> checkExistCustomer(@Query("phoneNumberCustomer") String phoneNumberCustomer);
+
+    @GET("CreateNewCustomer.php")
+    Observable<Boolean> createNewCustomer(@Query("phoneNumberCustomer") String phoneNumberCustomer, @Query("name") String name);
 
 }

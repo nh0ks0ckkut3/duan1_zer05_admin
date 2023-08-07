@@ -1,9 +1,11 @@
 package com.example.duan1_quanlysalon.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Customer implements Serializable {
-    private String phoneNumber;
+    private String phoneNumberCustomer;
     private String passWord;
     private String name;
     private int age;
@@ -12,7 +14,7 @@ public class Customer implements Serializable {
     private String address;
 
     public Customer(String phoneNumber, String passWord, String name, int age, String gender, int totalSpend, String address) {
-        this.phoneNumber = phoneNumber;
+        this.phoneNumberCustomer = phoneNumber;
         this.passWord = passWord;
         this.name = name;
         this.age = age;
@@ -22,17 +24,17 @@ public class Customer implements Serializable {
     }
 
     public Customer(String phoneNumber, String passWord, String name) {
-        this.phoneNumber = phoneNumber;
+        this.phoneNumberCustomer = phoneNumber;
         this.passWord = passWord;
         this.name = name;
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phoneNumberCustomer;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.phoneNumberCustomer = phoneNumber;
     }
 
     public String getPassWord() {

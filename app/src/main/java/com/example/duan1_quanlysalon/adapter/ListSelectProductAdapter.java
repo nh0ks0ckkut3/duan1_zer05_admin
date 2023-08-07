@@ -28,12 +28,18 @@ import java.util.ArrayList;
 public class ListSelectProductAdapter extends RecyclerView.Adapter<ListSelectProductAdapter.ViewHolder> {
     ArrayList<Product> list;
     Context context;
-    ArrayList<Integer> listIDProduct;
+    ArrayList<Product> listProductSelectedTarget;
+    boolean addOrUpdate;
 
-    public ListSelectProductAdapter(ArrayList<Product> list, Context context){
+    public ListSelectProductAdapter(ArrayList<Product> list, Context context,boolean addOrUpdate){
         this.list = list;
         this.context = context;
-        this.listIDProduct = ((MainActivity)context).getListIDProductSelected();
+        this.addOrUpdate = addOrUpdate;
+        if(addOrUpdate){
+            this.listProductSelectedTarget = ((MainActivity)context).getListProductSelectedAdd();
+        }else{
+            this.listProductSelectedTarget = ((MainActivity)context).getListProductSelectedUpdate();
+        }
     }
 
 
@@ -50,8 +56,8 @@ public class ListSelectProductAdapter extends RecyclerView.Adapter<ListSelectPro
 
         holder.tvNameService.setText(list.get(position).getName());
         holder.tvPrice.setText(String.valueOf(list.get(position).getPrice()));
-        for(int i = 0; i < listIDProduct.size(); i++){
-            if((int)listIDProduct.get(i) == list.get(position).getId()){
+        for(Product product : listProductSelectedTarget){
+            if(product.getId() == list.get(position).getId()){
                 holder.btnCancel.setVisibility(View.VISIBLE);
                 holder.btnOk.setVisibility(View.GONE);
             }
@@ -59,8 +65,9 @@ public class ListSelectProductAdapter extends RecyclerView.Adapter<ListSelectPro
         holder.btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listIDProduct.add(list.get(position).getId());
-                ((MainActivity)context).setListIDProductSelected(listIDProduct);
+                listProductSelectedTarget.add(list.get(position));
+                if(addOrUpdate) ((MainActivity)context).setListProductSelectedAdd(listProductSelectedTarget);
+                else ((MainActivity)context).setListProductSelectedUpdate(listProductSelectedTarget);
                 holder.btnCancel.setVisibility(View.VISIBLE);
                 holder.btnOk.setVisibility(View.GONE);
             }
@@ -68,14 +75,9 @@ public class ListSelectProductAdapter extends RecyclerView.Adapter<ListSelectPro
         holder.btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(Integer x : listIDProduct){
-                    if((int)x == list.get(position).getId()){
-                        listIDProduct.remove(x);
-                        ((MainActivity)context).setListIDProductSelected(listIDProduct);
-                        break;
-                    }
-                }
-
+                listProductSelectedTarget.remove(list.get(position));
+                if(addOrUpdate) ((MainActivity)context).setListProductSelectedAdd(listProductSelectedTarget);
+                else ((MainActivity)context).setListProductSelectedUpdate(listProductSelectedTarget);
                 holder.btnCancel.setVisibility(View.GONE);
                 holder.btnOk.setVisibility(View.VISIBLE);
             }
