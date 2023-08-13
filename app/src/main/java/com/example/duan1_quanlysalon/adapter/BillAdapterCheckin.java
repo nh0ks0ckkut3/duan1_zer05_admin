@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,14 +40,16 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class BillAdapterCheckin extends RecyclerView.Adapter<BillAdapterCheckin.ViewHolDer>{
+public class BillAdapterCheckin extends RecyclerView.Adapter<BillAdapterCheckin.ViewHolDer> implements Filterable {
     private Context context;
     private ArrayList<Bill> list;
 
+    private ArrayList<Bill> listAtPhone;
 
     public BillAdapterCheckin(Context context, ArrayList<Bill> list) {
         this.context = context;
         this.list = list;
+        this.listAtPhone=list;
     }
 
     @NonNull
@@ -101,6 +105,38 @@ public class BillAdapterCheckin extends RecyclerView.Adapter<BillAdapterCheckin.
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    //tìm kiếm
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String lh1 = charSequence.toString();
+                if (lh1.isEmpty()) {
+                    list = listAtPhone;
+                } else {
+                    ArrayList<Bill> listbill = new ArrayList<>();
+                    for (Bill bill : listAtPhone) {
+                        if (bill.getPhoneNumberCustomer().toLowerCase().contains(lh1.toLowerCase())) {
+                            listbill.add(bill);
+                        }
+                    }
+                    list = listbill;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = list;
+
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                list = (ArrayList<Bill>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class ViewHolDer extends RecyclerView.ViewHolder{

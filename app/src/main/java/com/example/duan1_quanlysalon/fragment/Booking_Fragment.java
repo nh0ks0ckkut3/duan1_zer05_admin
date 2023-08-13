@@ -12,23 +12,29 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.duan1_quanlysalon.LoginActivity;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.adapter.BillAdapterCheckin;
+import com.example.duan1_quanlysalon.adapter.ViewPageAdapter;
 import com.example.duan1_quanlysalon.database.ProductDAO;
 import com.example.duan1_quanlysalon.model.Bill;
 import com.example.duan1_quanlysalon.model.Employee;
 import com.example.duan1_quanlysalon.model.ServiceAPI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.ArrayList;
@@ -41,12 +47,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class Booking_Fragment extends Fragment {
-    RecyclerView rcvKhachDangCho,rcvKhachChuaToi,rcvKhachDangPhucVu;
-    ArrayList<Bill> listKhachDangCho, listKhachChuaToi, listKhachDangPhucVu;
-    FloatingActionButton floatAdd;
-    LinearLayoutManager linearLayoutManagerKhachChuaToi,linearLayoutManagerDangCho,linearLayoutManagerKhachDangPhucVu;
-    BillAdapterCheckin adapterKhachDangCho, adapterKhachChuaToi, adapterKhachDangPhucVu;
+    TabLayout tabLayout;
+    ViewPager2 viewPager2;
+    RecyclerView rcvKhachDangCho;
+    ArrayList<Bill> listKhachDangCho;
+    Button floatAdd;
+    LinearLayoutManager linearLayoutManagerDangCho;
+    BillAdapterCheckin adapterKhachDangCho;
 
+    SearchView searchView;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +64,42 @@ public class Booking_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_booking_, container, false);
-        
+
+        //tablayout set here
+        tabLayout = view.findViewById(R.id.tab_booking);
+        viewPager2 = view.findViewById(R.id.container_booking);
+        ViewPageAdapter viewPageAdapter = new ViewPageAdapter(this);
+        viewPager2.setAdapter(viewPageAdapter);
+
+        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
+            switch (position){
+                case 0:
+                    tab.setText("Khách chưa tới");
+                    break;
+                case 1:
+                    tab.setText("Khách đang chờ");
+                    break;
+                case 2:
+                    tab.setText("Khách đang phục vụ");
+                    break;
+            }
+        }).attach();
+        //kết thúc tablayout
+
         mapping(view);
 
         loadData();
+        //tắt tìm kiếm
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                rcvKhachDangCho.setVisibility(View.GONE);
+                return false;
+            }
+        });
 
+
+        //thêm mới
         floatAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,21 +136,25 @@ public class Booking_Fragment extends Fragment {
 
     private void handleResponseGetListBill(ArrayList<Bill> listBill) {
         if(listBill.size()>0){
-            if (listBill.get(0).getStatus().equals("booking")){
-                    listKhachChuaToi = listBill;
-                    adapterKhachChuaToi = new BillAdapterCheckin(getContext(), listKhachChuaToi);
-                    rcvKhachChuaToi.setAdapter(adapterKhachChuaToi);
-            }
-            else if(listBill.get(0).getStatus().equals("khach dang cho")) {
+            listKhachDangCho = listBill;
+            adapterKhachDangCho = new BillAdapterCheckin(getContext(), listKhachDangCho);
+            rcvKhachDangCho.setAdapter(adapterKhachDangCho);
+            //tìm kiếm
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    adapterKhachDangCho.getFilter().filter(s);
+                    return false;
+                }
 
-                listKhachDangCho = listBill;
-                adapterKhachDangCho = new BillAdapterCheckin(getContext(), listKhachDangCho);
-                rcvKhachDangCho.setAdapter(adapterKhachDangCho);
-            }else if(listBill.get(0).getStatus().equals("khach dang phuc vu")){
-                    listKhachDangPhucVu = listBill;
-                    adapterKhachDangPhucVu = new BillAdapterCheckin(getContext(), listKhachDangPhucVu);
-                    rcvKhachDangPhucVu.setAdapter(adapterKhachDangPhucVu);
-            }
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    rcvKhachDangCho.setVisibility(View.VISIBLE);
+                    adapterKhachDangCho.getFilter().filter(s);
+                    return false;
+                }
+
+            });
         }
     }
 
@@ -119,20 +163,12 @@ public class Booking_Fragment extends Fragment {
     }
     
     private void mapping(View view){
-        linearLayoutManagerKhachChuaToi = new LinearLayoutManager(getContext());
         linearLayoutManagerDangCho = new LinearLayoutManager(getContext());
-        linearLayoutManagerKhachDangPhucVu = new LinearLayoutManager(getContext());
-        listKhachChuaToi = new ArrayList<>();
         listKhachDangCho = new ArrayList<>();
-        listKhachDangPhucVu = new ArrayList<>();
-        rcvKhachDangCho = view.findViewById(R.id.rcvKhachDangCho);
-        rcvKhachChuaToi = view.findViewById(R.id.rcvKhachChuaToi);
-        rcvKhachDangCho = view.findViewById(R.id.rcvKhachDangCho);
-        rcvKhachDangPhucVu = view.findViewById(R.id.rcvKhachDangPhucVu);
+        rcvKhachDangCho = view.findViewById(R.id.list_search_bookingadmin);
         rcvKhachDangCho.setLayoutManager(linearLayoutManagerDangCho);
-        rcvKhachChuaToi.setLayoutManager(linearLayoutManagerKhachChuaToi);
-        rcvKhachDangPhucVu.setLayoutManager(linearLayoutManagerKhachDangPhucVu);
         floatAdd = view.findViewById(R.id.floatAdd);
 
+        searchView = view.findViewById(R.id.srch_booking);
     }
 }
