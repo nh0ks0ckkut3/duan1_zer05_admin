@@ -16,9 +16,45 @@ public class Bill implements Serializable {
     private String time;
     private String status;
     private int totalPrice;
-    
+    private String date;
+
     public Bill(){
 
+    }
+
+    public Bill(int id, String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String bookTime, int sumService, int sumProduct, String time, String status, int totalPrice, String date) {
+        this.id = id;
+        this.phoneNumberCustomer = phoneNumberCustomer;
+        this.nameCustomer = nameCustomer;
+        this.userNameEmployee = userNameEmployee;
+        this.bookTime = bookTime;
+        this.sumService = sumService;
+        this.sumProduct = sumProduct;
+        this.time = time;
+        this.status = status;
+        this.totalPrice = totalPrice;
+        this.date = date;
+    }
+
+    public Bill(String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String bookTime, int sumService, int sumProduct, String time, String status, int totalPrice, String date) {
+        this.phoneNumberCustomer = phoneNumberCustomer;
+        this.nameCustomer = nameCustomer;
+        this.userNameEmployee = userNameEmployee;
+        this.bookTime = bookTime;
+        this.sumService = sumService;
+        this.sumProduct = sumProduct;
+        this.time = time;
+        this.status = status;
+        this.totalPrice = totalPrice;
+        this.date = date;
+    }
+    public Bill(String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String time, String status, String date) {
+        this.phoneNumberCustomer = phoneNumberCustomer;
+        this.nameCustomer = nameCustomer;
+        this.userNameEmployee = userNameEmployee;
+        this.time = time;
+        this.status = status;
+        this.date = date;
     }
 
     public Bill(int id, String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String bookTime, int sumService, int sumProduct, String time, String status, int totalPrice) {
@@ -41,14 +77,14 @@ public class Bill implements Serializable {
         this.time = time;
         this.status = status;
     }
-    public Bill(int id, String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String bookTime, String status) {
-        this.id = id;
-        this.phoneNumberCustomer = phoneNumberCustomer;
-        this.nameCustomer = nameCustomer;
-        this.userNameEmployee = userNameEmployee;
-        this.bookTime = bookTime;
-        this.status = status;
-    }
+    //    public Bill(int id, String phoneNumberCustomer, String nameCustomer, String userNameEmployee, String bookTime, String status) {
+//        this.id = id;
+//        this.phoneNumberCustomer = phoneNumberCustomer;
+//        this.nameCustomer = nameCustomer;
+//        this.userNameEmployee = userNameEmployee;
+//        this.bookTime = bookTime;
+//        this.status = status;
+//    }
     public Bill(int id, String phoneNumberCustomer, String userNameEmployee, String time, String status, int totalPrice, String nameCustomer, int sumService, int sumProduct){
         this.id = id;
         this.phoneNumberCustomer = phoneNumberCustomer;
@@ -141,5 +177,13 @@ public class Bill implements Serializable {
 
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

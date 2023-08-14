@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.model.Product;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class listProductCheckoutAdapter   extends RecyclerView.Adapter<listProductCheckoutAdapter.ViewHolDer> {
@@ -36,8 +37,9 @@ public class listProductCheckoutAdapter   extends RecyclerView.Adapter<listProdu
     @Override
     public void onBindViewHolder(@NonNull listProductCheckoutAdapter.ViewHolDer holder, @SuppressLint("RecyclerView") int position) {
         holder.tvName.setText(list.get(position).getName());
-        holder.tvPrice.setText(list.get(position).getPrice()+".000");
-        holder.tvTotalPrice.setText(list.get(position).getPrice()+".000");
+        NumberFormat currentLocale = NumberFormat.getInstance();
+        holder.tvPrice.setText(currentLocale.format(list.get(position).getPrice()));
+        holder.tvTotalPrice.setText(currentLocale.format(list.get(position).getPrice()));
     }
 
     @Override

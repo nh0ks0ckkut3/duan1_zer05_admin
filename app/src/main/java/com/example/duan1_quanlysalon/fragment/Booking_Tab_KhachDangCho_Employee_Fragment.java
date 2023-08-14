@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.adapter.BillAdapterCheckin;
@@ -35,6 +38,8 @@ public class Booking_Tab_KhachDangCho_Employee_Fragment extends Fragment {
     ArrayList<Bill> listKhachDangCho;
     LinearLayoutManager linearLayoutManagerDangCho;
     BillAdapterCheckin adapterKhachDangCho;
+    LinearLayout lnProgressBar;
+    ImageView progressBar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,6 +74,8 @@ public class Booking_Tab_KhachDangCho_Employee_Fragment extends Fragment {
                 rcvKhachDangCho.setAdapter(adapterKhachDangCho);
             }
         }
+        lnProgressBar.setVisibility(View.GONE);
+        rcvKhachDangCho.setVisibility(View.VISIBLE);
     }
 
     private void handleError(Throwable error) {
@@ -78,7 +85,9 @@ public class Booking_Tab_KhachDangCho_Employee_Fragment extends Fragment {
         linearLayoutManagerDangCho = new LinearLayoutManager(getContext());
         listKhachDangCho = new ArrayList<>();
         rcvKhachDangCho = view.findViewById(R.id.rcvKhachDangChoEmployee);
-        rcvKhachDangCho.setLayoutManager(linearLayoutManagerDangCho);;
-
+        rcvKhachDangCho.setLayoutManager(linearLayoutManagerDangCho);
+        progressBar = view.findViewById(R.id.progressBar);
+        lnProgressBar = view.findViewById(R.id.lnProgressBar);
+        Glide.with(getContext()).load(getString(R.string.linkProgressBar2)).into(progressBar);
     }
 }

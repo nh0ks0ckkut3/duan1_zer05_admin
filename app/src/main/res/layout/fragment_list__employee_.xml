@@ -26,10 +26,25 @@
                 android:layout_marginTop="12dp"
                 android:text="admin"
                 android:background="@color/green"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/lnProgressBar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/progressBar1"/>
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcViewListAdmin"
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -43,11 +58,26 @@
                 android:layout_marginTop="12dp"
                 android:text="Stylist"
                 android:background="@color/green"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/lnProgressBar2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/progressBar2"/>
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcViewListStylist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="8dp"/>
             <TextView
                 android:layout_width="match_parent"
@@ -60,11 +90,26 @@
                 android:layout_marginTop="12dp"
                 android:text="Skinner"
                 android:background="@color/green"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/lnProgressBar3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/progressBar3"/>
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcViewListSkinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="8dp"/>
 
         </LinearLayout>

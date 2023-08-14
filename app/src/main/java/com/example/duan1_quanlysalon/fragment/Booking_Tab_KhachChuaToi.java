@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.adapter.BillAdapterCheckin;
@@ -35,6 +38,8 @@ public class Booking_Tab_KhachChuaToi extends Fragment {
     ArrayList<Bill>  listKhachChuaToi;
     LinearLayoutManager linearLayoutManagerKhachChuaToi;
     BillAdapterCheckin adapterKhachChuaToi;
+    ImageView progressBar;
+    LinearLayout lnProgressBar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,7 +61,7 @@ public class Booking_Tab_KhachChuaToi extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(ServiceAPI.class);
 
-        new CompositeDisposable().add(requestInterface.getListBill(status)
+        new CompositeDisposable().add(requestInterface.getListBill(status, ((MainActivity)getContext()).dateCurrent)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleResponseGetListBill, this::handleError)
@@ -69,8 +74,12 @@ public class Booking_Tab_KhachChuaToi extends Fragment {
                 listKhachChuaToi = listBill;
                 adapterKhachChuaToi = new BillAdapterCheckin(getContext(), listKhachChuaToi);
                 rcvKhachChuaToi.setAdapter(adapterKhachChuaToi);
+
             }
+
         }
+        lnProgressBar.setVisibility(View.GONE);
+        rcvKhachChuaToi.setVisibility(View.VISIBLE);
     }
 
     private void handleError(Throwable error) {
@@ -82,5 +91,8 @@ public class Booking_Tab_KhachChuaToi extends Fragment {
         listKhachChuaToi = new ArrayList<>();
         rcvKhachChuaToi = view.findViewById(R.id.rcvKhachChuaToi);
         rcvKhachChuaToi.setLayoutManager(linearLayoutManagerKhachChuaToi);
+        progressBar = view.findViewById(R.id.progressBar);
+        lnProgressBar = view.findViewById(R.id.lnProgressBar);
+        Glide.with(getContext()).load(getString(R.string.linkProgressBar2)).into(progressBar);
     }
 }

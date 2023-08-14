@@ -1,217 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.Bill_Detail_Fragment"
+    android:orientation="vertical"
     tools:ignore="MissingConstraints" >
-
-    <TextView
-        android:id="@+id/tvID"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:text="TMT21323"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvTime"
-        android:layout_width="135dp"
-        android:layout_height="18dp"
-        android:text="21/7/2023 9:51 PM"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvID"
-        app:layout_constraintTop_toTopOf="@+id/tvID" />
-
-    <TextView
-        android:id="@+id/tvNameCustomer"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Tên khách: Nguyễn Đình Tiến Phi"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvID"
-        app:layout_constraintTop_toBottomOf="@+id/tvID" />
-
-    <TextView
-        android:id="@+id/tvPhoneCustomer"
-        android:layout_width="118dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="12dp"
-        android:text="SĐT: 0889606323"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvNameCustomer"
-        app:layout_constraintTop_toBottomOf="@+id/tvID" />
-
-    <TextView
-        android:id="@+id/tvNameEmployee"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Thợ chính: Nguyễn Đình Tiến Phi de"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvNameCustomer"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameCustomer" />
-
-    <View
-        android:id="@+id/view6"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameEmployee" />
-
-
-    <TextView
-        android:id="@+id/textView34"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:text="Số lượng"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view6"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:text="Giá"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView34"
-        app:layout_constraintStart_toEndOf="@+id/textView34"
-        app:layout_constraintTop_toTopOf="@+id/textView34"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:text="Thành tiền"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView35"
-        app:layout_constraintStart_toEndOf="@+id/textView35"
-        app:layout_constraintTop_toTopOf="@+id/textView35"
-        app:layout_constraintVertical_bias="0.0" />
-
     <LinearLayout
-        android:id="@+id/rcView"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_height="410dp"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView35">
+        android:gravity="center"
+        android:id="@+id/lnProgressBar">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="205dp"
-            android:id="@+id/rcViewService"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="205dp"
-            android:id="@+id/rcViewProduct"/>
-
-
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/progressBar"/>
     </LinearLayout>
-
-    <View
-        android:id="@+id/view2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view6"
-        app:layout_constraintVertical_bias="0.739" />
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/contraint">
 
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Phải thanh toán"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        <TextView
+            android:id="@+id/tvID"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:text="TMT21323"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.027"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvTotalPrice"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="1,000,000 VND"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.862"
-        app:layout_constraintStart_toEndOf="@+id/textView27"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="135dp"
+            android:layout_height="18dp"
+            android:text="21/7/2023 9:51 PM"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tvID"
+            app:layout_constraintTop_toTopOf="@+id/tvID" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnPrint"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:background="@drawable/btn_detail_bill_printe"
-        android:drawableRight="@drawable/print"
-        android:paddingRight="40dp"
-        android:text="In"
-        android:textAllCaps="false"
-        android:textColor="#4A4949"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView27"
-        app:layout_constraintVertical_bias="0.447" />
+        <TextView
+            android:id="@+id/tvNameCustomer"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Tên khách: Nguyễn Đình Tiến Phi"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvID"
+            app:layout_constraintTop_toBottomOf="@+id/tvID" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnPayment"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:background="@drawable/btn_thanhtoan_itembill"
-        android:text="Thanh toán"
-        android:textAllCaps="false"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btnPrint"
-        app:layout_constraintStart_toEndOf="@+id/btnPrint"
-        app:layout_constraintTop_toTopOf="@+id/btnPrint"
-        app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:id="@+id/tvPhoneCustomer"
+            android:layout_width="118dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="12dp"
+            android:text="SĐT: 0889606323"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tvNameCustomer"
+            app:layout_constraintTop_toBottomOf="@+id/tvID" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvNameEmployee"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Thợ chính: Nguyễn Đình Tiến Phi de"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvNameCustomer"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameCustomer" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameEmployee" />
+
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:text="Số lượng"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view6"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:text="Giá"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView34"
+            app:layout_constraintStart_toEndOf="@+id/textView34"
+            app:layout_constraintTop_toTopOf="@+id/textView34"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:text="Thành tiền"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView35"
+            app:layout_constraintStart_toEndOf="@+id/textView35"
+            app:layout_constraintTop_toTopOf="@+id/textView35"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <LinearLayout
+            android:id="@+id/rcView"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="410dp"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView35">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="205dp"
+                android:id="@+id/rcViewService"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="205dp"
+                android:id="@+id/rcViewProduct"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view6"
+            app:layout_constraintVertical_bias="0.739" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Phải thanh toán"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="1,000,000 VND"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.862"
+            app:layout_constraintStart_toEndOf="@+id/textView27"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPrint"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_detail_bill_printe"
+            android:drawableRight="@drawable/print"
+            android:paddingRight="40dp"
+            android:text="In"
+            android:textAllCaps="false"
+            android:textColor="#4A4949"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.061"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView27"
+            app:layout_constraintVertical_bias="0.447" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPayment"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/btn_thanhtoan_itembill"
+            android:text="Thanh toán"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btnPrint"
+            app:layout_constraintStart_toEndOf="@+id/btnPrint"
+            app:layout_constraintTop_toTopOf="@+id/btnPrint"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

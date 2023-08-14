@@ -17,11 +17,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.model.Employee;
 import com.example.duan1_quanlysalon.model.Service;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class ListSelectServiceAdapter extends RecyclerView.Adapter<ListSelectServiceAdapter.ViewHolder> {
@@ -49,9 +51,10 @@ public class ListSelectServiceAdapter extends RecyclerView.Adapter<ListSelectSer
 
     @Override
     public void onBindViewHolder(@NonNull ListSelectServiceAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-
+        Glide.with(context).load(list.get(position).getImageService()).into(holder.ivAvatar);
+        NumberFormat currentLocale = NumberFormat.getInstance();
+        holder.tvPrice.setText(currentLocale.format(list.get(position).getPrice()));
         holder.tvNameService.setText(list.get(position).getName());
-        holder.tvPrice.setText(String.valueOf(list.get(position).getPrice()));
         for(Service service : listServiceSelectedTarget){
             if(service.getIdService() == list.get(position).getIdService()){
                 holder.btnCancel.setVisibility(View.VISIBLE);

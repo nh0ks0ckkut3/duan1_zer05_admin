@@ -13,8 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.adapter.EmployeeAdapter;
@@ -39,6 +42,8 @@ public class List_Employee_Fragment extends Fragment {
 
     ArrayList<Employee> listStylist,listSkinner,listAdmin;
     FloatingActionButton fltAdd;
+    LinearLayout lnProgressBar1,lnProgressBar2,lnProgressBar3;
+    ImageView progressBar1,progressBar2, progressBar3;
 
     @Nullable
     @Override
@@ -48,6 +53,15 @@ public class List_Employee_Fragment extends Fragment {
         rcViewStylist = view.findViewById(R.id.rcViewListStylist);
         rcViewSkinner = view.findViewById(R.id.rcViewListSkinner);
         rcViewListAdmin = view.findViewById(R.id.rcViewListAdmin);
+        lnProgressBar1 = view.findViewById(R.id.lnProgressBar1);
+        lnProgressBar2 = view.findViewById(R.id.lnProgressBar2);
+        lnProgressBar3 = view.findViewById(R.id.lnProgressBar3);
+        progressBar1 = view.findViewById(R.id.progressBar1);
+        progressBar2 = view.findViewById(R.id.progressBar2);
+        progressBar3 = view.findViewById(R.id.progressBar3);
+        Glide.with(getContext()).load(getString(R.string.linkProgressBar2)).into(progressBar1);
+        Glide.with(getContext()).load(getString(R.string.linkProgressBar2)).into(progressBar2);
+        Glide.with(getContext()).load(getString(R.string.linkProgressBar2)).into(progressBar3);
         ((MainActivity)getContext()).toolbar.setVisibility(View.VISIBLE);
         ((MainActivity)getContext()).titleToolbar.setText("DS nhân viên");
         listStylist = new ArrayList<>();
@@ -106,6 +120,13 @@ public class List_Employee_Fragment extends Fragment {
                 rcViewStylist.setAdapter(adapterStylist);
                 rcViewSkinner.setAdapter(adapterSkinner);
                 rcViewListAdmin.setAdapter(adapterAdmin);
+
+                lnProgressBar1.setVisibility(View.GONE);
+                lnProgressBar2.setVisibility(View.GONE);
+                lnProgressBar3.setVisibility(View.GONE);
+                rcViewListAdmin.setVisibility(View.VISIBLE);
+                rcViewStylist.setVisibility(View.VISIBLE);
+                rcViewSkinner.setVisibility(View.VISIBLE);
             }else{
                 Toast.makeText(getContext(), "errol", Toast.LENGTH_SHORT).show();
             }

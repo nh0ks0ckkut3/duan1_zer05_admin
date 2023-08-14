@@ -5,6 +5,7 @@ import static com.example.duan1_quanlysalon.model.ServiceAPI.BASE_API_ZERO5;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.adapter.BillAdapterCheckout;
@@ -51,6 +54,9 @@ public class Bill_Detail_Fragment extends Fragment {
     private int toTalBill=0;
     private Boolean isReady;
     private String nameStylist="";
+    LinearLayout lnProgressBar;
+    ImageView progressBar;
+    ConstraintLayout contraint;
 
     public Bill_Detail_Fragment(Bill billCheckout, Boolean isReady) {
         this.billCheckout = billCheckout;
@@ -76,6 +82,10 @@ public class Bill_Detail_Fragment extends Fragment {
         rcViewProduct = view.findViewById(R.id.rcViewProduct);
         btnPrint = view.findViewById(R.id.btnPrint);
         btnPayment = view.findViewById(R.id.btnPayment);
+        lnProgressBar = view.findViewById(R.id.lnProgressBar);
+        contraint = view.findViewById(R.id.contraint);
+        progressBar = view.findViewById(R.id.progressBar);
+        Glide.with(getContext()).load(getString(R.string.linkProgressBar2)).into(progressBar);
         listService = new ArrayList<>();
         listProduct = new ArrayList<>();
         if(!((MainActivity)getContext()).currentUser.getClassify().equals("admin")){
@@ -183,7 +193,8 @@ public class Bill_Detail_Fragment extends Fragment {
             rcViewProduct.setLayoutManager(linearLayoutManagerProduct);
             rcViewProduct.setAdapter(productAdapter);
             tvTotalPrice.setText(toTalBill+ ",000 VNĐ");
-
+            lnProgressBar.setVisibility(View.GONE);
+            contraint.setVisibility(View.VISIBLE);
         }
 
     }

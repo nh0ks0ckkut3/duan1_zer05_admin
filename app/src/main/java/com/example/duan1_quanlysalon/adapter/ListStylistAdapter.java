@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.model.Employee;
 import com.example.duan1_quanlysalon.model.ItemStylistClick;
@@ -46,11 +47,15 @@ public class ListStylistAdapter extends RecyclerView.Adapter<ListStylistAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tvName.setText(list.get(position).getName());
         holder.tvClassify.setText(list.get(position).getClassify());
-
-        if(userNameEmployeeClick.equals(list.get(position).getUserName())){
-            holder.itemStylist.setBackgroundResource(R.color.green);
+        if(!list.get(position).getImg().equals("")){
+            Glide.with(context).load(list.get(position).getImg()).into(holder.ivAvatar);
         }else{
-            holder.itemStylist.setBackgroundResource(R.color.white);
+            Glide.with(context).load("https://i.pinimg.com/originals/e0/7a/22/e07a22eafdb803f1f26bf60de2143f7b.png").into(holder.ivAvatar);
+        }
+        if(userNameEmployeeClick.equals(list.get(position).getUserName())){
+            holder.layoutSelect.setBackgroundResource(R.color.green);
+        }else{
+            holder.layoutSelect.setBackgroundResource(R.color.white);
         }
         holder.itemStylist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,13 +75,14 @@ public class ListStylistAdapter extends RecyclerView.Adapter<ListStylistAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvName,tvClassify;
         ImageView ivAvatar;
-        LinearLayout itemStylist;
+        LinearLayout itemStylist,layoutSelect;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvClassify = itemView.findViewById(R.id.tvClassify);
             ivAvatar = itemView.findViewById(R.id.ivAvatar);
             itemStylist = itemView.findViewById(R.id.itemStylist);
+            layoutSelect = itemView.findViewById(R.id.layoutSelect);
         }
     }
 }

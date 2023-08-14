@@ -16,9 +16,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.adapter.ListStylistAdapter;
@@ -57,6 +60,9 @@ public class Add_Booking_Fragment extends Fragment {
     private ArrayList<Service> listServiceSelectedAdd;
     private ArrayList<Product> listProductSelectedAdd;
     private boolean flagService = false, flagProduct = false;
+    LinearLayout lnProgressBar;
+    ImageView progressBar;
+    ScrollView scrollView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,6 +71,7 @@ public class Add_Booking_Fragment extends Fragment {
         recyclerView = view.findViewById(R.id.rcl_stylist_add_booking);
         mapping(view);
         billAdd = ((MainActivity)getContext()).getBillAdd();
+
         listServiceSelectedAdd = ((MainActivity)getContext()).getListServiceSelectedAdd();
         listProductSelectedAdd = ((MainActivity)getContext()).getListProductSelectedAdd();
         sdt_add_booking.setText(billAdd.getPhoneNumberCustomer());
@@ -130,6 +137,10 @@ public class Add_Booking_Fragment extends Fragment {
         rcl_time_add_booking = view.findViewById(R.id.rcl_time_add_booking);
         imgback_add_booking = view.findViewById(R.id.imgback_add_booking);
         listEmployee = new ArrayList<>();
+        lnProgressBar = view.findViewById(R.id.lnProgressBar);
+        progressBar = view.findViewById(R.id.progressBar);
+        scrollView = view.findViewById(R.id.scrollView);
+        Glide.with(getContext()).load(getString(R.string.linkProgressBar2)).into(progressBar);
     }
 
     private void getListEmployeeAPI(){
@@ -161,6 +172,8 @@ public class Add_Booking_Fragment extends Fragment {
         }else{
             Toast.makeText(getContext(), "errol", Toast.LENGTH_SHORT).show();
         }
+        lnProgressBar.setVisibility(View.GONE);
+        scrollView.setVisibility(View.VISIBLE);
     }
     private void getBookingAPI(String phoneNumberCustomer) {
 // kiểm tra xem sdt này có lịch đặt hôm nay chưa

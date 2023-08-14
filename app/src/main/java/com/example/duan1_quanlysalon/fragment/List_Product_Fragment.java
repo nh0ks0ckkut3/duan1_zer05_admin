@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.adapter.ListSelectServiceAdapter;
@@ -41,6 +43,8 @@ public class List_Product_Fragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Product> listAllProduct;
     FloatingActionButton fltAdd;
+    LinearLayout lnProgressBar;
+    ImageView progressBar;
 
     public List_Product_Fragment() {
     }
@@ -53,6 +57,9 @@ public class List_Product_Fragment extends Fragment {
         recyclerView = view.findViewById(R.id.rcl_list_product);
         listAllProduct = new ArrayList<>();
         fltAdd = view.findViewById(R.id.floatAdd);
+        lnProgressBar = view.findViewById(R.id.lnProgressBar);
+        progressBar = view.findViewById(R.id.progressBar);
+        Glide.with(getContext()).load(getString(R.string.linkProgressBar2)).into(progressBar);
         ((MainActivity)getContext()).toolbar.setVisibility(View.VISIBLE);
         ((MainActivity)getContext()).titleToolbar.setText("DS sản phẩm");
         LoadData();
@@ -93,6 +100,8 @@ public class List_Product_Fragment extends Fragment {
         }else{
             Toast.makeText(getContext(), "errol", Toast.LENGTH_SHORT).show();
         }
+        lnProgressBar.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
 

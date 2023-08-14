@@ -207,6 +207,7 @@ public class TaiKhoanFragment extends Fragment {
         btnOke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                alertDialog.dismiss();
                 ((MainActivity)getContext()).finish();
                 Intent intent = new Intent(getContext(), LoginActivity.class);
                 ((MainActivity)getContext()).startActivity(intent);

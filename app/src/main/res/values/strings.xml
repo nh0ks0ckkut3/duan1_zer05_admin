@@ -2,4 +2,8 @@
     <string name="app_name">duan1_quanlysalon</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="linkProgressBar">https://i.pinimg.com/originals/ca/89/fb/ca89fbce5e5c68f46d5330946c58ddc6.gif</string>
+    <string name="linkProgressBar2">https://i.stack.imgur.com/8puiO.gif</string>
+    <string name="linkNoAvatar">https://i.pinimg.com/originals/e0/7a/22/e07a22eafdb803f1f26bf60de2143f7b.png</string>
+
 </resources>

@@ -1,235 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.Add_Booking_Fragment"
+    android:orientation="vertical"
     tools:ignore="MissingConstraints">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/lnProgressBar">
 
         <ImageView
-            android:id="@+id/imgback_add_booking"
-            android:layout_width="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/arrowback"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/progressBar"/>
+    </LinearLayout>
+    <ScrollView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
 
-        <TextView
-            android:id="@+id/textView31"
-            android:layout_width="315dp"
-            android:layout_height="40dp"
-            android:text="Thêm booking"
-            android:layout_marginTop="10dp"
-            android:textAlignment="center"
-            android:textColor="#4B4848"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imgback_add_booking"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/view7"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="12dp"
-            android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView32"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="16dp"
-            android:text="Thông tin khách hàng"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view7" />
+            <ImageView
+                android:id="@+id/imgback_add_booking"
+                android:layout_width="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/arrowback"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:hint="số điện thoại"
-            android:id="@+id/sdt_add_booking"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/ground_add_booking"
-            android:paddingLeft="10dp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView32" />
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="315dp"
+                android:layout_height="40dp"
+                android:text="Thêm booking"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textColor="#4B4848"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imgback_add_booking"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:hint="nhập tên"
-            android:id="@+id/tenkh_add_booking"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="24dp"
-            android:background="@drawable/ground_add_booking"
-            android:paddingLeft="10dp"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/sdt_add_booking"
-            app:layout_constraintStart_toEndOf="@+id/sdt_add_booking"
-            app:layout_constraintTop_toTopOf="@+id/sdt_add_booking"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <View
-            android:id="@+id/view8"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="12dp"
-            android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sdt_add_booking" />
-
-        <TextView
-            android:id="@+id/textView37"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:text="1. Chọn dịch vụ"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view8" />
-
-        <TextView
-            android:id="@+id/select_service_add_booking"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/ground_add_booking"
-            android:text="Đã chọn 1 dịch vụ"
-            android:textColor="#95958B"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:drawableLeft="@drawable/ic_keo"
-            android:drawableRight="@drawable/ic_arr"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView37" />
-
-        <TextView
-            android:id="@+id/textView38"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
-            android:text="2. Chọn stylist"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/select_service_add_booking" />
-
-        <HorizontalScrollView
-            android:id="@+id/horizontalview1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView38">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcl_stylist_add_booking"
-                android:layout_width="100dp"
-                android:layout_height="match_parent" />
-
-        </HorizontalScrollView>
-        <TextView
-            android:id="@+id/textView39"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
-            android:text="3. Chọn ngày giờ"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalview1" />
-
-        <HorizontalScrollView
-            android:id="@+id/horizontalview2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView39">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcl_time_add_booking"
+            <View
+                android:id="@+id/view7"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal" />
-        </HorizontalScrollView>
-        <TextView
-            android:id="@+id/textView40"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
-            android:text="4. Chọn sản phẩm"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalview2" />
-        <TextView
-            android:id="@+id/select_product_add_booking"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/ground_add_booking"
-            android:text="Đã chọn 1 sản phẩm"
-            android:textColor="#95958B"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:drawableLeft="@drawable/ic_sp"
-            android:drawableRight="@drawable/ic_arr"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView40" />
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_complete_add_booking"
-            android:layout_width="241dp"
-            android:layout_height="41dp"
-            android:background="@drawable/btn_thanhtoan_itembill"
-            android:layout_marginTop="20dp"
-            android:text="Hoàn tất"
-            android:textAllCaps="false"
-            android:textSize="20dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintEnd_toEndOf="@+id/select_product_add_booking"
-            app:layout_constraintStart_toStartOf="@+id/select_product_add_booking"
-            app:layout_constraintTop_toBottomOf="@+id/select_product_add_booking" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="16dp"
+                android:text="Thông tin khách hàng"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+            <EditText
+                android:hint="số điện thoại"
+                android:id="@+id/sdt_add_booking"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ground_add_booking"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+            <EditText
+                android:hint="nhập tên"
+                android:id="@+id/tenkh_add_booking"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/ground_add_booking"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/sdt_add_booking"
+                app:layout_constraintStart_toEndOf="@+id/sdt_add_booking"
+                app:layout_constraintTop_toTopOf="@+id/sdt_add_booking"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <View
+                android:id="@+id/view8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sdt_add_booking" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="1. Chọn dịch vụ"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view8" />
+
+            <TextView
+                android:id="@+id/select_service_add_booking"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ground_add_booking"
+                android:text="Đã chọn 1 dịch vụ"
+                android:textColor="#95958B"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:drawableLeft="@drawable/ic_keo"
+                android:drawableRight="@drawable/ic_arr"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:text="2. Chọn stylist"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/select_service_add_booking" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalview1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView38">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcl_stylist_add_booking"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent" />
+
+            </HorizontalScrollView>
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:text="3. Chọn ngày giờ"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalview1" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalview2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView39">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcl_time_add_booking"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:text="4. Chọn sản phẩm"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalview2" />
+            <TextView
+                android:id="@+id/select_product_add_booking"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ground_add_booking"
+                android:text="Đã chọn 1 sản phẩm"
+                android:textColor="#95958B"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:drawableLeft="@drawable/ic_sp"
+                android:drawableRight="@drawable/ic_arr"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_complete_add_booking"
+                android:layout_width="241dp"
+                android:layout_height="41dp"
+                android:background="@drawable/btn_thanhtoan_itembill"
+                android:layout_marginTop="20dp"
+                android:text="Hoàn tất"
+                android:textAllCaps="false"
+                android:textSize="20dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintEnd_toEndOf="@+id/select_product_add_booking"
+                app:layout_constraintStart_toStartOf="@+id/select_product_add_booking"
+                app:layout_constraintTop_toBottomOf="@+id/select_product_add_booking" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>

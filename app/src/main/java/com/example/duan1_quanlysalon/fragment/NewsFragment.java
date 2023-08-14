@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,8 @@ public class NewsFragment extends Fragment {
     private NewsAPIAdapter adapter;
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
+    LinearLayout lnProgressBar;
+    ImageView progressBar;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -87,7 +90,9 @@ public class NewsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_news_fragment, container, false);
         recyclerView = view.findViewById(R.id.listViewNews);
-
+        progressBar = view.findViewById(R.id.progressBar);
+        lnProgressBar = view.findViewById(R.id.lnProgressBar);
+        Glide.with(getContext()).load(getString(R.string.linkProgressBar2)).into(progressBar);
         items = new ArrayList<>();
 
 
@@ -101,6 +106,8 @@ public class NewsFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new NewsAPIAdapter(getContext(),items);
         recyclerView.setAdapter(adapter);
+        lnProgressBar.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
     private void demoCallAPI() {

@@ -119,7 +119,7 @@ public class BillAdapterCheckin extends RecyclerView.Adapter<BillAdapterCheckin.
                 } else {
                     ArrayList<Bill> listbill = new ArrayList<>();
                     for (Bill bill : listAtPhone) {
-                        if (bill.getPhoneNumberCustomer().toLowerCase().contains(lh1.toLowerCase())) {
+                        if (bill.getPhoneNumberCustomer().toLowerCase().contains(lh1.toLowerCase()) || bill.getNameCustomer().toLowerCase().contains(lh1.toLowerCase())) {
                             listbill.add(bill);
                         }
                     }

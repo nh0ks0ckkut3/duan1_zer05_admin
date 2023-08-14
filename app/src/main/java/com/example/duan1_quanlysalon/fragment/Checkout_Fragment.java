@@ -11,8 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
 import com.example.duan1_quanlysalon.adapter.BillAdapterCheckout;
 import com.example.duan1_quanlysalon.model.Bill;
@@ -33,6 +37,8 @@ public class Checkout_Fragment extends Fragment {
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     BillAdapterCheckout adapterKhachChoThanhToan;
+    ImageView progressBar;
+    LinearLayout lnProgressBar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +63,7 @@ public class Checkout_Fragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(ServiceAPI.class);
 
-        new CompositeDisposable().add(requestInterface.getListBill(status)
+        new CompositeDisposable().add(requestInterface.getListBill(status, ((MainActivity)getContext()).dateCurrent)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleResponse, this::handleError)
@@ -71,6 +77,8 @@ public class Checkout_Fragment extends Fragment {
             recyclerView.setLayoutManager(linearLayoutManager);
             recyclerView.setAdapter(adapterKhachChoThanhToan);
         }
+        lnProgressBar.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
     private void handleError(Throwable error) {
@@ -81,5 +89,8 @@ public class Checkout_Fragment extends Fragment {
         recyclerView = view.findViewById(R.id.rcl_list_bill);
         listKhachChoThanhToan = new ArrayList<>();
         linearLayoutManager = new LinearLayoutManager(getContext());
+        progressBar = view.findViewById(R.id.progressBar);
+        lnProgressBar = view.findViewById(R.id.lnProgressBar);
+        Glide.with(getContext()).load(getString(R.string.linkProgressBar2)).into(progressBar);
     }
 }

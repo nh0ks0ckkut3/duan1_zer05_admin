@@ -34,6 +34,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Random;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Service> listServiceSelectedAdd;
     private ArrayList<Product> listProductSelectedAdd;
 
+    public String dateCurrent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +79,19 @@ public class MainActivity extends AppCompatActivity {
             bottomNavigationView.getMenu().clear();
             bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu_employe);
         }
+        Calendar calendar = Calendar.getInstance();
+        String day,month;
+        if((calendar.get(Calendar.MONTH)+1) < 10){
+            month = "0" + (calendar.get(Calendar.MONTH)+1)+"/";
+        }else{
+            month = (calendar.get(Calendar.MONTH)+1)+"/";
+        }
+        if(calendar.get(Calendar.DAY_OF_MONTH) < 10){
+            day = "0" + calendar.get(Calendar.DAY_OF_MONTH)+"/";
+        }else{
+            day = calendar.get(Calendar.DAY_OF_MONTH)+"/";
+        }
+        dateCurrent = day+month+calendar.get(Calendar.YEAR);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

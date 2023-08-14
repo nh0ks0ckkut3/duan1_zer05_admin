@@ -15,9 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.duan1_quanlysalon.Detail_Service_Activity;
 import com.example.duan1_quanlysalon.MainActivity;
 import com.example.duan1_quanlysalon.R;
@@ -57,6 +60,9 @@ public class Nhan_Khach_Fragment extends Fragment {
     private ArrayList<Service> listServiceSelectedUpdate;
     private ArrayList<Product> listProductSelectedUpdate;
     private boolean flagService = false, flagProduct = false;
+    LinearLayout lnProgressBar;
+    ImageView progressBar;
+    ScrollView scrollView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -122,6 +128,10 @@ public class Nhan_Khach_Fragment extends Fragment {
         rcl_time_add_booking = view.findViewById(R.id.rcl_time_add_booking);
         imgback_add_booking = view.findViewById(R.id.imgback_add_booking);
         listEmployee = new ArrayList<>();
+        lnProgressBar = view.findViewById(R.id.lnProgressBar);
+        progressBar = view.findViewById(R.id.progressBar);
+        scrollView = view.findViewById(R.id.scrollView);
+        Glide.with(getContext()).load(getString(R.string.linkProgressBar2)).into(progressBar);
     }
 
     private void getListEmployeeAPI(){
@@ -154,6 +164,8 @@ public class Nhan_Khach_Fragment extends Fragment {
         }else{
             Toast.makeText(getContext(), "errol", Toast.LENGTH_SHORT).show();
         }
+        lnProgressBar.setVisibility(View.GONE);
+        scrollView.setVisibility(View.VISIBLE);
     }
     private void updateBill(Bill bill){
         ServiceAPI requestInterface = new Retrofit.Builder()

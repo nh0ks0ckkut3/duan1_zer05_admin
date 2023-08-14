@@ -149,11 +149,31 @@ public class Confirm_Payment_Fragment extends Fragment {
 
         private void handleResponse(Boolean result) {
             if(!result){
-                Toast.makeText(getContext(), "errol", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "errol thanh toan", Toast.LENGTH_SHORT).show();
             }else{
-                ((MainActivity)getContext()).replayFragment(new Payment_Complete_Fragment(billCheckout, totalBill, loaiGD));
+                updateTotalBill(billCheckout.getId(), totalBill);
             }
         }
+        private void updateTotalBill(int idBill, int totalBill){
+            ServiceAPI requestInterface = new Retrofit.Builder()
+                    .baseUrl(BASE_API_ZERO5)
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build().create(ServiceAPI.class);
+
+            new CompositeDisposable().add(requestInterface.updateTotalBill(idBill, totalBill)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(this::handleResponseTotal, this::handleError)
+            );
+        }
+    private void handleResponseTotal(Boolean result) {
+        if(!result){
+            Toast.makeText(getContext(), "errol update total bill", Toast.LENGTH_SHORT).show();
+        }else{
+            ((MainActivity)getContext()).replayFragment(new Payment_Complete_Fragment(billCheckout, totalBill, loaiGD));
+        }
+    }
 
         private void handleError(Throwable error) {
             Toast.makeText(getContext(), "lỗi load trang, thử lại sau!", Toast.LENGTH_SHORT).show();

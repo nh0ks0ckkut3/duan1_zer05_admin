@@ -22,6 +22,7 @@ import com.example.duan1_quanlysalon.model.Service;
 import com.example.duan1_quanlysalon.model.ServiceAPI;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -51,8 +52,9 @@ public class listServiceCheckoutAdapter  extends RecyclerView.Adapter<listServic
     @Override
     public void onBindViewHolder(@NonNull listServiceCheckoutAdapter.ViewHolDer holder, @SuppressLint("RecyclerView") int position) {
         holder.tvName.setText(list.get(position).getName());
-        holder.tvPrice.setText(list.get(position).getPrice()+".000");
-        holder.tvTotalPrice.setText(list.get(position).getPrice()+".000");
+        NumberFormat currentLocale = NumberFormat.getInstance();
+        holder.tvPrice.setText(currentLocale.format(list.get(position).getPrice()));
+        holder.tvTotalPrice.setText(currentLocale.format(list.get(position).getPrice()));
     }
 
     @Override

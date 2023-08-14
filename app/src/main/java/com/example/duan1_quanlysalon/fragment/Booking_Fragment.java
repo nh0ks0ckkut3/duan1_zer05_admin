@@ -38,6 +38,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -104,7 +105,7 @@ public class Booking_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(!(((MainActivity)getContext()).getBillAdd() != null)){
-                    ((MainActivity)getContext()).setBillAdd(new Bill("","","","",""));
+                    ((MainActivity)getContext()).setBillAdd(new Bill("","","","","",((MainActivity)getContext()).dateCurrent));
                     ((MainActivity)getContext()).setListServiceSelectedAdd(new ArrayList<>());
                     ((MainActivity)getContext()).setListProductSelectedAdd(new ArrayList<>());
                 }
@@ -115,11 +116,11 @@ public class Booking_Fragment extends Fragment {
     }
 
     public void loadData() {
-        getListBookingAPI("booking");
-        getListBookingAPI("khach dang cho");
-        getListBookingAPI("khach dang phuc vu");
+        getListBookingAPI("booking", ((MainActivity)getContext()).dateCurrent);
+        getListBookingAPI("khach dang cho", ((MainActivity)getContext()).dateCurrent);
+        getListBookingAPI("khach dang phuc vu", ((MainActivity)getContext()).dateCurrent);
     }
-    private void getListBookingAPI(String status) {
+    private void getListBookingAPI(String status, String date) {
 
         ServiceAPI requestInterface = new Retrofit.Builder()
                 .baseUrl(BASE_API_ZERO5)
@@ -127,7 +128,7 @@ public class Booking_Fragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(ServiceAPI.class);
 
-        new CompositeDisposable().add(requestInterface.getListBill(status)
+        new CompositeDisposable().add(requestInterface.getListBill(status, date)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleResponseGetListBill, this::handleError)
@@ -136,7 +137,9 @@ public class Booking_Fragment extends Fragment {
 
     private void handleResponseGetListBill(ArrayList<Bill> listBill) {
         if(listBill.size()>0){
-            listKhachDangCho = listBill;
+            for(Bill bill : listBill){
+                listKhachDangCho.add(bill);
+            }
             adapterKhachDangCho = new BillAdapterCheckin(getContext(), listKhachDangCho);
             rcvKhachDangCho.setAdapter(adapterKhachDangCho);
             //tìm kiếm

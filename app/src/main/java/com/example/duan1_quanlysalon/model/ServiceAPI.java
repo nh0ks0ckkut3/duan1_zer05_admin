@@ -3,9 +3,14 @@ package com.example.duan1_quanlysalon.model;
 import java.util.ArrayList;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface ServiceAPI {
@@ -64,10 +69,13 @@ public interface ServiceAPI {
     // bill
 
     @GET("GetListBill.php")
-    Observable<ArrayList<Bill>> getListBill(@Query("status") String status);
+    Observable<ArrayList<Bill>> getListBill(@Query("status") String status, @Query("date") String date);
 
     @GET("SetStatusBill.php")
     Observable<Boolean> setStatusBill(@Query("idBill") int idBill, @Query("status") String status);
+
+    @GET("UpdateTotalBill.php")
+    Observable<Boolean> updateTotalBill(@Query("idBill") int idBill, @Query("totalPrice") int totalPrice);
 
     @POST("CreateNewBooking.php")
     Observable<Boolean> CreateNewBooking(@Body Bill bill);
@@ -86,6 +94,9 @@ public interface ServiceAPI {
 
     @GET("LayIDBillVuaDuocThem.php")
     Observable<Integer> layIDBillVuaDuocThem(@Query("phoneNumberCustomer") String phoneNumberCustomer);
+
+    @GET("GetListBillTheoThang.php")
+    Observable<ArrayList<Bill>> getListBillTheoThang(@Query("month") int month, @Query("year") int year);
 
     //detail
 
@@ -143,5 +154,8 @@ public interface ServiceAPI {
 
     @GET("CreateNewCustomer.php")
     Observable<Boolean> createNewCustomer(@Query("phoneNumberCustomer") String phoneNumberCustomer, @Query("name") String name);
+
+    //img
+
 
 }
