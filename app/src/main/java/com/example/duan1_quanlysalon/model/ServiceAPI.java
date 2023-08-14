@@ -90,7 +90,7 @@ public interface ServiceAPI {
     Observable<Integer> getBookingAPI(@Query("phoneNumberCustomer") String phoneNumberCustomer);
 
     @GET("GetList2.php")
-    Observable<ArrayList<Bill>> getListBill2(@Query("status") String status, @Query("userNameEmployee") String userNameEmployee);
+    Observable<ArrayList<Bill>> getListBill2(@Query("status") String status, @Query("userNameEmployee") String userNameEmployee, @Query("date") String date);
 
     @GET("LayIDBillVuaDuocThem.php")
     Observable<Integer> layIDBillVuaDuocThem(@Query("phoneNumberCustomer") String phoneNumberCustomer);

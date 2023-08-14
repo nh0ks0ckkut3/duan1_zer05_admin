@@ -79,6 +79,7 @@ public class Checkout_Fragment extends Fragment {
         }
         lnProgressBar.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
+        ((MainActivity)getContext()).countChoThanhToan.setText(listBill.size()+"");
     }
 
     private void handleError(Throwable error) {

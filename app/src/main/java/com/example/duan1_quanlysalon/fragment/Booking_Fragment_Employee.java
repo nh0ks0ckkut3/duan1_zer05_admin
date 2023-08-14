@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan1_quanlysalon.MainActivity;
@@ -70,10 +71,18 @@ public class Booking_Fragment_Employee extends Fragment {
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
             switch (position){
                 case 0:
-                    tab.setText("Khách đang chờ bạn");
+                    View viewTab3 = inflater.inflate(R.layout.item_tablayout, container, false);
+                    TextView tvTitle3 = viewTab3.findViewById(R.id.title);
+                    ((MainActivity)getContext()).countChoPhucVu = viewTab3.findViewById(R.id.count);
+                    tvTitle3.setText("Khách đang chờ bạn");
+                    tab.setCustomView(viewTab3);
                     break;
                 case 1:
-                    tab.setText("Khách đang phục vụ");
+                    View viewTab5 = inflater.inflate(R.layout.item_tablayout, container, false);
+                    TextView tvTitle5 = viewTab5.findViewById(R.id.title);
+                    ((MainActivity)getContext()).countDangPhucVuEmployee = viewTab5.findViewById(R.id.count);
+                    tvTitle5.setText("Khách đang phục vụ");
+                    tab.setCustomView(viewTab5);
                     break;
             }
         }).attach();
@@ -96,10 +105,10 @@ public class Booking_Fragment_Employee extends Fragment {
     }
 
     public void loadData() {
-        getListBookingAPI("khach dang phuc vu", ((MainActivity)getContext()).currentUser.getUserName());
-        getListBookingAPI("khach cho phuc vu", ((MainActivity)getContext()).currentUser.getUserName());
+        getListBookingAPI("khach dang phuc vu", ((MainActivity)getContext()).currentUser.getUserName(), ((MainActivity)getContext()).dateCurrent);
+        getListBookingAPI("khach cho phuc vu", ((MainActivity)getContext()).currentUser.getUserName(), ((MainActivity)getContext()).dateCurrent);
     }
-    private void getListBookingAPI(String status, String userName) {
+    private void getListBookingAPI(String status, String userName, String date) {
 
         ServiceAPI requestInterface = new Retrofit.Builder()
                 .baseUrl(BASE_API_ZERO5)
@@ -107,7 +116,7 @@ public class Booking_Fragment_Employee extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(ServiceAPI.class);
 
-        new CompositeDisposable().add(requestInterface.getListBill2(status,userName)
+        new CompositeDisposable().add(requestInterface.getListBill2(status,userName, date)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleResponseGetListBill, this::handleError)
@@ -116,6 +125,11 @@ public class Booking_Fragment_Employee extends Fragment {
 
     private void handleResponseGetListBill(ArrayList<Bill> listBill) {
         if(listBill.size()>0) {
+            if(listBill.get(0).getStatus().equals("khach dang phuc vu")){
+                ((MainActivity)getContext()).countChoPhucVu.setText(listBill.size()+"");
+            }else{
+                ((MainActivity)getContext()).countDangPhucVuEmployee.setText(listBill.size()+"");
+            }
             listKhachDangPhucVu = listBill;
             adapterKhachDangPhucVu = new BillAdapterCheckin(getContext(), listKhachDangPhucVu);
             rcvKhachDangPhucVu.setAdapter(adapterKhachDangPhucVu);
@@ -141,7 +155,7 @@ public class Booking_Fragment_Employee extends Fragment {
     }
 
     private void handleError(Throwable error) {
-        Toast.makeText(getContext(), "lỗi load trang, thử lại sau!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "lỗi load trang, thử lại sau! 1", Toast.LENGTH_SHORT).show();
     }
 
     private void mapping(View view){

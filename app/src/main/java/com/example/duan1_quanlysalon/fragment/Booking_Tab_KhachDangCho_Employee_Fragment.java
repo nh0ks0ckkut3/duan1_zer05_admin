@@ -50,9 +50,9 @@ public class Booking_Tab_KhachDangCho_Employee_Fragment extends Fragment {
         return view;
     }
     public void loadData() {
-        getListBookingAPI("khach cho phuc vu", ((MainActivity)getContext()).currentUser.getUserName());
+        getListBookingAPI("khach cho phuc vu", ((MainActivity)getContext()).currentUser.getUserName(),  ((MainActivity)getContext()).dateCurrent);
     }
-    private void getListBookingAPI(String status, String userName) {
+    private void getListBookingAPI(String status, String userName, String date) {
 
         ServiceAPI requestInterface = new Retrofit.Builder()
                 .baseUrl(BASE_API_ZERO5)
@@ -60,7 +60,7 @@ public class Booking_Tab_KhachDangCho_Employee_Fragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(ServiceAPI.class);
 
-        new CompositeDisposable().add(requestInterface.getListBill2(status,userName)
+        new CompositeDisposable().add(requestInterface.getListBill2(status,userName, date)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleResponseGetListBill, this::handleError)

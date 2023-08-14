@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan1_quanlysalon.LoginActivity;
@@ -75,13 +76,25 @@ public class Booking_Fragment extends Fragment {
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
             switch (position){
                 case 0:
-                    tab.setText("Khách chưa tới");
+                    View viewTab1 = inflater.inflate(R.layout.item_tablayout, container, false);
+                    TextView tvTitle1 = viewTab1.findViewById(R.id.title);
+                    ((MainActivity)getContext()).countChuaToi = viewTab1.findViewById(R.id.count);
+                    tvTitle1.setText("Khách chưa tới");
+                    tab.setCustomView(viewTab1);
                     break;
                 case 1:
-                    tab.setText("Khách đang chờ");
+                    View viewTab2 = inflater.inflate(R.layout.item_tablayout, container, false);
+                    TextView tvTitle2 = viewTab2.findViewById(R.id.title);
+                    ((MainActivity)getContext()).countDangCho = viewTab2.findViewById(R.id.count);
+                    tvTitle2.setText("Khách đang chờ");
+                    tab.setCustomView(viewTab2);
                     break;
                 case 2:
-                    tab.setText("Khách đang phục vụ");
+                    View viewTab3 = inflater.inflate(R.layout.item_tablayout, container, false);
+                    TextView tvTitle3 = viewTab3.findViewById(R.id.title);
+                    ((MainActivity)getContext()).countDangPhucVu = viewTab3.findViewById(R.id.count);
+                    tvTitle3.setText("đang phục vụ");
+                    tab.setCustomView(viewTab3);
                     break;
             }
         }).attach();
@@ -137,6 +150,13 @@ public class Booking_Fragment extends Fragment {
 
     private void handleResponseGetListBill(ArrayList<Bill> listBill) {
         if(listBill.size()>0){
+            if(listBill.get(0).getStatus().equals("booking")){
+                ((MainActivity)getContext()).countChuaToi.setText(listBill.size()+"");
+            }else if(listBill.get(0).getStatus().equals("khach dang cho")){
+                ((MainActivity)getContext()).countDangCho.setText(listBill.size()+"");
+            }else if(listBill.get(0).getStatus().equals("khach dang phuc vu")) {
+                ((MainActivity) getContext()).countDangPhucVu.setText(listBill.size() + "");
+            }
             for(Bill bill : listBill){
                 listKhachDangCho.add(bill);
             }
@@ -158,6 +178,14 @@ public class Booking_Fragment extends Fragment {
                 }
 
             });
+        }else{
+            if(listBill.get(0).getStatus().equals("booking")){
+                ((MainActivity)getContext()).countChuaToi.setText(0+"");
+            }else if(listBill.get(0).getStatus().equals("khach dang cho")){
+                ((MainActivity)getContext()).countDangCho.setText(0+"");
+            }else if(listBill.get(0).getStatus().equals("khach dang phuc vu")) {
+                ((MainActivity) getContext()).countDangPhucVu.setText(0 + "");
+            }
         }
     }
 

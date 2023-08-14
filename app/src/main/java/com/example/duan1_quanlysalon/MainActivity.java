@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,6 +30,8 @@ import com.example.duan1_quanlysalon.model.Employee;
 import com.example.duan1_quanlysalon.model.Product;
 import com.example.duan1_quanlysalon.model.Service;
 import com.example.duan1_quanlysalon.model.ServiceAPI;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -63,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
 
     public String dateCurrent;
 
+    BottomNavigationMenuView mbottomNavigationMenuView;
+    BottomNavigationItemView itemView;
+
+    public TextView countChuaToi, countDangCho, countDangPhucVu, countChoPhucVu, countChoThanhToan,countDangPhucVuEmployee;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +86,20 @@ public class MainActivity extends AppCompatActivity {
         if(!currentUser.getClassify().equals("admin")){
             bottomNavigationView.getMenu().clear();
             bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu_employe);
+        }else{
+            mbottomNavigationMenuView =
+                    (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+
+            View view = mbottomNavigationMenuView.getChildAt(2);
+
+            itemView = (BottomNavigationItemView) view;
+
+            View cart_badge = LayoutInflater.from(this)
+                    .inflate(R.layout.item_checkout_nav,
+                            mbottomNavigationMenuView, false);
+
+            itemView.addView(cart_badge);
+            countChoThanhToan = itemView.findViewById(R.id.countChoThanhToan);
         }
         Calendar calendar = Calendar.getInstance();
         String day,month;
